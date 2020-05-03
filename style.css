@@ -11,18 +11,30 @@ h1 {
     padding: 20px;
     
     background-color: lavender;
-    width: 600px;
-    height: 600px;
+    width: 480px;
+    height: 480px;
+    align-items: center;
+}
+p {
+    margin: 0;
+}
+img {
+    margin-top: 15px;
+    border-radius: 5px;
 }
 
 #mr-smith-div {
     background-color: whitesmoke;
+    color: black;
 }
 #webpage {
     background-color: beige;
 }
 #webpage2 {
-    background-color: blue;
+    background-color: lightcyan;
+}
+#webpage3 {
+    background-color: lightgrey;
 }
 
 .divz {
