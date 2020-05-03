@@ -121,11 +121,12 @@ p {
 .arrow{
         font-family: Arial;
         font-weight: bold;
-        width: 40px;
-        height: 20px;
+        width: 55px;
+        height: 35px;
         text-align: center;
         padding: 7px;
         padding-bottom: 4px;
+        margin: 5px;
         background-color: silver;
         border: 2px solid grey;
         position: absolute;
