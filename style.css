@@ -1,0 +1,31 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+#bigdiv {
+    border: solid 5px rebeccapurple;
+    border-radius: 10px;
+    padding: 20px;
+    
+    background-color: lavender;
+    width: 400px;
+    height: 400px;
+}
+
+#mr-smith-div {
+    background-color: whitesmoke;
+}
+#webpage {
+    background-color: beige;
+}
+
+.divz {
+	width: 120px;
+	height: 80px;
+	float: left;
+    background-repeat: no-repeat;
+    border: solid 5px;
+    margin: 10px;
+    padding: 5px;
+}
