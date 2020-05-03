@@ -2,9 +2,11 @@ body {
     font-family: 'Courier New', Courier, monospace;
 
 }
-
+h1 {
+    text-align: center;
+}
 #bigdiv {
-    /* border: solid 5px rebeccapurple;*/
+    border: solid 1px rebeccapurple;
     border-radius: 10px;
     padding: 20px;
     
@@ -19,14 +21,18 @@ body {
 #webpage {
     background-color: beige;
 }
+#webpage2 {
+    background-color: lightcyan;
+}
 
 .divz {
-	width: 120px;
+    text-align: center;
+	width: 100px;
 	height: 80px;
 	float: left;
     background-repeat: no-repeat;
     /* border: solid 5px; */
-    margin: 10px;
+    margin: 5px;
     padding: 5px;
     border-radius: 10px;
 }
