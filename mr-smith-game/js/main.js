@@ -395,6 +395,11 @@ Good luck!
                 level = 0;
 				updateTiles(level);
 				document.getElementById("message").innerHTML += "<br><em>Going back in time.</em>";
+				if(space == false){
+					$("#baddie").css({"background-image": "url(img/DoctorWho.png)"});
+				}else if(space == true){
+					$("#baddie").css({"background-image": "url(img/Tardis.png)"});
+				}
                 break;
             case 16:
 				document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Entrance is 15 coins.</em>";
