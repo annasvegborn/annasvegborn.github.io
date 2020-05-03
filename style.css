@@ -39,5 +39,10 @@ img {
 
 .placeholder-img {
     content:url("img/x.png");
+}
 
+#pinecone {
+    content:url("img/pinecone.png");
+    width: 30px;
+    height: 30px;
 }
