@@ -384,12 +384,12 @@ Good luck!
             console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 13")
             console.log("Level: " + level);
             //$("#baddie").css({"background-image": "url(img/Tardis.png)"});
-            //$("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
-            $(".t10").removeClass("t10").addClass("ti10");
-            $(".t12").removeClass("t12").addClass("ti12");
-            $(".t13").removeClass("t13").addClass("ti13");
-            $(".t14").removeClass("t14").addClass("ti14");
-            $(".t15").removeClass("t15").addClass("ti15");
+            //$*("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
+            //$(".t10").removeClass("t10").addClass("ti10");
+            //$(".t12").removeClass("t12").addClass("ti12");
+            //$(".t13").removeClass("t13").addClass("ti13");
+            //$(".t14").removeClass("t14").addClass("ti14");
+            //$(".t15").removeClass("t15").addClass("ti15");
             space = true;
             
             level = level + 1;
@@ -399,12 +399,12 @@ Good luck!
 		else if(gameArea[tilePos] === 13 && space === true){
 		        console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + "Should be: 13")
 		        //$("#baddie").css({"background-image": "url(img/DoctorWho.png)"});
-		        //$("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
-		        $(".ti10").removeClass("ti10").addClass("t10"); //Worth trying .switchClass()?
-		        $(".ti12").removeClass("ti12").addClass("t12");
-		        $(".ti13").removeClass("ti13").addClass("t13");
-		        $(".ti14").removeClass("ti14").addClass("t14");
-                $(".ti15").removeClass("ti15").addClass("t15");
+		        //*$("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
+		        //$(".ti10").removeClass("ti10").addClass("t10"); //Worth trying .switchClass()?
+		       // $(".ti12").removeClass("ti12").addClass("t12");
+		        //$(".ti13").removeClass("ti13").addClass("t13");
+		        //$(".ti14").removeClass("ti14").addClass("t14");
+                //$(".ti15").removeClass("ti15").addClass("t15");
 		        space = false;
             
                 level = level + 1;
