@@ -4,7 +4,7 @@ body {
 }
 
 #bigdiv {
-    border: solid 5px rebeccapurple;
+    /* border: solid 5px rebeccapurple;*/
     border-radius: 10px;
     padding: 20px;
     
@@ -25,7 +25,8 @@ body {
 	height: 80px;
 	float: left;
     background-repeat: no-repeat;
-    border: solid 5px;
+    /* border: solid 5px; */
     margin: 10px;
     padding: 5px;
+    border-radius: 10px;
 }
