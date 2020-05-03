@@ -10,7 +10,7 @@ h1 {
     border-radius: 10px;
     padding: 20px;
     
-    background-color: lavender;
+    background-color: whitesmoke;
     width: 480px;
     height: 480px;
     align-items: center;
@@ -23,21 +23,9 @@ img {
     border-radius: 5px;
 }
 
-#mr-smith-div {
-    background-color: whitesmoke;
-    color: black;
-}
-#webpage {
-    background-color: beige;
-}
-#webpage2 {
-    background-color: lightcyan;
-}
-#webpage3 {
-    background-color: lightgrey;
-}
-
 .divz {
+    background-color: lavender;
+    color:black;
     text-align: center;
 	width: 100px;
 	height: 80px;
@@ -47,4 +35,9 @@ img {
     margin: 5px;
     padding: 5px;
     border-radius: 10px;
+}
+
+.placeholder-img {
+    content:url("img/x.png");
+
 }
