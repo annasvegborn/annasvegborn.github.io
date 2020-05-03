@@ -1,6 +1,6 @@
 body{
     background-color: white;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 h1 {
     margin: 0;
@@ -13,8 +13,8 @@ p {
     border-radius: 10px;
     padding: 20px;
     background-color: whitesmoke;
-    width: 530px;
-    height: 580px;
+    width: 620px;
+    height: 620px;
     /* align-items: center; */
 }
 #content {
@@ -73,8 +73,17 @@ p {
 .t15{
     background: url(../img/tiles/vortex-grass.png);
 }
-.t16{
+.t16 {
     background: url(../img/tiles/guard-grass.png);
+}
+.t17 {
+    background: url(../img/tiles/guard2-grass.png);
+}
+.t18 {
+    background: url(../img/tiles/penguin-grass.png);
+}
+.t19 {
+    background: url(../img/tiles/penguin-outline-grass.png);
 }
 
 .ti10 {
@@ -87,7 +96,7 @@ p {
     background: url(../img/tiles/sun.png) 0px -128px;
 }
 .ti13 {
-    background: url(../img/tiles/rock.png) -64px -128px;
+    background: url(../img/tiles/earth.png) -64px -128px;
 }
 .ti14 {
     background: url(../img/tiles/gem_red_space1.png);
@@ -95,8 +104,17 @@ p {
 .ti15{
     background: url(../img/tiles/vortex-space.png);
 }
-.ti16{
+.ti16 {
     background: url(../img/tiles/guard-space.png);
+}
+.ti17 {
+    background: url(../img/tiles/guard2-space.png);
+}
+.ti18 {
+    background: url(../img/tiles/penguin-space.png);
+}
+.ti19 {
+    background: url(../img/tiles/space1.png);
 }
 
 
@@ -122,35 +140,60 @@ p {
 }
 #arrowLeft {
         left: 120px;
-        top: 480px;
+        top: 500px;
 }
 #arrowRight {
         left: 200px;
-        top: 480px;
+        top: 500px;
 }
 #arrowUp {
         left: 160px;
-        top: 440px;
+        top: 460px;
 }
 #arrowDown {
         left: 160px;
-        top: 520px;
+        top: 540px;
 }
 #coin_count {
 	left: 360px;
 	top: 130px;
 	position: absolute;  
 }
-#message {
-	left: 360px;
+.side-info{
+    left: 360px;
 	top: 180px;
 	position: absolute;  
 }
-#guard{
+
+#message {
+	left: 360px;
+	top: 215px;
+	position: absolute;  
+}
+.guard{
     background: url(../img/guard-small.png);
-    height: 17px;
-    width: 17px;
+    height: 20px;
+    width: 20px;
     padding: 0;
     margin: 0;
     border: none;
+    margin-top: 5px;
+}
+.guard2{
+    background: url(../img/guard2-small.png);
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    margin-top: 5px;
+}
+.penguin{
+    background: url(../img/penguin-small.png);
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    margin-top: 5px;
 }
