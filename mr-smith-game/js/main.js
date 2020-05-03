@@ -271,9 +271,7 @@ Good luck!
 	 * FUNCTIONS
 	 */
 
-	/**
-	 * Initiates area and baddie
-	 */
+	/** Initiates area and baddie */
 	var init = function() {
 		drawGamePlan(gameArea);
 		moveBaddie(1, 1);
@@ -312,8 +310,6 @@ Good luck!
 		// Switch case on the tile value - do different things depending on what tile baddie is moving to
 		switch(tile) {
 			case 10: // empty
-			case 13: // door
-				// Move baddie to tile
 				movable = true;
 				break;
 			case 11:
@@ -323,17 +319,13 @@ Good luck!
 			case 12:
 				// Tile was a box, move it and then baddie
 				var nextPos, nextTile;
-
 				// Calculate where the sibling tile to be checked is in the array
 				nextPos = tilePos + moveLeft + (gridSize*moveTop);
-
 				// ------------------------------
-				// ASSIGNMENT
 				// Get the next tile from gameArea and place it in the variable nextTile (5b)
 				nextTile = gameArea[nextPos]; /* ANNA */
 
 				console.log("The next tile is: " + nextTile);
-
 				console.log("Game area: " + gameArea);
 				// Only move if the sibling tile to be moved to is empty
 				if(nextTile == 10) {
@@ -345,6 +337,10 @@ Good luck!
 					// if not empty - don't do anything else
 					console.log("Can't push box - next tile is not empty");					
 				}
+				break;
+			case 13: // door
+				// Move baddie to tile
+				movable = true;
 				break;
 			case 14:
 			    // coin - pick up
@@ -365,13 +361,15 @@ Good luck!
                 updateTiles(level);
                 break;
             case 16:
+				var messages = "<strong> Messages </strong><br>"
+				document.getElementById("message").innerHTML = messages + "<img id='guard'>Guard: <br><em>Entrance is 15 coins.</em>";
                 if(coinCount >= 15){
                     movable = true;
                     gameArea[tilePos] = 10;
-                    emptyTile(tilePos);
+					emptyTile(tilePos);
+					coinCount = coinCount - 15;
                 }else{
                     movable = false;
-                    
                 }
                 break;
 			default:
