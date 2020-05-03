@@ -383,8 +383,8 @@ Good luck!
 		if(gameArea[tilePos] === 13 && space === false){
             console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 13")
             console.log("Level: " + level);
-            //$("#baddie").css({"background-image": "url(img/Tardis.png)"});
-            $("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
+            $("#baddie").css({"background-image": "url(img/Tardis.png)"});
+            //$("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
             $(".t10").removeClass("t10").addClass("ti10");
             $(".t12").removeClass("t12").addClass("ti12");
             $(".t13").removeClass("t13").addClass("ti13");
@@ -398,8 +398,8 @@ Good luck!
 		}
 		else if(gameArea[tilePos] === 13 && space === true){
 		        console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + "Should be: 13")
-		        //$("#baddie").css({"background-image": "url(img/DoctorWho.png)"});
-		        $("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
+		        $("#baddie").css({"background-image": "url(img/DoctorWho.png)"});
+		        //$("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
 		        $(".ti10").removeClass("ti10").addClass("t10"); //Worth trying .switchClass()?
 		        $(".ti12").removeClass("ti12").addClass("t12");
 		        $(".ti13").removeClass("ti13").addClass("t13");
