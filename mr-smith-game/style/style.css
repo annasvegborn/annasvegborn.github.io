@@ -1,13 +1,29 @@
 body{
     background-color: white;
+    font-family: 'Courier New', Courier, monospace;
 }
-
+h1 {
+    margin: 0;
+}
+p {
+    margin: 10px;
+}
+#bigdiv {
+    border: solid 1px rebeccapurple;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: whitesmoke;
+    width: 530px;
+    height: 580px;
+    /* align-items: center; */
+}
 #content {
 	height: 320px;
 	width: 320px;
-	position: absolute;
+    position: absolute;
+    border: solid 5px black;
+    border-radius: 10px;
 }
-
 
 #baddie {
 	position: absolute;
@@ -105,23 +121,28 @@ body{
         user-select: none;
 }
 #arrowLeft {
-        left: 100px;
+        left: 120px;
         top: 480px;
 }
 #arrowRight {
-        left: 180px;
+        left: 200px;
         top: 480px;
 }
 #arrowUp {
-        left: 140px;
+        left: 160px;
         top: 440px;
 }
 #arrowDown {
-        left: 140px;
+        left: 160px;
         top: 520px;
 }
 #coin_count {
-	left: 340px;
+	left: 360px;
+	top: 130px;
+	position: absolute;  
+}
+#message {
+	left: 360px;
 	top: 180px;
 	position: absolute;  
 }
