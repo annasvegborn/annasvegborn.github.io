@@ -336,6 +336,13 @@
 				break;
 			case 13: // Door
 				movable = true;
+				if(space === false){space = true;}
+				else{space = false;}
+				level = level + 1;
+				updateTiles(level);
+				console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 13")
+				console.log("Class: " + baddie.classList);
+				console.log("Level: " + level);
 				break;
 			case 14: // Coin - pick up
 			    coinCount = coinCount + 1;
@@ -349,11 +356,6 @@
                 level = 0;
 				updateTiles(level);
 				document.getElementById("message").innerHTML += "<br><em>Going back in time.</em>";
-				if(space == false){
-					$("#baddie").css({"background-image": "url(img/DoctorWho.png)"});
-				}else if(space == true){
-					$("#baddie").css({"background-image": "url(img/Tardis.png)"});
-				}
                 break;
             case 16: //Guard
 				document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Entrance is 15 coins.</em>";
@@ -402,36 +404,7 @@
 				console.log("Oh no, baddie collided with the wall");
 				movable = false;
 		}
-		if(gameArea[tilePos] === 13 && space === false){
-            console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 13")
-            console.log("Level: " + level);
-            $("#baddie").css({"background-image": "url(img/Tardis.png)"});
-            //$*("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
-            $(".t10").removeClass("t10").addClass("ti10");
-            $(".t12").removeClass("t12").addClass("ti12");
-            $(".t13").removeClass("t13").addClass("ti13");
-            $(".t14").removeClass("t14").addClass("ti14");
-            $(".t15").removeClass("t15").addClass("ti15");
-            space = true;
-            
-            level = level + 1;
-            updateTiles(level);
 
-		}
-		else if(gameArea[tilePos] === 13 && space === true){
-		        console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + "Should be: 13")
-		        $("#baddie").css({"background-image": "url(img/DoctorWho.png)"});
-		        //*$("#baddie").removeClass("baddieDoctorWho").addClass("baddieTardis");
-		        $(".ti10").removeClass("ti10").addClass("t10"); //Worth trying .switchClass()?
-                $(".ti12").removeClass("ti12").addClass("t12");
-		        $(".ti13").removeClass("ti13").addClass("t13");
-		        $(".ti14").removeClass("ti14").addClass("t14");
-                $(".ti15").removeClass("ti15").addClass("t15");
-		        space = false;
-            
-                level = level + 1;
-                updateTiles(level);
-		} 
 		return movable;
 		
 	};
@@ -442,6 +415,11 @@
 	 * @param  {[type]} y	- direction to move vertically
 	 */
 	var moveBaddie = function(x, y) {
+		if(space == true){
+			baddie.className = "baddieTardis";
+		}else{
+			baddie.className = "baddieDoctorWho";
+		}
 		// Update baddies position variables
 		posLeft += x;
 		posTop += y;
@@ -527,27 +505,26 @@
 		//Redrawing the gameArea with the new level
         for(var i = 0; i < gameArea.length; i++){
             gameArea[i] = currentLevel[i];
-            // emptyTile(i);
-            console.log("For loop is running: " + i);
-            
+            // emptyTile(i);            
             if (space === false){
-                    document.getElementById("n" + i).className = "tile t" + currentLevel[i]; // current tile will be empty
+				document.getElementById("n" + i).className = "tile t" + currentLevel[i]; // current tile will be empty
             }
             else if (space === true){
-                    document.getElementById("n" + i).className = "tile ti" + currentLevel[i]; // current tile will be empty
+				document.getElementById("n" + i).className = "tile ti" + currentLevel[i]; // current tile will be empty
             }
         }
     };
-	/** Turn baddie image right - transform handled in style.css */
+	/** Turn baddie image right or left - transform handled in style.css */
+	
 	function turnRight() {
-		baddie.className = "baddie-right";
+		baddie.classList.remove("baddie-left");
+		baddie.classList.add("baddie-right");
 	}
-
-	/** Turn baddie image left - transform handled in style.css */
-
 	function turnLeft() {
-		baddie.className = "baddie-left";
+		baddie.classList.remove("baddie-right");
+		baddie.classList.add("baddie-left");
 	}
+
 	/* ---- Run code ---- */
 	init();
 })();
