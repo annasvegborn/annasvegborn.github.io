@@ -45,7 +45,7 @@ void setup() { // this is run once.
         greencarX = rightlane;
 
 
-        //imgae
+        //imgages
         img = loadImage("carpicture3.png");
         img2 = loadImage("carpicture4.png");
         img3 = loadImage("carpicture5.png");
