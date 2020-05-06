@@ -10,7 +10,10 @@ p {
 }
 #swipeBox{
     height: 500px;
+    width: 500px;
     border: solid 2px black;
+    position: absolute;
+    top: 700px;
 }
 
 #bigdiv {
