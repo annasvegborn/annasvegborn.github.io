@@ -385,16 +385,16 @@
 		var swipedElement = document.getElementById(triggerElementID);
 		if ( swipeDirection == 'left' ) {
 			// REPLACE WITH YOUR ROUTINES
-			swipedElement.style.backgroundColor = 'orange';
+			document.getElementById("swipe-message").innerHTML = "left";
 		} else if ( swipeDirection == 'right' ) {
 			// REPLACE WITH YOUR ROUTINES
-			swipedElement.style.backgroundColor = 'green';
+			document.getElementById("swipe-message").innerHTML = "right";
 		} else if ( swipeDirection == 'up' ) {
 			// REPLACE WITH YOUR ROUTINES
-			swipedElement.style.backgroundColor = 'maroon';
+			document.getElementById("swipe-message").innerHTML = "up";
 		} else if ( swipeDirection == 'down' ) {
 			// REPLACE WITH YOUR ROUTINES
-			swipedElement.style.backgroundColor = 'purple';
+			document.getElementById("swipe-message").innerHTML = "down";
 		}
 	}
 
