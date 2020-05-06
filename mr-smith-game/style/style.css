@@ -15,6 +15,10 @@ p {
     position: absolute;
     top: 700px;
 }
+#swipe-message{
+    position: absolute;
+    top: 660px;
+}
 
 #bigdiv {
     border: solid 1px rebeccapurple;
