@@ -9,7 +9,8 @@ p {
     margin: 10px;
 }
 #swipeBox{
-    border-radius: solid 2px black;
+    height: 500px;
+    border: solid 2px black;
 }
 
 #bigdiv {
