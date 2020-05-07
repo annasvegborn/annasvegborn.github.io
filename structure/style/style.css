@@ -8,13 +8,7 @@ h1 {
 p {
     margin: 10px;
 }
-#swipeBox{
-    height: 420px;
-    width: 420px;
-    border: solid 2px black;
-    position: absolute;
-    top: 540px;
-}
+
 #swipe-message{
     position: absolute;
     top: 500px;
@@ -24,9 +18,9 @@ p {
     border: solid 1px rebeccapurple;
     border-radius: 10px;
     padding: 20px;
-    background-color: whitesmoke;
-    width: 400px;
-    height: 450px;
+    background-color: whitesmoske;
+    width: 500px;
+    height: 650px;
     /* align-items: center; */
 }
 #content {

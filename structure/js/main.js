@@ -192,8 +192,8 @@
 			content.appendChild(tile);
 		}
 	};
-/* ---- Mouse keys ----- */
-	/* document.getElementById("arrowLeft").addEventListener("click", function(){ 
+ /* ---- Mouse keys ----- */
+	document.getElementById("arrowLeft").addEventListener("click", function(){ 
                 if(isBaddieMovable(-1, 0)) {
                     // Go left - Use moveBaddie-function
                     moveBaddie(-1, 0);
@@ -220,7 +220,7 @@
                     // Go down - Use moveBaddie-function
                     moveBaddie(0, 1);
                 }
-	}); */
+	});
 /* ----- Kyboard keys ----- */
 	// Triggers action on keypress
 	document.addEventListener("keydown", function(event) {
