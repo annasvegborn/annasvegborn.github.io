@@ -3,15 +3,6 @@
 		<!-- <meta http-equiv="content-type" content="text/html; charset=utf-8"> -->
 
 		<title>Structure</title>
-		<style type="text/css">
-			/* body
-			{
-				font-family: Helvetica, san-serif;
-				text-align: center;
-				font-size:24px;
-			}
-			div { padding: 128px 0 0 0; } */
-		</style>
 		<script type="text/javascript">
 			// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
 			
@@ -131,16 +122,20 @@
 				var swipedElement = document.getElementById(triggerElementID);
 				if ( swipeDirection == 'left' ) {
 					// REPLACE WITH YOUR ROUTINES
-					swipedElement.style.backgroundColor = 'orange';
+					//swipedElement.style.backgroundColor = 'orange';
+					document.getElementById("swipe-message").innerHTML = 'left';
 				} else if ( swipeDirection == 'right' ) {
 					// REPLACE WITH YOUR ROUTINES
-					swipedElement.style.backgroundColor = 'green';
+					//swipedElement.style.backgroundColor = 'green';
+					document.getElementById("swipe-message").innerHTML = 'right';
 				} else if ( swipeDirection == 'up' ) {
 					// REPLACE WITH YOUR ROUTINES
-					swipedElement.style.backgroundColor = 'maroon';
+					//swipedElement.style.backgroundColor = 'maroon';
+					document.getElementById("swipe-message").innerHTML = 'up';
 				} else if ( swipeDirection == 'down' ) {
 					// REPLACE WITH YOUR ROUTINES
-					swipedElement.style.backgroundColor = 'purple';
+					//swipedElement.style.backgroundColor = 'purple';
+					document.getElementById("swipe-message").innerHTML = 'down';
 				}
 			}
 		
@@ -149,6 +144,7 @@
 	<body>
 		<div id="swipeBox" ontouchstart="touchStart(event,'swipeBox');"  ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);" style="position:relative;width:100%;height:100%;">
 			<p>Swipe</p>
+			<p id="swipe-message">Message</p>
 		</div>
 	</body>
 </html>
