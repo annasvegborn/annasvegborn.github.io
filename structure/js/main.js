@@ -193,7 +193,7 @@
 		}
 	};
 /* ---- Mouse keys ----- */
-	document.getElementById("arrowLeft").addEventListener("click", function(){ 
+	/* document.getElementById("arrowLeft").addEventListener("click", function(){ 
                 if(isBaddieMovable(-1, 0)) {
                     // Go left - Use moveBaddie-function
                     moveBaddie(-1, 0);
@@ -220,7 +220,7 @@
                     // Go down - Use moveBaddie-function
                     moveBaddie(0, 1);
                 }
-	});
+	}); */
 /* ----- Kyboard keys ----- */
 	// Triggers action on keypress
 	document.addEventListener("keydown", function(event) {
@@ -475,7 +475,7 @@
 				break;
 			case 14: // Coin - pick up
 			    coinCount = coinCount + 1;
-				document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
+				//document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
 			    movable = true;
 			    console.log("Picked up coin/gem. coinCount: " + coinCount);
 			    gameArea[tilePos] = 10;
@@ -484,36 +484,36 @@
             case 15: //Vortex
                 level = 0;
 				updateTiles(level);
-				document.getElementById("message").innerHTML += "<br><em>Going back in time.</em>";
+				//document.getElementById("message").innerHTML += "<br><em>Going back in time.</em>";
                 break;
             case 16: //Guard
-				document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Entrance is 15 coins.</em>";
+				//document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Entrance is 15 coins.</em>";
                 if(coinCount >= 15){
                     movable = true;
                     gameArea[tilePos] = 10;
 					emptyTile(tilePos);
 					coinCount = coinCount - 15;
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Thanks.</em>";
+					//document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
+					//document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Thanks.</em>";
                 }else{
                     movable = false;
                 }
 				break;
 			case 17: //Guard 2
-				document.getElementById("message").innerHTML += "<br><img class='guard2'>: <em>Entrance is 100 coins.</em>";
+				//document.getElementById("message").innerHTML += "<br><img class='guard2'>: <em>Entrance is 100 coins.</em>";
 				if(coinCount >= 100){
 					movable = true;
 					gameArea[tilePos] = 10;
 					emptyTile(tilePos);
 					coinCount = coinCount - 100;
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					document.getElementById("message").innerHTML += "<br><img class='guard2'>: <em>Thanks.</em>";
+					//document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
+					//document.getElementById("message").innerHTML += "<br><img class='guard2'>: <em>Thanks.</em>";
 				}else{
 					movable = false;
 				}
 				break;
 			case 18: // Penguin
-				document.getElementById("message").innerHTML += "<br><em>Penguin picked up!</em>";
+				//document.getElementById("message").innerHTML += "<br><em>Penguin picked up!</em>";
 				gotPenguin = true;
 				movable = true;
 				gameArea[tilePos] = 10;
@@ -521,11 +521,11 @@
 				break;
 			case 19: // Penguin-home
 				if(gotPenguin == true){
-					document.getElementById("message").innerHTML += "<br><em>Penguin returned!</em>";
+					//document.getElementById("message").innerHTML += "<br><em>Penguin returned!</em>";
 					$(".t19").removeClass("t19").addClass("t18");
-					document.getElementById("message").innerHTML += "<br><img class='penguin'>:Thank you!!</em>";
+					//document.getElementById("message").innerHTML += "<br><img class='penguin'>:Thank you!!</em>";
 				}else{
-					document.getElementById("message").innerHTML += "<br><em>You don't have the penguin!</em>";
+					//document.getElementById("message").innerHTML += "<br><em>You don't have the penguin!</em>";
 				}
 				break;
 			default:
