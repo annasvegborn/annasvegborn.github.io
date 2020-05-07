@@ -9,8 +9,8 @@ p {
     margin: 10px;
 }
 #swipeBox{
-    height: 500px;
-    width: 500px;
+    height: 420px;
+    width: 420px;
     border: solid 2px black;
     position: absolute;
     top: 540px;
