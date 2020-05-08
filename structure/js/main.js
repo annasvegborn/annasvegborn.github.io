@@ -1,4 +1,4 @@
-// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
+			// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
 			
 			// this script can be used with one or more page elements to perform actions based on them being swiped with a single finger
 		
@@ -113,19 +113,19 @@
 			}
 			
 			function processingRoutine() {
-				var element = document.getElementById("swipe-message").innerHTML;
+				//var element = document.getElementById("swipe-message").innerHTML;
 				if ( swipeDirection == 'left' ) {
 					// REPLACE WITH YOUR ROUTINES
-					element = "left";
+					document.getElementById("swipe-message").innerHTML = 'left';
 				} else if ( swipeDirection == 'right' ) {
 					// REPLACE WITH YOUR ROUTINES
-					element = "right";
+					document.getElementById("swipe-message").innerHTML = 'right';
 				} else if ( swipeDirection == 'up' ) {
 					// REPLACE WITH YOUR ROUTINES
-					element = "up";
+					document.getElementById("swipe-message").innerHTML = 'up';
 				} else if ( swipeDirection == 'down' ) {
 					// REPLACE WITH YOUR ROUTINES
-					element = "down";
+					document.getElementById("swipe-message").innerHTML = 'down';
 				}
 			}
 		
