@@ -270,7 +270,30 @@
 		event.preventDefault();
 	});
 /* ----- SWIPE FUNCTIONALITY -----*/
+	var fingerCount = 0;
+	var startX = 0;
+	var startY = 0;
+	var curX = 0;
+	var curY = 0;
+	var deltaX = 0;
+	var deltaY = 0;
+	var horzDiff = 0;
+	var vertDiff = 0;
+	var minLength = 72; // the shortest distance the user may swipe
+	var swipeLength = 0;
+	var swipeAngle = null;
+	var swipeDirection = null;	
 
+	document.addEventListener("touchstart", function(event) {
+		event.preventDefault();
+		fingerCount = event.touches.length;
+		document.getElementById("swipe-message").innerHTML = "Touchi-touchi";
+	});
+	document.addEventListener("touchend", function(event) {
+		event.preventDefault();
+		fingerCount = event.touches.length;
+		document.getElementById("swipe-message").innerHTML = "No-touchi";
+	});
 
 /* ------ FUNCTIONS ------ */
 
