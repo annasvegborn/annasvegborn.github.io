@@ -113,19 +113,19 @@
 			}
 			
 			function processingRoutine() {
-				var swipedElement = document.getElementById(triggerElementID);
+				var element = document.getElementById("swipe-message").innerHTML;
 				if ( swipeDirection == 'left' ) {
 					// REPLACE WITH YOUR ROUTINES
-					swipedElement.style.backgroundColor = 'orange';
+					element = "left";
 				} else if ( swipeDirection == 'right' ) {
 					// REPLACE WITH YOUR ROUTINES
-					swipedElement.style.backgroundColor = 'green';
+					element = "right";
 				} else if ( swipeDirection == 'up' ) {
 					// REPLACE WITH YOUR ROUTINES
-					swipedElement.style.backgroundColor = 'maroon';
+					element = "up";
 				} else if ( swipeDirection == 'down' ) {
 					// REPLACE WITH YOUR ROUTINES
-					swipedElement.style.backgroundColor = 'purple';
+					element = "down";
 				}
 			}
 		
