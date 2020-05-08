@@ -2,7 +2,7 @@
 			
 			// this script can be used with one or more page elements to perform actions based on them being swiped with a single finger
 		
-			var triggerElementID = null; // this variable is used to identity the triggering element
+			//var triggerElementID = null; // this variable is used to identity the triggering element
 			var fingerCount = 0;
 			var startX = 0;
 			var startY = 0;
@@ -23,7 +23,7 @@
 			// make sure its ID is passed in the event call placed in the element declaration, like:
 			// <div id="picture-frame" ontouchstart="touchStart(event,'picture-frame');"  ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);">
 		
-			function touchStart(event,passedName) {
+			function touchStart(event) {
 				// disable the standard ability to select the touched object
 				event.preventDefault();
 				// get the total number of fingers touching the screen
@@ -35,7 +35,7 @@
 					startX = event.touches[0].pageX;
 					startY = event.touches[0].pageY;
 					// store the triggering element ID
-					triggerElementID = passedName;
+					//triggerElementID = passedName;
 				} else {
 					// more than one finger touched so cancel
 					touchCancel(event);
@@ -86,7 +86,7 @@
 				swipeLength = 0;
 				swipeAngle = null;
 				swipeDirection = null;
-				triggerElementID = null;
+				//triggerElementID = null;
 			}
 			
 			function caluculateAngle() {
