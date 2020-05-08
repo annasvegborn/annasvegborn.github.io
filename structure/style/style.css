@@ -8,17 +8,6 @@ h1 {
 p {
     margin: 10px;
 }
-#swipeBox{
-    height: 500px;
-    width: 500px;
-    border: solid 2px black;
-    position: absolute;
-    top: 700px;
-}
-#swipe-message{
-    position: absolute;
-    top: 660px;
-}
 
 #bigdiv {
     border: solid 1px rebeccapurple;
