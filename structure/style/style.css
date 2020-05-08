@@ -8,19 +8,25 @@ h1 {
 p {
     margin: 10px;
 }
-
+#swipeBox{
+    height: 500px;
+    width: 500px;
+    border: solid 2px black;
+    position: absolute;
+    top: 700px;
+}
 #swipe-message{
     position: absolute;
-    top: 500px;
+    top: 660px;
 }
 
 #bigdiv {
     border: solid 1px rebeccapurple;
     border-radius: 10px;
     padding: 20px;
-    background-color: whitesmoske;
-    width: 500px;
-    height: 650px;
+    background-color: whitesmoke;
+    width: 620px;
+    height: 620px;
     /* align-items: center; */
 }
 #content {
