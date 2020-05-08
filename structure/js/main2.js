@@ -1,6 +1,8 @@
 
 
 //baddie is the moving character
+
+(function(){
 			// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
 			
 			// this script can be used with one or more page elements to perform actions based on them being swiped with a single finger
@@ -131,10 +133,8 @@
 					document.getElementById("swipe-message").innerHTML = 'down';
 				}
 			}
-		
 
-
-(function(){
+	//--------------------------------------------------------------------------------------------------------------------
 	'use strict';
 	// HTML elements
 	var baddie, content;
