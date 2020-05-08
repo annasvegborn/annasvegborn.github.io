@@ -8,7 +8,11 @@ h1 {
 p {
     margin: 10px;
 }
-
+#swipeBox{
+    position:relative;
+    width: 100%;
+    height: 100%;
+}
 #bigdiv {
     border: solid 1px rebeccapurple;
     border-radius: 10px;
