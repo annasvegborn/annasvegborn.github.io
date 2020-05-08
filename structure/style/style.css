@@ -1,6 +1,8 @@
 body{
     background-color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
+    position:fixed;
 }
 h1 {
     margin: 0;
