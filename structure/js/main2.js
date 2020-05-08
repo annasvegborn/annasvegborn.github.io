@@ -376,16 +376,32 @@
 	var processingRoutine = function() {
 		//var element = document.getElementById("swipe-message").innerHTML;
 		if ( swipeDirection == 'left' ) {
-			// REPLACE WITH YOUR ROUTINES
+			if(isBaddieMovable(-1, 0)) {
+				// Go left - Use moveBaddie-function
+				moveBaddie(-1, 0);
+				// Turn baddie left - Use the given function
+				turnLeft();
+			}
 			document.getElementById("swipe-message").innerHTML = 'left';
-		} else if ( swipeDirection == 'right' ) {
-			// REPLACE WITH YOUR ROUTINES
-			document.getElementById("swipe-message").innerHTML = 'right';
 		} else if ( swipeDirection == 'up' ) {
-			// REPLACE WITH YOUR ROUTINES
+			if(isBaddieMovable(0, -1)) {
+				// Go up - Use moveBaddie-function
+				moveBaddie(0, -1);
+			}
 			document.getElementById("swipe-message").innerHTML = 'up';
+		} else if ( swipeDirection == 'right' ) {
+			if(isBaddieMovable(1, 0)) {
+				// Go right - Use moveBaddie-function
+				moveBaddie(1, 0);
+				// Turn baddie right - Use the given function
+				turnRight();
+			}
+			document.getElementById("swipe-message").innerHTML = 'right';
 		} else if ( swipeDirection == 'down' ) {
-			// REPLACE WITH YOUR ROUTINES
+			if(isBaddieMovable(0, 1)) {
+				// Go down - Use moveBaddie-function
+				moveBaddie(0, 1);
+			}
 			document.getElementById("swipe-message").innerHTML = 'down';
 		}
 	};
