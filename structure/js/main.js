@@ -222,6 +222,36 @@
                     moveBaddie(0, 1);
                 }
 	});
+
+/* ---- Touch arrows ----- */
+	document.getElementById("arrowLeft").addEventListener("touchstart", function(){ 
+		if(isBaddieMovable(-1, 0)) {
+			// Go left - Use moveBaddie-function
+			moveBaddie(-1, 0);
+			// Turn baddie left - Use the given function
+			turnLeft();
+		}
+	});
+	document.getElementById("arrowRight").addEventListener("touchstart", function(){ 
+			if(isBaddieMovable(1, 0)) {
+				// Go right - Use moveBaddie-function
+				moveBaddie(1, 0);
+				// Turn baddie right - Use the given function
+				turnRight();
+			}
+	});
+	document.getElementById("arrowUp").addEventListener("touchstart", function(){ 
+			if(isBaddieMovable(0, -1)) {
+				// Go up - Use moveBaddie-function
+				moveBaddie(0, -1);
+			}
+	});
+	document.getElementById("arrowDown").addEventListener("touchstart", function(){ 
+			if(isBaddieMovable(0, 1)) {
+				// Go down - Use moveBaddie-function
+				moveBaddie(0, 1);
+			}
+	});
 /* ----- Kyboard keys ----- */
 	// Triggers action on keypress
 	document.addEventListener("keydown", function(event) {
