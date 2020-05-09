@@ -129,6 +129,7 @@ p {
 
 
 .arrow{
+        /* display: none; */
         font-family: Arial;
         font-weight: bold;
         width: 55px;
