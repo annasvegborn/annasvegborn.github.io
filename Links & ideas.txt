@@ -1,0 +1,12 @@
+Instructional links:
+
+http://padilicious.com/code/touchevents/
+
+https://stackoverflow.com/questions/195951/how-can-i-change-an-elements-class-with-javascript
+
+Todo:
+Change coin icon
+Add phone-support
+
+Ideas:
+Use *visibility:hidden;* to hide messages when on a narrow screen or *display: none;*.
