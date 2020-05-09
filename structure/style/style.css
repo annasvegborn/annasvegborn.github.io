@@ -130,6 +130,7 @@ p {
 
 .arrow{
         /* display: none; */
+        touch-action: manipulation;
         font-family: Arial;
         font-weight: bold;
         width: 55px;
