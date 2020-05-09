@@ -223,7 +223,7 @@
                 }
 	});
 
-/* ---- Touch arrows ----- */
+/* ---- Touch arrows ----- 
 	document.getElementById("arrowLeft").addEventListener("touchstart", function(){ 
 		if(isBaddieMovable(-1, 0)) {
 			// Go left - Use moveBaddie-function
@@ -251,7 +251,7 @@
 				// Go down - Use moveBaddie-function
 				moveBaddie(0, 1);
 			}
-	});
+	}); */
 /* ----- Kyboard keys ----- */
 	// Triggers action on keypress
 	document.addEventListener("keydown", function(event) {
