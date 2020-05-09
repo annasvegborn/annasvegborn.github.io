@@ -379,6 +379,7 @@
 			if(isBaddieMovable(-1, 0)) {
 				// Go left - Use moveBaddie-function
 				moveBaddie(-1, 0);
+				document.getElementById("console").innerHTML = 'Console' + isBaddieMovable(-1, 0);
 				// Turn baddie left - Use the given function
 				turnLeft();
 			}
