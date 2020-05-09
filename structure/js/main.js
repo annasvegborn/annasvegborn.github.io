@@ -314,7 +314,7 @@
 	var swipeAngle = null;
 	var swipeDirection = null;	
 
-	document.addEventListener("touchstart", function(event) {
+	document.getElementById("swipeBox").addEventListener("touchstart", function(event) {
 		// disable the standard ability to select the touched object
 		event.preventDefault();
 		// get the total number of fingers touching the screen
@@ -334,7 +334,7 @@
 		//document.getElementById("swipe-message").innerHTML = "Touchi-touchi";
 	});
 
-	document.addEventListener("touchmove", function(event) {
+	document.getElementById("swipeBox").addEventListener("touchmove", function(event) {
 		event.preventDefault();
 		if ( event.touches.length == 1 ) {
 			curX = event.touches[0].pageX;
@@ -344,7 +344,7 @@
 		}
 	});
 
-	document.addEventListener("touchend", function(event) {
+	document.getElementById("swipeBox").addEventListener("touchend", function(event) {
 		event.preventDefault();
 		// check to see if more than one finger was used and that there is an ending coordinate
 		if ( fingerCount == 1 && curX != 0 ) {
@@ -364,7 +364,7 @@
 		}
 	});
 
-	document.addEventListener("touchCancel", function(event) {
+	document.getElementById("swipeBox").addEventListener("touchCancel", function(event) {
 		// reset the variables back to default values
 		fingerCount = 0;
 		startX = 0;
