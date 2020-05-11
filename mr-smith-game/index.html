@@ -1,27 +1,34 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-	<title>Mr Smith</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style/style.css">
-</head>
-<body>
-	<div id="bigdiv">
-		<h1>Mr Smith in Space</h1>
-		<p>Control Mr Smith with the arrowkeys.<br>
-			Save the penguin from space and bring it home to earth.
-		</p>
-		<div id="content">
-			<div id="baddie"></div>
+<!doctype html lang="en">
+	<head>
+		<!-- <meta http-equiv="content-type" content="text/html; charset=utf-8"> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" href="style/style.css">
+		<title>Structure</title>
+	</head>
+	<body>
+		<div id="swipeBox">
+			<div id="bigdiv">
+				<h1>6 Mr Smith in Space</h1>
+				<!-- <p>Control Mr Smith with the arrowkeys.<br>
+					Save the penguin from space and bring it home to earth.
+				</p> -->
+				<div id="content">
+					<div id="baddie"></div>
+				</div>
+				<p id="coin_count">Coins: 0</p>
+				<p class="side-info"><strong> Messages: </strong></p>
+				<p id="message"></p>
+
+			</div>
+			<p>You swiped:</p>
+			<p id="swipe-message">message</p>
+			<p id="console"></p>
 		</div>
-		<p id="coin_count">Coins: 0</p>
-		<p class="side-info"><strong> Messages: </strong></p>
-		<p id="message"></p>
 		<button id="arrowLeft" class="arrow">Left</button>
 		<button id="arrowRight" class="arrow">Right</button>
 		<button id="arrowUp" class="arrow">Up</button>
 		<button id="arrowDown" class="arrow">Down</button>
-	</div>
-	<script type="text/javascript" src="js/main.js"></script>
-</body>
+		<!-- <script type="text/javascript" src="js/main.js"></script> -->
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
 </html>

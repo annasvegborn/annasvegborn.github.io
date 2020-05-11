@@ -3,6 +3,7 @@
 //baddie is the moving character
 
 (function(){
+	// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
 	'use strict';
 	// HTML elements
 	var baddie, content;
@@ -221,6 +222,36 @@
                     moveBaddie(0, 1);
                 }
 	});
+
+/* ---- Touch arrows ----- 
+	document.getElementById("arrowLeft").addEventListener("touchstart", function(){ 
+		if(isBaddieMovable(-1, 0)) {
+			// Go left - Use moveBaddie-function
+			moveBaddie(-1, 0);
+			// Turn baddie left - Use the given function
+			turnLeft();
+		}
+	});
+	document.getElementById("arrowRight").addEventListener("touchstart", function(){ 
+			if(isBaddieMovable(1, 0)) {
+				// Go right - Use moveBaddie-function
+				moveBaddie(1, 0);
+				// Turn baddie right - Use the given function
+				turnRight();
+			}
+	});
+	document.getElementById("arrowUp").addEventListener("touchstart", function(){ 
+			if(isBaddieMovable(0, -1)) {
+				// Go up - Use moveBaddie-function
+				moveBaddie(0, -1);
+			}
+	});
+	document.getElementById("arrowDown").addEventListener("touchstart", function(){ 
+			if(isBaddieMovable(0, 1)) {
+				// Go down - Use moveBaddie-function
+				moveBaddie(0, 1);
+			}
+	}); */
 /* ----- Kyboard keys ----- */
 	// Triggers action on keypress
 	document.addEventListener("keydown", function(event) {
@@ -268,6 +299,143 @@
 		// Baddie action was performed - prevent button default
 		event.preventDefault();
 	});
+/* ----- SWIPE FUNCTIONALITY -----*/
+	var fingerCount = 0;
+	var startX = 0;
+	var startY = 0;
+	var curX = 0;
+	var curY = 0;
+	var deltaX = 0;
+	var deltaY = 0;
+	var horzDiff = 0;
+	var vertDiff = 0;
+	var minLength = 72; // the shortest distance the user may swipe
+	var swipeLength = 0;
+	var swipeAngle = null;
+	var swipeDirection = null;	
+
+	document.getElementById("swipeBox").addEventListener("touchstart", function(event) {
+		// disable the standard ability to select the touched object
+		event.preventDefault();
+		// get the total number of fingers touching the screen
+		fingerCount = event.touches.length;
+		// since we're looking for a swipe (single finger) and not a gesture (multiple fingers),
+		// check that only one finger was used
+		if ( fingerCount == 1 ) {
+			// get the coordinates of the touch
+			startX = event.touches[0].pageX;
+			startY = event.touches[0].pageY;
+			// store the triggering element ID
+			//triggerElementID = passedName;
+		} else {
+			// more than one finger touched so cancel
+			touchCancel(event);
+		}
+		//document.getElementById("swipe-message").innerHTML = "Touchi-touchi";
+	});
+
+	document.getElementById("swipeBox").addEventListener("touchmove", function(event) {
+		event.preventDefault();
+		if ( event.touches.length == 1 ) {
+			curX = event.touches[0].pageX;
+			curY = event.touches[0].pageY;
+		} else {
+			touchCancel(event);
+		}
+	});
+
+	document.getElementById("swipeBox").addEventListener("touchend", function(event) {
+		event.preventDefault();
+		// check to see if more than one finger was used and that there is an ending coordinate
+		if ( fingerCount == 1 && curX != 0 ) {
+			// use the Distance Formula to determine the length of the swipe
+			swipeLength = Math.round(Math.sqrt(Math.pow(curX - startX,2) + Math.pow(curY - startY,2)));
+			// if the user swiped more than the minimum length, perform the appropriate action
+			if ( swipeLength >= minLength ) {
+				caluculateAngle();
+				determineSwipeDirection();
+				processingRoutine();
+				touchCancel(event); // reset the variables
+			} else {
+				touchCancel(event);
+			}	
+		} else {
+			touchCancel(event);
+		}
+	});
+
+	document.getElementById("swipeBox").addEventListener("touchCancel", function(event) {
+		// reset the variables back to default values
+		fingerCount = 0;
+		startX = 0;
+		startY = 0;
+		curX = 0;
+		curY = 0;
+		deltaX = 0;
+		deltaY = 0;
+		horzDiff = 0;
+		vertDiff = 0;
+		swipeLength = 0;
+		swipeAngle = null;
+		swipeDirection = null;
+		//triggerElementID = null;
+	});
+	var caluculateAngle = function() {
+		var X = startX-curX;
+		var Y = curY-startY;
+		var Z = Math.round(Math.sqrt(Math.pow(X,2)+Math.pow(Y,2))); //the distance - rounded - in pixels
+		var r = Math.atan2(Y,X); //angle in radians (Cartesian system)
+		swipeAngle = Math.round(r*180/Math.PI); //angle in degrees
+		if ( swipeAngle < 0 ) { swipeAngle =  360 - Math.abs(swipeAngle); }
+	};
+
+	var determineSwipeDirection = function() {
+		if ( (swipeAngle <= 45) && (swipeAngle >= 0) ) {
+			swipeDirection = 'left';
+		} else if ( (swipeAngle <= 360) && (swipeAngle >= 315) ) {
+			swipeDirection = 'left';
+		} else if ( (swipeAngle >= 135) && (swipeAngle <= 225) ) {
+			swipeDirection = 'right';
+		} else if ( (swipeAngle > 45) && (swipeAngle < 135) ) {
+			swipeDirection = 'down';
+		} else {
+			swipeDirection = 'up';
+		}
+	};
+
+	var processingRoutine = function() {
+		//var element = document.getElementById("swipe-message").innerHTML;
+		if ( swipeDirection == 'left' ) {
+			if(isBaddieMovable(-1, 0)) {
+				// Go left - Use moveBaddie-function
+				moveBaddie(-1, 0);
+				// sdocument.getElementById("console").innerHTML = 'Console' + isBaddieMovable(-1, 0);
+				// Turn baddie left - Use the given function
+				turnLeft();
+			}
+			document.getElementById("swipe-message").innerHTML = 'left';
+		} else if ( swipeDirection == 'up' ) {
+			if(isBaddieMovable(0, -1)) {
+				// Go up - Use moveBaddie-function
+				moveBaddie(0, -1);
+			}
+			document.getElementById("swipe-message").innerHTML = 'up';
+		} else if ( swipeDirection == 'right' ) {
+			if(isBaddieMovable(1, 0)) {
+				// Go right - Use moveBaddie-function
+				moveBaddie(1, 0);
+				// Turn baddie right - Use the given function
+				turnRight();
+			}
+			document.getElementById("swipe-message").innerHTML = 'right';
+		} else if ( swipeDirection == 'down' ) {
+			if(isBaddieMovable(0, 1)) {
+				// Go down - Use moveBaddie-function
+				moveBaddie(0, 1);
+			}
+			document.getElementById("swipe-message").innerHTML = 'down';
+		}
+	};
 
 /* ------ FUNCTIONS ------ */
 
