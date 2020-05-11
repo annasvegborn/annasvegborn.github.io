@@ -1,6 +1,6 @@
 
 
-//baddie is the moving character
+
 
 (function(){
 	// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
@@ -695,3 +695,4 @@
 	/* ---- Run code ---- */
 	init();
 })();
+

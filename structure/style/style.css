@@ -1,4 +1,4 @@
-@viewport {
+/* @viewport {
     width: device-width ;
     zoom: 2.0 ;
   }
@@ -20,20 +20,45 @@ p {
     height: 400px;
 }
 #bigdiv {
-    border: solid 1px rebeccapurple;
+    border: solid 1px lightgray;
     border-radius: 10px;
     padding: 20px;
     background-color: whitesmoke;
     width: 620px;
+    max-width: 620;
     height: 620px;
-    /* align-items: center; */
+} 
+#coin_count {
+	left: 360px;
+	top: 130px;
+	position: absolute;  
+}
+.side-info{
+    left: 360px;
+	top: 180px;
+	position: absolute;  
+}
+
+#message {
+	left: 360px;
+	top: 215px;
+	position: absolute;  
+}
+body {
+    text-align: center;
+    display: block;
+}
+*/
+body{
+    text-align: center;
 }
 #content {
+    display: inline-block;
+    position: relative;
 	height: 320px;
 	width: 320px;
-    position: absolute;
-    border: solid 5px black;
-    border-radius: 10px;
+    border: solid 3px lightgray;
+    border-radius: 2px;
 }
 
 #baddie {
@@ -69,13 +94,13 @@ p {
 	background: url(../img/tiles/grass.png);
 }
 .t11 {
-	background: url(../img/tiles/brick-wall.png) -32px -96px;
+	background: url(../img/tiles/brick-wall.png);
 }
 .t12 {
-	background: url(../img/tiles/dalek_grass.png) 0px -128px;
+	background: url(../img/tiles/dalek_grass.png);
 }
 .t13 {
-	background: url(../img/tiles/tardis_door2.png) -64px -128px;
+	background: url(../img/tiles/tardis_door2.png);
 }
 .t14 {
 	background: url(../img/tiles/coin_gold_grass1.png);
@@ -100,13 +125,13 @@ p {
     background: url(../img/tiles/space1.png)
 }
 .ti11 {
-    background: url(../img/tiles/space-wall.png) -32px -96px;
+    background: url(../img/tiles/space-wall.png);
 }
 .ti12{
-    background: url(../img/tiles/sun.png) 0px -128px;
+    background: url(../img/tiles/sun.png);
 }
 .ti13 {
-    background: url(../img/tiles/earth.png) -64px -128px;
+    background: url(../img/tiles/earth.png);
 }
 .ti14 {
     background: url(../img/tiles/gem_red_space1.png);
@@ -126,10 +151,7 @@ p {
 .ti19 {
     background: url(../img/tiles/space1.png);
 }
-
-
 .arrow{
-        /* display: none; */
         touch-action: manipulation;
         font-family: Arial;
         font-weight: bold;
@@ -143,6 +165,7 @@ p {
         border: 2px solid grey;
         position: absolute;
         cursor: pointer;
+        border-radius: 5px;
         
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -166,22 +189,6 @@ p {
 #arrowDown {
         left: 160px;
         top: 490px;
-}
-#coin_count {
-	left: 360px;
-	top: 130px;
-	position: absolute;  
-}
-.side-info{
-    left: 360px;
-	top: 180px;
-	position: absolute;  
-}
-
-#message {
-	left: 360px;
-	top: 215px;
-	position: absolute;  
 }
 .guard{
     background: url(../img/guard-small.png);
