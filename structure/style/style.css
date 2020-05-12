@@ -56,7 +56,7 @@ h1{
 
 }
 #message {
-
+    position: absolute;
 }
 #bigDiv{
     text-align: center;

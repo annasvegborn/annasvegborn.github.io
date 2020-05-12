@@ -26,13 +26,13 @@
 	gridSize = 10;
 	// Sets content size to match tilesize and gridsize
 	content.style.width = content.style.height = gridSize*tileSize + "px";
-	coinTab.style.width = (gridSize*tileSize)/4 +1 + "px";
+	coinTab.style.width = (gridSize*tileSize)/3 +1 + "px";
 	coinTab.style.height = (gridSize*tileSize)/13 + "px";
 	messageTab.style.width = coinTab.style.width;
 	messageTab.style.height = coinTab.style.height;
-	thirdTab.style.width = coinTab.style.width;
+	thirdTab.style.width = (gridSize*tileSize)/6 +1 + "px";
 	thirdTab.style.height = coinTab.style.height;
-	forthTab.style.width = coinTab.style.width;
+	forthTab.style.width = (gridSize*tileSize)/6 +1 + "px";
 	forthTab.style.height = coinTab.style.height;
 	// Gets starting position of baddie
 	left = baddie.offsetLeft;
@@ -40,6 +40,8 @@
 	// Starting position of baddie in the grid
 	posLeft = 0;
 	posTop = 0;
+
+	var unRead = 0;
 
 	/**
 	 * This is the game area with a 10x10 grid
@@ -228,10 +230,12 @@ var messageView = document.getElementById("messageView");
 
 	document.getElementById("messageTab").addEventListener("click", function(){ 
 		if(messageViewOpen == false){
+			document.getElementById("messageTab").innerHTML = "Messages";
 			messageView.style.display = "block";
 			coinView.style.display = "none";
 			coinViewOpen = false;
 			messageViewOpen = true;
+			messageView.scrollTop = messageView.scrollHeight - messageView.clientHeight;
 		}else if(messageViewOpen == true){
 			messageView.style.display = "none";
 			messageViewOpen = false;
@@ -567,48 +571,41 @@ var messageView = document.getElementById("messageView");
             case 15: //Vortex
                 level = 0;
 				updateTiles(level);
-				document.getElementById("message").innerHTML += "<br><em>Going back in time.</em>";
+				updateMessage(15);
                 break;
             case 16: //Guard
-				document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Entrance is 15 coins.</em>";
+				updateMessage(16);
                 if(coinCount >= 15){
                     movable = true;
                     gameArea[tilePos] = 10;
 					emptyTile(tilePos);
 					coinCount = coinCount - 15;
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Thanks.</em>";
                 }else{
                     movable = false;
                 }
 				break;
 			case 17: //Guard 2
-				document.getElementById("message").innerHTML += "<br><img class='guard2'>: <em>Entrance is 100 coins.</em>";
+				updateMessage(17);
 				if(coinCount >= 100){
 					movable = true;
 					gameArea[tilePos] = 10;
 					emptyTile(tilePos);
 					coinCount = coinCount - 100;
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					document.getElementById("message").innerHTML += "<br><img class='guard2'>: <em>Thanks.</em>";
 				}else{
 					movable = false;
 				}
 				break;
 			case 18: // Penguin
-				document.getElementById("message").innerHTML += "<br><em>Penguin picked up!</em>";
+				updateMessage(10);
 				gotPenguin = true;
 				movable = true;
 				gameArea[tilePos] = 10;
 				emptyTile(tilePos);
 				break;
 			case 19: // Penguin-home
+				updateMessage(19);	
 				if(gotPenguin == true){
-					document.getElementById("message").innerHTML += "<br><em>Penguin returned!</em>";
 					$(".t19").removeClass("t19").addClass("t18");
-					document.getElementById("message").innerHTML += "<br><img class='penguin'>:Thank you!!</em>";
-				}else{
-					document.getElementById("message").innerHTML += "<br><em>You don't have the penguin!</em>";
 				}
 				break;
 			default:
@@ -620,7 +617,47 @@ var messageView = document.getElementById("messageView");
 		return movable;
 		
 	};
-	
+
+	var updateMessage = function(tileNr) {
+		var addition = "";
+		switch(tileNr){
+			case 15: //Vortex
+				addition = "<em>Going back in time.</em>";
+				break;
+			case 16: //guard
+				addition = "<img class='guard'>: <em>Entrance is 15 coins.</em>";
+				if(coinCount >= 15){
+					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
+					addition = "<img class='guard'>: <em>Thanks.</em>";
+                }
+				break;
+			case 17: //guard 2
+				addition = "<img class='guard2'>: <em>Entrance is 100 coins.</em>";
+				if(coinCount >= 100){
+					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
+					addition = "<img class='guard2'>: <em>Thanks.</em>";
+				}
+				break;
+			case 18: //penguin
+				addition = "<em>Penguin picked up!</em><br>";
+				break;
+			case 19: //penguin home
+				if(gotPenguin == true){
+					addition = "<em>Penguin returned!<br> Thank you!</em>";
+				}else{
+					addition = "<em>You don't have the penguin!</em>";
+				} 
+				break;
+			default: 
+				console.log("No message");
+				break;
+		}
+		unRead = unRead + 1;
+		document.getElementById("messageTab").innerHTML = "Messages (" + unRead + ")";
+		document.getElementById("message").innerHTML += addition + "<br>";
+		messageView.scrollTop = messageView.scrollHeight - messageView.clientHeight;
+	};
+
 	/**
 	 * Changes position variables for baddie and style to draw the change out on the screen
 	 * @param  {[type]} x	- direction to move horizontally
