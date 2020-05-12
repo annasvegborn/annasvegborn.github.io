@@ -6,7 +6,7 @@
 	// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
 	'use strict';
 	// HTML elements
-	var baddie, content;
+	var baddie, content, coinTab, messageTab, thirdTab, forthTab;
 	// Numbers
 	var tileSize, gridSize, left, top, posLeft, posTop;
 	// Arrays
@@ -14,12 +14,26 @@
 	// Get HTML elements that are to be used
 	baddie = document.getElementById("baddie");
 	content = document.getElementById("content");
+	coinTab = document.getElementById("coinTab");
+	messageTab = document.getElementById("messageTab");
+	thirdTab = document.getElementById("thirdTab");
+	forthTab = document.getElementById("forthTab");
+	
+
 	// Size of each tile
 	tileSize = 32;
 	// Number of tiles per row
 	gridSize = 10;
 	// Sets content size to match tilesize and gridsize
 	content.style.width = content.style.height = gridSize*tileSize + "px";
+	coinTab.style.width = (gridSize*tileSize)/4 +1 + "px";
+	coinTab.style.height = (gridSize*tileSize)/22 + "px";
+	messageTab.style.width = coinTab.style.width;
+	messageTab.style.height = coinTab.style.height;
+	thirdTab.style.width = coinTab.style.width;
+	thirdTab.style.height = coinTab.style.height;
+	forthTab.style.width = coinTab.style.width;
+	forthTab.style.height = coinTab.style.height;
 	// Gets starting position of baddie
 	left = baddie.offsetLeft;
 	top = baddie.offsetTop;
