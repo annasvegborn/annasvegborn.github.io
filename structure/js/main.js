@@ -27,7 +27,7 @@
 	// Sets content size to match tilesize and gridsize
 	content.style.width = content.style.height = gridSize*tileSize + "px";
 	coinTab.style.width = (gridSize*tileSize)/4 +1 + "px";
-	coinTab.style.height = (gridSize*tileSize)/22 + "px";
+	coinTab.style.height = (gridSize*tileSize)/13 + "px";
 	messageTab.style.width = coinTab.style.width;
 	messageTab.style.height = coinTab.style.height;
 	thirdTab.style.width = coinTab.style.width;
@@ -207,6 +207,38 @@
 			content.appendChild(tile);
 		}
 	};
+/* ---- Coins menu ----- */
+var coinViewOpen = false;
+var coinView = document.getElementById("coinView");
+var messageViewOpen = false;
+var messageView = document.getElementById("messageView");
+
+	document.getElementById("coinTab").addEventListener("click", function(){ 
+		if(coinViewOpen == false){
+			coinView.style.display = "block";
+			messageView.style.display = "none";
+			messageViewOpen = false;
+			coinViewOpen = true;
+		}else if(coinViewOpen == true){
+			coinView.style.display = "none";
+			coinViewOpen = false;
+		}
+		console.log("In coins funciton");
+	});
+
+	document.getElementById("messageTab").addEventListener("click", function(){ 
+		if(messageViewOpen == false){
+			messageView.style.display = "block";
+			coinView.style.display = "none";
+			coinViewOpen = false;
+			messageViewOpen = true;
+		}else if(messageViewOpen == true){
+			messageView.style.display = "none";
+			messageViewOpen = false;
+		}
+		console.log("In coins funciton");
+	});
+
 /* ---- Mouse keys ----- */
 	document.getElementById("arrowLeft").addEventListener("click", function(){ 
                 if(isBaddieMovable(-1, 0)) {
