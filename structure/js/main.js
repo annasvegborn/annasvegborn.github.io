@@ -630,7 +630,7 @@ var messageView = document.getElementById("messageView");
 		var addition = "";
 		switch(tileNr){
 			case 15: //Vortex
-				addition = "<em>Going back in time.</em>";
+				addition = "<img class='doctorWho'>: <em>Going back in time.</em>";
 				break;
 			case 16: //guard
 				addition = "<img class='guard'>: <em>Entrance is 15 coins.</em>";
@@ -647,13 +647,13 @@ var messageView = document.getElementById("messageView");
 				}
 				break;
 			case 18: //penguin
-				addition = "<em>Penguin picked up!</em><br>";
+				addition = "<img class='doctorWho'>: <em>Penguin picked up!</em><br>";
 				break;
 			case 19: //penguin home
 				if(gotPenguin == true){
-					addition = "<em>Penguin returned!<br> Thank you!</em>";
+					addition = "<img class='doctorWho'>: <em>Penguin returned!<br><img class='penguin'>: Thank you!</em>";
 				}else{
-					addition = "<em>You don't have the penguin!</em>";
+					addition = "<img class='doctorWho'>: <em>I don't have the penguin!</em>";
 				} 
 				break;
 			default: 
