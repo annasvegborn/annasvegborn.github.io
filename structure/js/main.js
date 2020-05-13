@@ -562,12 +562,19 @@ var messageView = document.getElementById("messageView");
 				console.log("Level: " + level);
 				break;
 			case 14: // Coin - pick up
-			    coinCount = coinCount + 1;
-				document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
+				coinCount = coinCount + 1;
+				if(coinCount == 1){
+					document.getElementById("coin_count").innerHTML = "You have " + coinCount + " coin. ";
+				}else{
+					document.getElementById("coin_count").innerHTML = "You have " + coinCount + " coins. ";
+				}
+				
 			    movable = true;
 			    console.log("Picked up coin/gem. coinCount: " + coinCount);
 			    gameArea[tilePos] = 10;
-			    emptyTile(tilePos);
+				emptyTile(tilePos);
+				
+				document.getElementById("coinTab").innerHTML = "Coins: " + coinCount;
 			    break;
             case 15: //Vortex
                 level = 0;
@@ -597,7 +604,7 @@ var messageView = document.getElementById("messageView");
 				}
 				break;
 			case 18: // Penguin
-				updateMessage(10);
+				updateMessage(18);
 				gotPenguin = true;
 				movable = true;
 				gameArea[tilePos] = 10;
@@ -606,7 +613,7 @@ var messageView = document.getElementById("messageView");
 			case 19: // Penguin-home
 				updateMessage(19);	
 				if(gotPenguin == true){
-					$(".t19").removeClass("t19").addClass("t18");
+					document.getElementById("n" + tilePos).className = "tile t" + 18;
 				}
 				break;
 			default:
@@ -618,7 +625,7 @@ var messageView = document.getElementById("messageView");
 		return movable;
 		
 	};
-
+	var firstMessage = true;
 	var updateMessage = function(tileNr) {
 		var addition = "";
 		switch(tileNr){
@@ -629,14 +636,14 @@ var messageView = document.getElementById("messageView");
 				addition = "<img class='guard'>: <em>Entrance is 15 coins.</em>";
 				if(coinCount >= 15){
 					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					addition = "<img class='guard'>: <em>Thanks.</em>";
+					addition += "<br>" + "<img class='guard'>: <em>Thanks.</em>";
                 }
 				break;
 			case 17: //guard 2
 				addition = "<img class='guard2'>: <em>Entrance is 100 coins.</em>";
 				if(coinCount >= 100){
 					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					addition = "<img class='guard2'>: <em>Thanks.</em>";
+					addition += "<br>" + "<img class='guard2'>: <em>Thanks.</em>";
 				}
 				break;
 			case 18: //penguin
@@ -653,9 +660,20 @@ var messageView = document.getElementById("messageView");
 				console.log("No message");
 				break;
 		}
-		unRead = unRead + 1;
-		document.getElementById("messageTab").innerHTML = "Messages (" + unRead + ")";
-		document.getElementById("message").innerHTML += addition + "<br>";
+		if(messageViewOpen == false){
+			unRead = unRead + 1;
+			document.getElementById("messageTab").innerHTML = "Messages (" + unRead + ")";
+		}else{
+			unRead = 0;
+		}
+		console.log("Firstmessage: " + firstMessage);
+		if(firstMessage == true){
+			document.getElementById("message").innerHTML = addition + "<br>";
+			firstMessage = false;
+		}else{
+			document.getElementById("message").innerHTML += addition + "<br>";
+		}
+		
 		messageView.scrollTop = messageView.scrollHeight - messageView.clientHeight;
 	};
 

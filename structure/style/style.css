@@ -9,13 +9,15 @@ body{
     /* overflow: hidden; */
 }
 #swipeBox{
-    z-index: 12;
     /*position:relative;
     width: 100%;
     height: 400px; */
 }
 h1{
     margin: 5px;
+}
+p {
+    margin: 2px;
 }
 .tab{
     font-weight: bold;
@@ -29,9 +31,10 @@ h1{
     visibility: hidden;
 }
 #coinView{
+    padding: 3px;
     display: none;
     position: absolute;
-	height: 50px;
+	height: 40px;
 	width: 80px;
     border: solid lightgray;
     border-width: 0px 2px 2px 0px;
@@ -40,6 +43,7 @@ h1{
     background-color: e6e6e6;
 }
 #messageView{
+    padding: 3px;
     display: none;
     position: absolute;
 	height: 150px;
@@ -64,6 +68,7 @@ h1{
     border: solid 2px lightgray;
     border-radius: 10px;
     background-color: whitesmoke;
+    padding-bottom: 20px;
     /* max-width: 500px; */
 }
 #content {
