@@ -647,7 +647,7 @@ var messageView = document.getElementById("messageView");
 				}
 				break;
 			case 18: //penguin
-				addition = "<img class='doctorWho'>: <em>Penguin picked up!</em><br>";
+				addition = "<img class='doctorWho'>: <em>Penguin picked up!</em>";
 				break;
 			case 19: //penguin home
 				if(gotPenguin == true){
