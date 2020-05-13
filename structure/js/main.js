@@ -236,6 +236,7 @@ var messageView = document.getElementById("messageView");
 			coinViewOpen = false;
 			messageViewOpen = true;
 			messageView.scrollTop = messageView.scrollHeight - messageView.clientHeight;
+			unRead = 0;
 		}else if(messageViewOpen == true){
 			messageView.style.display = "none";
 			messageViewOpen = false;
