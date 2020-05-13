@@ -4,6 +4,10 @@ http://padilicious.com/code/touchevents/
 
 https://stackoverflow.com/questions/195951/how-can-i-change-an-elements-class-with-javascript
 
+https://css-tricks.com/tale-width-max-width/
+
+https://coolestguidesontheplanet.com/make-images-scale-responsive-web-design/
+
 Todo:
 
 
