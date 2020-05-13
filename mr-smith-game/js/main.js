@@ -1,12 +1,12 @@
 
 
-//baddie is the moving character
+
 
 (function(){
 	// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
 	'use strict';
 	// HTML elements
-	var baddie, content;
+	var baddie, content, coinTab, messageTab, thirdTab, forthTab;
 	// Numbers
 	var tileSize, gridSize, left, top, posLeft, posTop;
 	// Arrays
@@ -14,18 +14,34 @@
 	// Get HTML elements that are to be used
 	baddie = document.getElementById("baddie");
 	content = document.getElementById("content");
+	coinTab = document.getElementById("coinTab");
+	messageTab = document.getElementById("messageTab");
+	thirdTab = document.getElementById("thirdTab");
+	forthTab = document.getElementById("forthTab");
+	
+
 	// Size of each tile
 	tileSize = 32;
 	// Number of tiles per row
 	gridSize = 10;
 	// Sets content size to match tilesize and gridsize
 	content.style.width = content.style.height = gridSize*tileSize + "px";
+	coinTab.style.width = (gridSize*tileSize)/3 +1 + "px";
+	coinTab.style.height = (gridSize*tileSize)/13 + "px";
+	messageTab.style.width = coinTab.style.width;
+	messageTab.style.height = coinTab.style.height;
+	thirdTab.style.width = (gridSize*tileSize)/6 +1 + "px";
+	thirdTab.style.height = coinTab.style.height;
+	forthTab.style.width = (gridSize*tileSize)/6 +1 + "px";
+	forthTab.style.height = coinTab.style.height;
 	// Gets starting position of baddie
 	left = baddie.offsetLeft;
 	top = baddie.offsetTop;
 	// Starting position of baddie in the grid
 	posLeft = 0;
 	posTop = 0;
+
+	var unRead = 0;
 
 	/**
 	 * This is the game area with a 10x10 grid
@@ -193,6 +209,41 @@
 			content.appendChild(tile);
 		}
 	};
+/* ---- Coins menu ----- */
+var coinViewOpen = false;
+var coinView = document.getElementById("coinView");
+var messageViewOpen = false;
+var messageView = document.getElementById("messageView");
+
+	document.getElementById("coinTab").addEventListener("click", function(){ 
+		if(coinViewOpen == false){
+			coinView.style.display = "block";
+			messageView.style.display = "none";
+			messageViewOpen = false;
+			coinViewOpen = true;
+		}else if(coinViewOpen == true){
+			coinView.style.display = "none";
+			coinViewOpen = false;
+		}
+		console.log("In coins funciton");
+	});
+
+	document.getElementById("messageTab").addEventListener("click", function(){ 
+		if(messageViewOpen == false){
+			document.getElementById("messageTab").innerHTML = "Messages";
+			messageView.style.display = "block";
+			coinView.style.display = "none";
+			coinViewOpen = false;
+			messageViewOpen = true;
+			messageView.scrollTop = messageView.scrollHeight - messageView.clientHeight;
+			unRead = 0;
+		}else if(messageViewOpen == true){
+			messageView.style.display = "none";
+			messageViewOpen = false;
+		}
+		console.log("In coins funciton");
+	});
+
 /* ---- Mouse keys ----- */
 	document.getElementById("arrowLeft").addEventListener("click", function(){ 
                 if(isBaddieMovable(-1, 0)) {
@@ -409,7 +460,6 @@
 			if(isBaddieMovable(-1, 0)) {
 				// Go left - Use moveBaddie-function
 				moveBaddie(-1, 0);
-				// sdocument.getElementById("console").innerHTML = 'Console' + isBaddieMovable(-1, 0);
 				// Turn baddie left - Use the given function
 				turnLeft();
 			}
@@ -512,58 +562,58 @@
 				console.log("Level: " + level);
 				break;
 			case 14: // Coin - pick up
-			    coinCount = coinCount + 1;
-				document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
+				coinCount = coinCount + 1;
+				if(coinCount == 1){
+					document.getElementById("coin_count").innerHTML = "You have " + coinCount + " coin. ";
+				}else{
+					document.getElementById("coin_count").innerHTML = "You have " + coinCount + " coins. ";
+				}
+				
 			    movable = true;
 			    console.log("Picked up coin/gem. coinCount: " + coinCount);
 			    gameArea[tilePos] = 10;
-			    emptyTile(tilePos);
+				emptyTile(tilePos);
+				
+				document.getElementById("coinTab").innerHTML = "Coins: " + coinCount;
 			    break;
             case 15: //Vortex
                 level = 0;
 				updateTiles(level);
-				document.getElementById("message").innerHTML += "<br><em>Going back in time.</em>";
+				updateMessage(15);
                 break;
             case 16: //Guard
-				document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Entrance is 15 coins.</em>";
+				updateMessage(16);
                 if(coinCount >= 15){
                     movable = true;
                     gameArea[tilePos] = 10;
 					emptyTile(tilePos);
 					coinCount = coinCount - 15;
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					document.getElementById("message").innerHTML += "<br><img class='guard'>: <em>Thanks.</em>";
                 }else{
                     movable = false;
                 }
 				break;
 			case 17: //Guard 2
-				document.getElementById("message").innerHTML += "<br><img class='guard2'>: <em>Entrance is 100 coins.</em>";
+				updateMessage(17);
 				if(coinCount >= 100){
 					movable = true;
 					gameArea[tilePos] = 10;
 					emptyTile(tilePos);
 					coinCount = coinCount - 100;
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					document.getElementById("message").innerHTML += "<br><img class='guard2'>: <em>Thanks.</em>";
 				}else{
 					movable = false;
 				}
 				break;
 			case 18: // Penguin
-				document.getElementById("message").innerHTML += "<br><em>Penguin picked up!</em>";
+				updateMessage(18);
 				gotPenguin = true;
 				movable = true;
 				gameArea[tilePos] = 10;
 				emptyTile(tilePos);
 				break;
 			case 19: // Penguin-home
+				updateMessage(19);	
 				if(gotPenguin == true){
-					document.getElementById("message").innerHTML += "<br><em>Penguin returned!</em>";
-					$(".t19").removeClass("t19").addClass("t18");
-					document.getElementById("message").innerHTML += "<br><img class='penguin'>:Thank you!!</em>";
-				}else{
-					document.getElementById("message").innerHTML += "<br><em>You don't have the penguin!</em>";
+					document.getElementById("n" + tilePos).className = "tile t" + 18;
 				}
 				break;
 			default:
@@ -575,7 +625,58 @@
 		return movable;
 		
 	};
-	
+	var firstMessage = true;
+	var updateMessage = function(tileNr) {
+		var addition = "";
+		switch(tileNr){
+			case 15: //Vortex
+				addition = "<img class='doctorWho'>: <em>Going back in time.</em>";
+				break;
+			case 16: //guard
+				addition = "<img class='guard'>: <em>Entrance is 15 coins.</em>";
+				if(coinCount >= 15){
+					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
+					addition += "<br>" + "<img class='guard'>: <em>Thanks.</em>";
+                }
+				break;
+			case 17: //guard 2
+				addition = "<img class='guard2'>: <em>Entrance is 100 coins.</em>";
+				if(coinCount >= 100){
+					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
+					addition += "<br>" + "<img class='guard2'>: <em>Thanks.</em>";
+				}
+				break;
+			case 18: //penguin
+				addition = "<img class='doctorWho'>: <em>Penguin picked up!</em>";
+				break;
+			case 19: //penguin home
+				if(gotPenguin == true){
+					addition = "<img class='doctorWho'>: <em>Penguin returned!<br><img class='penguin'>: Thank you!</em>";
+				}else{
+					addition = "<img class='doctorWho'>: <em>I don't have the penguin!</em>";
+				} 
+				break;
+			default: 
+				console.log("No message");
+				break;
+		}
+		if(messageViewOpen == false){
+			unRead = unRead + 1;
+			document.getElementById("messageTab").innerHTML = "Messages (" + unRead + ")";
+		}else{
+			unRead = 0;
+		}
+		console.log("Firstmessage: " + firstMessage);
+		if(firstMessage == true){
+			document.getElementById("message").innerHTML = addition + "<br>";
+			firstMessage = false;
+		}else{
+			document.getElementById("message").innerHTML += addition + "<br>";
+		}
+		
+		messageView.scrollTop = messageView.scrollHeight - messageView.clientHeight;
+	};
+
 	/**
 	 * Changes position variables for baddie and style to draw the change out on the screen
 	 * @param  {[type]} x	- direction to move horizontally
@@ -695,3 +796,4 @@
 	/* ---- Run code ---- */
 	init();
 })();
+

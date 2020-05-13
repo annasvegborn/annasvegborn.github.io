@@ -1,39 +1,84 @@
-@viewport {
+/*x @viewport {
     width: device-width ;
     zoom: 2.0 ;
-  }
+  }*/
+
 body{
     background-color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    overflow: hidden;
-    position:fixed;
-}
-h1 {
-    margin: 0;
-}
-p {
-    margin: 10px;
+    font-family: sans-serif;
+    /* overflow: hidden; */
 }
 #swipeBox{
-    position:relative;
+    /*position:relative;
     width: 100%;
-    height: 400px;
+    height: 400px; */
 }
-#bigdiv {
-    border: solid 1px rebeccapurple;
+h1{
+    margin: 5px;
+}
+p {
+    margin: 2px;
+}
+.tab{
+    font-weight: bold;
+    border: solid lightgray;
+    border-radius: 3px 3px 0 0;
+    border-width: 1px 1px 0px 1px;
+    display: inline-block;
+    background-color: #e6e6e6  /* #f2f2f2; e6e6e6 */
+}
+#thirdTab, #forthTab{
+    visibility: hidden;
+}
+#coinView{
+    padding: 3px;
+    display: none;
+    position: absolute;
+	height: 40px;
+	width: 80px;
+    border: solid lightgray;
+    border-width: 0px 2px 2px 0px;
+    border-radius: 2px;
+    z-index: 11;
+    background-color: e6e6e6;
+}
+#messageView{
+    padding: 3px;
+    display: none;
+    position: absolute;
+	height: 150px;
+	width: 210px;
+    border: solid lightgray;
+    border-width: 0px 2px 2px 0px;
+    border-radius: 2px;
+    z-index: 13;
+    background-color: e6e6e6;
+    overflow-x: hidden; 
+    overflow-y: auto; 
+}
+#coin_count {
+
+}
+#message {
+    position: absolute;
+    text-align: left;
+}
+#bigDiv{
+    text-align: center;
+    margin: 5px;
+    border: solid 2px lightgray;
     border-radius: 10px;
-    padding: 20px;
     background-color: whitesmoke;
-    width: 620px;
-    height: 620px;
-    /* align-items: center; */
+    padding-bottom: 20px;
+    /* max-width: 500px; */
 }
 #content {
+    display: inline-block;
+    position: relative;
 	height: 320px;
 	width: 320px;
-    position: absolute;
-    border: solid 5px black;
-    border-radius: 10px;
+    border: solid 3px lightgray;
+    border-radius: 2px;
 }
 
 #baddie {
@@ -43,7 +88,39 @@ p {
 	height:32px;
 	background-repeat:no-repeat; 
 }
-
+.arrow{
+    touch-action: manipulation;
+    font-weight: bold;
+    height: 40px;
+    text-align: center;
+    margin: 2px 1px 2px 1px;
+    background-color: e6e6e6;
+    border: 1px solid lightgray;
+    /*position: absolute; */
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block;
+    /*position: relative;*/
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+}
+#arrowLeft {
+padding: 5px 50px 2px 50px;
+}
+#arrowRight {
+padding: 5px 50px 2px 50px;
+}
+#arrowUp {
+padding: 5px 100px 2px 100px;
+}
+#arrowDown {
+padding: 5px 100px 2px 100px;
+}
 .baddieDoctorWho {
 	background-image: url(../img/DoctorWho.png);
 }
@@ -69,13 +146,13 @@ p {
 	background: url(../img/tiles/grass.png);
 }
 .t11 {
-	background: url(../img/tiles/brick-wall.png) -32px -96px;
+	background: url(../img/tiles/brick-wall.png);
 }
 .t12 {
-	background: url(../img/tiles/dalek_grass.png) 0px -128px;
+	background: url(../img/tiles/dalek_grass.png);
 }
 .t13 {
-	background: url(../img/tiles/tardis_door2.png) -64px -128px;
+	background: url(../img/tiles/tardis_door2.png);
 }
 .t14 {
 	background: url(../img/tiles/coin_gold_grass1.png);
@@ -100,13 +177,13 @@ p {
     background: url(../img/tiles/space1.png)
 }
 .ti11 {
-    background: url(../img/tiles/space-wall.png) -32px -96px;
+    background: url(../img/tiles/space-wall.png);
 }
 .ti12{
-    background: url(../img/tiles/sun.png) 0px -128px;
+    background: url(../img/tiles/sun.png);
 }
 .ti13 {
-    background: url(../img/tiles/earth.png) -64px -128px;
+    background: url(../img/tiles/earth.png);
 }
 .ti14 {
     background: url(../img/tiles/gem_red_space1.png);
@@ -125,63 +202,6 @@ p {
 }
 .ti19 {
     background: url(../img/tiles/space1.png);
-}
-
-
-.arrow{
-        /* display: none; */
-        touch-action: manipulation;
-        font-family: Arial;
-        font-weight: bold;
-        width: 55px;
-        height: 35px;
-        text-align: center;
-        padding: 7px;
-        padding-bottom: 4px;
-        margin: 5px;
-        background-color: silver;
-        border: 2px solid grey;
-        position: absolute;
-        cursor: pointer;
-        
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-}
-#arrowLeft {
-        left: 120px;
-        top: 450px;
-}
-#arrowRight {
-        left: 200px;
-        top: 450px;
-}
-#arrowUp {
-        left: 160px;
-        top: 410px;
-}
-#arrowDown {
-        left: 160px;
-        top: 490px;
-}
-#coin_count {
-	left: 360px;
-	top: 130px;
-	position: absolute;  
-}
-.side-info{
-    left: 360px;
-	top: 180px;
-	position: absolute;  
-}
-
-#message {
-	left: 360px;
-	top: 215px;
-	position: absolute;  
 }
 .guard{
     background: url(../img/guard-small.png);
@@ -203,6 +223,15 @@ p {
 }
 .penguin{
     background: url(../img/penguin-small.png);
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    margin-top: 5px;
+}
+.doctorWho{
+    background-image: url(../img/DoctorWho-small.png);
     height: 20px;
     width: 20px;
     padding: 0;
