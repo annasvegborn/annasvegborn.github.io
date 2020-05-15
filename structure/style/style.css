@@ -125,10 +125,10 @@ padding: 5px 100px 2px 100px;
 padding: 5px 100px 2px 100px;
 }
 .baddieDoctorWho {
-	background-image: url(../img/DoctorWho.png);
+	background-image: url(../img/anna.png);
 }
 .baddieTardis {
-    background-image: url(../img/Tardis.png);
+    background-image: url(../img/rocket.png);
 }
 
 .baddie-right {}
@@ -149,16 +149,16 @@ padding: 5px 100px 2px 100px;
 	background: url(../img/tiles/grass.png);
 }
 .t11 {
-	background: url(../img/tiles/brick-wall.png);
+	background: url(../img/tiles/tree-grass.png);
 }
 .t12 {
-	background: url(../img/tiles/dalek_grass.png);
+	background: url(../img/tiles/obstacle-grass.png);
 }
 .t13 {
-	background: url(../img/tiles/tardis_door2.png);
+	background: url(../img/tiles/spaceship-grass.png);
 }
 .t14 {
-	background: url(../img/tiles/coin_gold_grass1.png);
+	background: url(../img/tiles/coin-grass.png);
 }
 .t15{
     background: url(../img/tiles/vortex-grass.png);
@@ -177,19 +177,19 @@ padding: 5px 100px 2px 100px;
 }
 
 .ti10 {
-    background: url(../img/tiles/space1.png)
+    background: url(../img/tiles/space.png)
 }
 .ti11 {
-    background: url(../img/tiles/space-wall.png);
+    background: url(../img/tiles/wall-space.png);
 }
 .ti12{
-    background: url(../img/tiles/sun.png);
+    background: url(../img/tiles/obstacle-space.png);
 }
 .ti13 {
-    background: url(../img/tiles/earth.png);
+    background: url(../img/tiles/green-planet.png);
 }
 .ti14 {
-    background: url(../img/tiles/gem_red_space1.png);
+    background: url(../img/tiles/coin-space.png);
 }
 .ti15{
     background: url(../img/tiles/vortex-space.png);
@@ -204,10 +204,10 @@ padding: 5px 100px 2px 100px;
     background: url(../img/tiles/penguin-space.png);
 }
 .ti19 {
-    background: url(../img/tiles/space1.png);
+    background: url(../img/tiles/space.png);
 }
 .guard{
-    background: url(../img/guard-small.png);
+    background: url(../img/guard.png);
     height: 20px;
     width: 20px;
     padding: 0;
@@ -216,7 +216,7 @@ padding: 5px 100px 2px 100px;
     margin-top: 5px;
 }
 .guard2{
-    background: url(../img/guard2-small.png);
+    background: url(../img/guard2.png);
     height: 20px;
     width: 20px;
     padding: 0;
@@ -225,7 +225,7 @@ padding: 5px 100px 2px 100px;
     margin-top: 5px;
 }
 .penguin{
-    background: url(../img/penguin-small.png);
+    background: url(../img/penguin.png);
     height: 20px;
     width: 20px;
     padding: 0;
@@ -234,7 +234,7 @@ padding: 5px 100px 2px 100px;
     margin-top: 5px;
 }
 .doctorWho{
-    background-image: url(../img/DoctorWho-small.png);
+    background-image: url(../img/anna.png);
     height: 20px;
     width: 20px;
     padding: 0;
