@@ -19,6 +19,17 @@ h1{
 p {
     margin: 2px;
 }
+.popMessage {
+    padding: 10px;
+    position: absolute;
+    margin: 40px;
+    width: 220;
+    border: solid gray;
+    border-width: 3px;
+    border-radius: 2px;
+    z-index: 11;
+    background-color: whitesmoke;
+}
 .tab{
     font-weight: bold;
     border: solid lightgray;
@@ -27,7 +38,7 @@ p {
     display: inline-block;
     background-color: #e6e6e6  /* #f2f2f2; e6e6e6 */
 }
-#thirdTab, #forthTab{
+#forthTab{
     visibility: hidden;
 }
 #coinView{
@@ -124,18 +135,41 @@ padding: 5px 100px 2px 100px;
 #arrowDown {
 padding: 5px 100px 2px 100px;
 }
-.baddieDoctorWho {
+.baddieAnna {
 	background-image: url(../img/anna.png);
+}
+.baddieAnnaWork {
+	background-image: url(../img/anna-work.png);
+}
+.baddieSebastian {
+	background-image: url(../img/sebastian.png);
+}
+.baddieSebastianWork {
+	background-image: url(../img/sebastian-work.png);
 }
 .baddieTardis {
     background-image: url(../img/rocket.png);
 }
+
+.baddie-up{}
 
 .baddie-right {}
 
 .baddie-left {
 	transform: rotateY(180deg);
 	-webkit-transform: rotateY(180deg);
+}
+.baddie-point-right{
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+.baddie-point-left{
+    transform: rotate(270deg);
+	-webkit-transform: rotate(270deg);
+}
+.baddie-down {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
 }
 
 .tile, .t {
@@ -148,68 +182,99 @@ padding: 5px 100px 2px 100px;
 .t10 {
 	background: url(../img/tiles/grass.png);
 }
-.t11 {
-	background: url(../img/tiles/tree-grass.png);
-}
-.t12 {
-	background: url(../img/tiles/obstacle-grass.png);
-}
-.t13 {
-	background: url(../img/tiles/spaceship-grass.png);
-}
-.t14 {
-	background: url(../img/tiles/coin-grass.png);
-}
-.t15{
-    background: url(../img/tiles/vortex-grass.png);
-}
-.t16 {
-    background: url(../img/tiles/guard-grass.png);
-}
-.t17 {
-    background: url(../img/tiles/guard2-grass.png);
-}
-.t18 {
-    background: url(../img/tiles/penguin-grass.png);
-}
-.t19 {
-    background: url(../img/tiles/penguin-outline-grass.png);
-}
-
 .ti10 {
     background: url(../img/tiles/space.png)
+}
+.t11 {
+	background: url(../img/tiles/tree-grass.png);
 }
 .ti11 {
     background: url(../img/tiles/wall-space.png);
 }
+.t12 {
+	background: url(../img/tiles/obstacle-grass.png);
+}
 .ti12{
     background: url(../img/tiles/obstacle-space.png);
 }
+.t13 {
+	background: url(../img/tiles/spaceship-grass.png);
+}
 .ti13 {
-    background: url(../img/tiles/green-planet.png);
+    background: url(../img/tiles/planet-green.png);
+}
+.t14 {
+	background: url(../img/tiles/coin-grass.png);
 }
 .ti14 {
     background: url(../img/tiles/coin-space.png);
 }
+.t15{
+    background: url(../img/tiles/vortex-grass.png);
+}
 .ti15{
     background: url(../img/tiles/vortex-space.png);
+}
+.t16 {
+    background: url(../img/tiles/guard-grass.png);
 }
 .ti16 {
     background: url(../img/tiles/guard-space.png);
 }
+.t17 {
+    background: url(../img/tiles/guard2-grass.png);
+}
 .ti17 {
     background: url(../img/tiles/guard2-space.png);
 }
+.t18 {
+    background: url(../img/tiles/bag-grass.png);
+}
 .ti18 {
-    background: url(../img/tiles/penguin-space.png);
+    background: url(../img/tiles/bag-space.png);
+}
+.t19 {
+    background: url(../img/tiles/work-grass.png);
 }
 .ti19 {
+    background: url(../img/tiles/work-grass.png);
+}
+.t20 {
+    background: url(../img/tiles/planet-blue.png);
+}
+.ti20 {
+    background: url(../img/tiles/planet-blue.png);
+}
+.t21 {
+    background: url(../img/tiles/planet-orange.png);
+}
+.ti21 {
+    background: url(../img/tiles/planet-orange.png);
+}
+.t22 {
+    background: url(../img/tiles/grass.png); /* exit*/
+}
+.ti22 {
     background: url(../img/tiles/space.png);
 }
+.t23 {
+    background: url(../img/tiles/grass.png); /* entry */
+}
+.ti23 {
+    background: url(../img/tiles/space.png);
+}
+.t24 {
+    background: url(../img/tiles/vortex2-grass.png);
+}
+.ti24 {
+    background: url(../img/tiles/vortex2-space.png);
+}
+
 .guard{
     background: url(../img/guard.png);
     height: 20px;
     width: 20px;
+    background-size: 100%;
     padding: 0;
     margin: 0;
     border: none;
