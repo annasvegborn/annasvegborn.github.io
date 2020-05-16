@@ -741,7 +741,7 @@ var person = "anna";
 		popUp.className = "popMessage";
 		popUp.innerHTML = message;
 		parent.appendChild(popUp);
-		//setTimeout(removePopMessage, 2000);
+		setTimeout(removePopMessage, 2000);
 	}
 	var removePopMessage = function(){
 		document.getElementById("content").removeChild(document.getElementById("popMessage"));
