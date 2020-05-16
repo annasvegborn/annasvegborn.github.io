@@ -3,7 +3,6 @@
 
 
 (function(){
-	// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
 	'use strict';
 	// HTML elements
 	var baddie, content, coinTab, messageTab, thirdTab, forthTab;
@@ -393,6 +392,10 @@ var person = "anna";
 	var swipeDirection = null;	
 
 	document.getElementById("swipeBox").addEventListener("touchstart", function(event) {
+		coinView.style.display = "none";
+		coinViewOpen = false;
+		messageView.style.display = "none";
+		messageViewOpen = false
 		// disable the standard ability to select the touched object
 		event.preventDefault();
 		// get the total number of fingers touching the screen
@@ -681,30 +684,30 @@ var person = "anna";
 		var addition = "";
 		switch(tileNr){
 			case 15: //Vortex
-				addition = "<img class='doctorWho'>: <em>Going back in time.</em>";
+				addition = "<img id='doctorWho' class='profile-pic'>: <em>Going back in time.</em>";
 				break;
 			case 16: //guard
-				addition = "<img class='guard'>: <em>Entrance is 12 coins.</em>";
+				addition = "<img id='guard' class='profile-pic'><p class='chat'>:<em> Entrance is 12 coins.</em></p>";
 				if(coinCount >= 15){
 					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					addition += "<br>" + "<img class='guard'>: <em>Thanks.</em>";
+					addition += "<br>" + "<img id='guard' class='profile-pic'>: <em>Thanks.</em>";
                 }
 				break;
 			case 17: //guard 2
-				addition = "<img class='guard2'>: <em>Entrance is 5 coins.</em>";
+				addition = "<img id='guard2 class='profile-pic'>: <em>Entrance is 5 coins.</em>";
 				if(coinCount >= 100){
 					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					addition += "<br>" + "<img class='guard2'>: <em>Thanks.</em>";
+					addition += "<br>" + "<img id='guard2' class='profile-pic'>: <em>Thanks.</em>";
 				}
 				break;
 			case 18: //penguin
-				addition = "<img class='doctorWho'>: <em>Bag picked up!</em>";
+				addition = "<img id='doctorWho' class='profile-pic'>: <em>Bag picked up!</em>";
 				break;
 			case 19: //Work
 				if(gotPenguin == true){
-					addition = "<img class='doctorWho'>: <em>Penguin returned!<br><img class='penguin'>: Thank you!</em>";
+					addition = "<img id='doctorWho' class='profile-pic'>: <em>Penguin returned!<br><img class='penguin'>: Thank you!</em>";
 				}else{
-					addition = "<img class='doctorWho'>: <em>I don't have the right uniform!</em>";
+					addition = "<img id='doctorWho' class='profile-pic'>: <em>I don't have the right uniform!</em>";
 				} 
 				break;
 			default: 
@@ -738,7 +741,7 @@ var person = "anna";
 		popUp.className = "popMessage";
 		popUp.innerHTML = message;
 		parent.appendChild(popUp);
-		setTimeout(removePopMessage, 2000);
+		//setTimeout(removePopMessage, 2000);
 	}
 	var removePopMessage = function(){
 		document.getElementById("content").removeChild(document.getElementById("popMessage"));
