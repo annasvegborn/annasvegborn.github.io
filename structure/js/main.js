@@ -128,10 +128,10 @@
     
     var level3 = [
 		11,11,11,11,11,11,11,11,11,11,
-		23,10,10,10,10,10,10,10,15,11,
+		23,10,10,10,10,12,10,10,10,11,
 		11,10,11,10,11,10,11,10,11,11,
 		11,10,11,10,11,10,11,10,11,11,
-		11,10,11,10,11,12,11,10,11,11,
+		11,10,11,10,11,15,11,10,11,11,
 		11,14,11,14,11,14,11,14,11,11,
 		11,10,11,10,11,10,11,12,11,11,
 		11,10,11,10,11,10,11,10,11,11,
@@ -753,7 +753,8 @@ var person = "anna";
 		var addition = "";
 		switch(tileNr){
 			case 15: //Vortex
-				addition = "<img id='doctorWho' class='profile-pic'>: <em>Going back in time.</em>";
+				addition = "<img id='vortex' class='profile-pic'> <em>TIME VORTEX</em><br>";
+				addition += "<img id='"+ person +"' class='profile-pic'>: <em>Going back in time.</em>";
 				break;
 			case 16: //guard
 				addition = "<img id='guard' class='profile-pic'><p class='chat'>:<em> Entrance is 12 coins.</em></p>";
@@ -772,16 +773,20 @@ var person = "anna";
 				break;
 			case 19: //Work
 				if(gotPenguin == true){
-					addition = "<img id='doctorWho' class='profile-pic'>: <em>Working!</em>";
+					addition = "<img id='"+ person +"' class='profile-pic'>: <em>Working!</em>";
 				}else{
 					addition = "<img id='doctorWho' class='profile-pic'>: <em>I don't have the right uniform!</em>";
 				} 
 				break;
 			case 20:
-				addition = "<img id='doctorWho' class='profile-pic'>: <em>I have to comeplete mission 1 first!</em>";
+				addition = "<img id='doctorWho' class='profile-pic'>: <em>I have to complete mission 1 first!</em>";
 				break;
 			case 21:
 				addition = "<img id='doctorWho' class='profile-pic'>: <em>I have to complete mission 1 and 2 first!</em>";
+				break;
+			case 24:
+				addition = "<img id='vortex2' class='profile-pic'> <em>TIME VORTEX</em><br>";
+				addition += "<img id='doctorWho' class='profile-pic'>: <em>Going back in time.</em>";
 				break;
 			case 25:
 				if(level == 0){

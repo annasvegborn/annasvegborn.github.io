@@ -305,8 +305,12 @@ padding: 5px 100px 2px 100px;
     content:url(../img/guard2.png);
     background-size: 100%;
 }
-#penguin{
-    content:url(../img/penguin.png);
+#vortex{
+    content:url(../img/vortex.png);
+    background-size: 100%;
+}
+#vortex2{
+    content:url(../img/vortex2.png);
     background-size: 100%;
 }
 #doctorWho{
@@ -315,6 +319,14 @@ padding: 5px 100px 2px 100px;
 }
 #phone{
     content:url(../img/phone.png);
+    background-size: 100%;
+}
+#anna{
+    content:url(../img/anna.png);
+    background-size: 100%;
+}
+#sebastian{
+    content:url(../img/sebastian.png);
     background-size: 100%;
 }
 .profile-pic{
