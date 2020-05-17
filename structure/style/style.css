@@ -182,101 +182,119 @@ padding: 5px 100px 2px 100px;
 	background-repeat: no-repeat;
 }
 
-.t10 {
+.g10 {
 	background: url(../img/tiles/grass.png);
 }
-.ti10 {
+.s10 {
     background: url(../img/tiles/space.png)
 }
-.t11 {
+.a10 {
+    background: url(../img/tiles/agate.png)
+}
+.g11 {
 	background: url(../img/tiles/tree-grass.png);
 }
-.ti11 {
+.s11 {
     background: url(../img/tiles/wall-space.png);
 }
-.t12 {
+.a11 {
+    background: url(../img/tiles/wall-agate.png);
+}
+.g12 {
 	background: url(../img/tiles/obstacle-grass.png);
 }
-.ti12{
+.s12{
     background: url(../img/tiles/obstacle-space.png);
 }
-.t13 {
+.a12{
+    background: url(../img/tiles/obstacle-agate.png);
+}
+.g13 {
 	background: url(../img/tiles/spaceship-grass.png);
 }
-.ti13 {
+.s13 {
     background: url(../img/tiles/planet-green.png);
 }
-.t14 {
+.a13 {
+	background: url(../img/tiles/spaceship-agate.png);
+}
+.g14 {
 	background: url(../img/tiles/coin-grass.png);
 }
-.ti14 {
+.s14 {
     background: url(../img/tiles/coin-space.png);
 }
-.t15{
+.a14 {
+    background: url(../img/tiles/coin-agate.png);
+}
+.g15{
     background: url(../img/tiles/vortex-grass.png);
 }
-.ti15{
+.s15{
     background: url(../img/tiles/vortex-space.png);
 }
-.t16 {
+.g16 {
     background: url(../img/tiles/guard-grass.png);
 }
-.ti16 {
+.s16 {
     background: url(../img/tiles/guard-space.png);
 }
-.t17 {
+.g17 {
     background: url(../img/tiles/guard2-grass.png);
 }
-.ti17 {
+.s17 {
     background: url(../img/tiles/guard2-space.png);
 }
-.t18 {
+.g18 {
     background: url(../img/tiles/bag-grass.png);
 }
-.ti18 {
+.s18 {
     background: url(../img/tiles/bag-space.png);
 }
-.t19 {
+.g19 {
     background: url(../img/tiles/work-grass.png);
 }
-.ti19 {
+.s19 {
     background: url(../img/tiles/work-grass.png);
 }
-.t20 {
+.g20 {
     background: url(../img/tiles/planet-blue.png);
 }
-.ti20 {
+.s20 {
     background: url(../img/tiles/planet-blue.png);
 }
-.t21 {
+.g21 {
     background: url(../img/tiles/planet-orange.png);
 }
-.ti21 {
+.s21 {
     background: url(../img/tiles/planet-orange.png);
 }
-.t22 {
+.g22 {
     background: url(../img/tiles/grass.png); /* exit*/
 }
-.ti22 {
+.s22 {
     background: url(../img/tiles/space.png);
 }
-.t23 {
+.g23 {
     background: url(../img/tiles/grass.png); /* entry */
 }
-.ti23 {
+.s23 {
     background: url(../img/tiles/space.png);
 }
-.t24 {
+.g24 {
     background: url(../img/tiles/vortex2-grass.png);
 }
-.ti24 {
+.s24 {
     background: url(../img/tiles/vortex2-space.png);
 }
-.t25 {
+.g25 {
     background: url(../img/tiles/phone-grass.png);
 }
-.ti25 {
+.s25 {
     background: url(../img/tiles/phone-space.png);
+}
+.a25 {
+    background: url(../img/tiles/phone-agate.png);
 }
 
 #guard{

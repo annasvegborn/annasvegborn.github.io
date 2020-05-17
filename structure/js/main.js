@@ -203,6 +203,32 @@
 		11,10,10,10,10,10,10,10,13,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
+	
+	var level9 = [
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,13,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,20,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,21,10,11,
+		11,11,11,11,11,11,11,11,11,11,
+		];
+
+	var level20 = [
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,25,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,13,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,11,11,11,11,11,11,11,11,11,
+		];
 
 	/**
 	 * Initiates the game area by adding each tile as a div with class and id to content area
@@ -219,7 +245,7 @@
 			// Writing out the current tile from gameArea
 			var tileFromArray = gameArea[i];
 			// Adding class name to tile
-			tile.className = "tile t" + tileFromArray;
+			tile.className = "tile g" + tileFromArray;
 			// Adding ID to tile
 			tile.id = "n" + i;
 			// Append tile to the content
@@ -537,7 +563,7 @@ var person = "anna";
 	 */
 
 	// Variables
-	var space = false;
+	var backdrop = "grass";
 	var coinCount = 0;
 	var level = 0;
 	var gotPenguin = false;
@@ -586,10 +612,15 @@ var person = "anna";
 				}
 				break;
 			case 13: // Door
+				if(level == 20){
+					level = 1;
+				}else{
+					level = level + 1;
+				}
 				movable = true;
-				if(space === false){space = true;}
-				else{space = false;}
-				level = level + 1;
+				if(backdrop === "grass" || backdrop == "agate"){backdrop = "space";}
+				else{backdrop = "grass";}
+				
 				updateTiles(level);
 				console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 13")
 				console.log("Class: " + baddie.classList);
@@ -665,7 +696,12 @@ var person = "anna";
 			case 20: // Blue planet
 				if(finishedMission1 == true){
 					movable = true;
-					level = 20
+					level = 20;
+					backdrop = "agate";
+					updateTiles(level);
+					console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 13")
+					console.log("Class: " + baddie.classList);
+					console.log("Level: " + level);
 				}else{
 					movable = false;
 					updateMessage(20);
@@ -683,7 +719,7 @@ var person = "anna";
 				break;
 			case 22: // Exit
 				movable = true;
-				space = false;
+				backdrop = "grass";
 				level = level + 1;
 				updateTiles(level);
 				break;
@@ -752,6 +788,8 @@ var person = "anna";
 					addition = "<img id='phone' class='profile-pic'>: Complete one mission on each planet.";
 				}else if(level == 2){
 					addition = "<img id='phone' class='profile-pic'>: Get your uniform and go to work.";
+				}else if(level == 20){
+					addition = "<img id='phone' class='profile-pic'>: Mission 2 is not yet available.";
 				}
 				break;
 			default: 
@@ -797,15 +835,15 @@ var person = "anna";
 	 * @param  {[type]} y	- direction to move vertically
 	 */
 	var moveBaddie = function(x, y) {
-		if(space == true){
+		if(backdrop == "space"){
 			baddie.className = "baddieTardis";
-		}else if(space == false && person === "anna" && gotPenguin == false){
+		}else if(backdrop == "grass" && person === "anna" && gotPenguin == false){
 			baddie.className = "baddieAnna";
-		}else if(space == false && person === "anna" && gotPenguin == true){
+		}else if(backdrop == "grass" && person === "anna" && gotPenguin == true){
 			baddie.className = "baddieAnnaWork";
-		}else if(space == false && person === "sebastian" && gotPenguin == false){
+		}else if(backdrop == "grass" && person === "sebastian" && gotPenguin == false){
 			baddie.className = "baddieSebastian";
-		}else if(space == false && person === "sebastian" && gotPenguin == true){
+		}else if(backdrop == "grass" && person === "sebastian" && gotPenguin == true){
 			baddie.className = "baddieSebastianWork";
 		}else{
 			baddie.className = "baddieAnna";
@@ -838,25 +876,32 @@ var person = "anna";
         tile = 12;
         gameArea[current] = 10;
 		// Giving the tiles new classnames to redraw them
-		if (space === false){
-                document.getElementById("n" + next).className = "tile t" + tile; // box tile here
-                document.getElementById("n" + current).className = "tile t" + 10; // current tile will be empty
+		if (backdrop === "grass"){
+                document.getElementById("n" + next).className = "tile g" + tile; // box tile here
+                document.getElementById("n" + current).className = "tile g" + 10; // current tile will be empty
 		}
-		else if (space === true){
-                document.getElementById("n" + next).className = "tile ti" + tile; // box tile here
-                document.getElementById("n" + current).className = "tile ti" + 10; // current tile will be empty
+		else if (backdrop === "space"){
+                document.getElementById("n" + next).className = "tile s" + tile; // box tile here
+                document.getElementById("n" + current).className = "tile s" + 10; // current tile will be empty
 		}
+		else if (backdrop === "agate"){
+			document.getElementById("n" + next).className = "tile a" + tile; // box tile here
+			document.getElementById("n" + current).className = "tile a" + 10; // current tile will be empty
+	}
 	};
 	var emptyTile = function(current){
         var tile = gameArea[current];
         tile = 14;
         gameArea[current] = 10;
         
-		if (space === false){
-                document.getElementById("n" + current).className = "tile t" + 10; // current tile will be empty
+		if (backdrop === "grass"){
+                document.getElementById("n" + current).className = "tile g" + 10; // current tile will be empty
 		}
-		else if (space === true){
-                document.getElementById("n" + current).className = "tile ti" + 10; // current tile will be empty
+		else if (backdrop === "space"){
+                document.getElementById("n" + current).className = "tile s" + 10; // current tile will be empty
+		}
+		else if (backdrop === "agate"){
+			document.getElementById("n" + current).className = "tile a" + 10; // current tile will be empty
 		}
 	};
     var updateTiles = function(level){
@@ -864,7 +909,7 @@ var person = "anna";
         switch(level) {
             case 0:
                 currentLevel = level0;
-                space = false;
+                backdrop = "grass";
                 break;
             case 1:
                 currentLevel = level1;
@@ -890,6 +935,12 @@ var person = "anna";
 			case 8:
 				currentLevel = level8;
 				break;
+			case 9:
+				currentLevel = level9;
+				break;
+			case 20:
+				currentLevel = level20;
+				break;
 			default:
 				break;
 		}
@@ -897,18 +948,21 @@ var person = "anna";
         for(var i = 0; i < gameArea.length; i++){
             gameArea[i] = currentLevel[i];
             // emptyTile(i);            
-            if (space === false){
-				document.getElementById("n" + i).className = "tile t" + currentLevel[i]; // current tile will be empty
+            if (backdrop === "grass"){
+				document.getElementById("n" + i).className = "tile g" + currentLevel[i]; // current tile will be empty
             }
-            else if (space === true){
-				document.getElementById("n" + i).className = "tile ti" + currentLevel[i]; // current tile will be empty
+            else if (backdrop === "space"){
+				document.getElementById("n" + i).className = "tile s" + currentLevel[i]; // current tile will be empty
+			}
+			else if (backdrop === "agate"){
+				document.getElementById("n" + i).className = "tile a" + currentLevel[i]; // current tile will be empty
             }
         }
     };
 	/** Turn baddie image right or left - transform handled in style.css */
 	
 	function turnRight() {
-		if (space == true) {
+		if (backdrop == "space") {
 			baddie.classList.remove("baddie-point-left");
 			baddie.classList.add("baddie-point-right");
 		}else{
@@ -917,7 +971,7 @@ var person = "anna";
 		}
 	}
 	function turnLeft() {
-		if (space == true) {
+		if (backdrop == "space") {
 			baddie.classList.remove("baddie-point-right");
 			baddie.classList.add("baddie-point-left");
 		}else{
@@ -926,13 +980,13 @@ var person = "anna";
 		}
 	}
 	function turnUp() {
-		if(space == true){
+		if(backdrop == "space"){
 			baddie.classList.remove("baddie-down");
 			baddie.classList.add("baddie-up");
 		}
 	}
 	function turnDown() {
-		if(space == true){
+		if(backdrop == "space"){
 			console.log("turning down")
 			baddie.classList.remove("baddie-up");
 			baddie.classList.add("baddie-down");
