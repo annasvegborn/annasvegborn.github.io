@@ -153,7 +153,12 @@ padding: 5px 100px 2px 100px;
 .baddieTardis {
     background-image: url(../img/rocket.png);
 }
-
+.baddieMoa {
+	background-image: url(../img/moa.png);
+}
+.baddieMoaWork {
+	background-image: url(../img/moa-work.png);
+}
 .baddie-up{}
 
 .baddie-right {}
@@ -321,13 +326,25 @@ padding: 5px 100px 2px 100px;
     content:url(../img/phone.png);
     background-size: 100%;
 }
-#anna{
+#anna, .anna{
     content:url(../img/anna.png);
     background-size: 100%;
 }
-#sebastian{
+#sebastian, .sebastian {
     content:url(../img/sebastian.png);
     background-size: 100%;
+}
+#moa, .moa{
+    content:url(../img/moa.png);
+    background-size: 100%;
+}
+#swap-img{
+    height: 15px;
+    width: 15px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    vertical-align: middle;
 }
 .profile-pic{
     height: 18.4px;

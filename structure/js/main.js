@@ -25,13 +25,13 @@
 	gridSize = 10;
 	// Sets content size to match tilesize and gridsize
 	content.style.width = content.style.height = gridSize*tileSize + "px";
-	coinTab.style.width = (gridSize*tileSize)/3 +1 + "px";
+	coinTab.style.width = (gridSize*tileSize)/4 +1 + "px";
 	coinTab.style.height = (gridSize*tileSize)/13 + "px";
 	messageTab.style.width = coinTab.style.width;
 	messageTab.style.height = coinTab.style.height;
-	thirdTab.style.width = (gridSize*tileSize)/6 +1 + "px";
+	thirdTab.style.width = (gridSize*tileSize)/4 +1 + "px";
 	thirdTab.style.height = coinTab.style.height;
-	forthTab.style.width = (gridSize*tileSize)/6 +1 + "px";
+	forthTab.style.width = (gridSize*tileSize)/4 +1 + "px";
 	forthTab.style.height = coinTab.style.height;
 	// Gets starting position of baddie
 	left = baddie.offsetLeft;
@@ -289,9 +289,12 @@ var person = "anna";
 		console.log("Person1: " + person);
 		if(person === "anna" ){
 			person = "sebastian";
+		}else if(person === "sebastian"){
+			person = "moa";
 		}else{
 			person = "anna";
 		}
+		document.getElementById("swap-img").className = person;
 		moveBaddie(0,0);
 		console.log("Person2: " + person);
 	});
@@ -769,24 +772,24 @@ var person = "anna";
 				}
 				break;
 			case 18: //penguin
-				addition = "<img id='doctorWho' class='profile-pic'>: <em>Bag picked up!</em>";
+				addition = "<img id='"+ person +"' class='profile-pic'>: <em>Bag content picked up!</em>";
 				break;
 			case 19: //Work
 				if(gotPenguin == true){
 					addition = "<img id='"+ person +"' class='profile-pic'>: <em>Working!</em>";
 				}else{
-					addition = "<img id='doctorWho' class='profile-pic'>: <em>I don't have the right uniform!</em>";
+					addition = "<img id='"+ person +"' class='profile-pic'>: <em>I don't have the right uniform!</em>";
 				} 
 				break;
 			case 20:
-				addition = "<img id='doctorWho' class='profile-pic'>: <em>I have to complete mission 1 first!</em>";
+				addition = "<img id='"+ person +"' class='profile-pic'>: <em>I have to complete mission 1 first!</em>";
 				break;
 			case 21:
-				addition = "<img id='doctorWho' class='profile-pic'>: <em>I have to complete mission 1 and 2 first!</em>";
+				addition = "<img id='"+ person +"' class='profile-pic'>: <em>I have to complete mission 1 and 2 first!</em>";
 				break;
 			case 24:
 				addition = "<img id='vortex2' class='profile-pic'> <em>TIME VORTEX</em><br>";
-				addition += "<img id='doctorWho' class='profile-pic'>: <em>Going back in time.</em>";
+				addition += "<img id='"+ person +"' class='profile-pic'>: <em>Going back in time.</em>";
 				break;
 			case 25:
 				if(level == 0){
@@ -850,6 +853,10 @@ var person = "anna";
 			baddie.className = "baddieSebastian";
 		}else if(backdrop == "grass" && person === "sebastian" && gotPenguin == true){
 			baddie.className = "baddieSebastianWork";
+		}else if(backdrop == "grass" && person === "moa" && gotPenguin == false){
+			baddie.className = "baddieMoa";
+		}else if(backdrop == "grass" && person === "moa" && gotPenguin == true){
+			baddie.className = "baddieMoaWork";
 		}else{
 			baddie.className = "baddieAnna";
 		}
