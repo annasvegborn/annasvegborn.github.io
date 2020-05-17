@@ -19,6 +19,18 @@ h1{
 p {
     margin: 2px;
 }
+.popMessage {
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    margin: 40px;
+    width: 220;
+    border: solid lightgray;
+    border-width: 3px;
+    border-radius: 2px;
+    z-index: 11;
+    background-color: whitesmoke;
+}
 .tab{
     font-weight: bold;
     border: solid lightgray;
@@ -27,32 +39,33 @@ p {
     display: inline-block;
     background-color: #e6e6e6  /* #f2f2f2; e6e6e6 */
 }
-#thirdTab, #forthTab{
+#forthTab{
     visibility: hidden;
 }
 #coinView{
     padding: 3px;
     display: none;
     position: absolute;
-	height: 40px;
-	width: 80px;
+	height: 55px;
+	width: 121px;
     border: solid lightgray;
     border-width: 0px 2px 2px 0px;
     border-radius: 2px;
     z-index: 11;
-    background-color: e6e6e6;
+    background-color: whitesmoke;
 }
 #messageView{
+    margin-left: 35px;
     padding: 3px;
     display: none;
     position: absolute;
-	height: 150px;
-	width: 210px;
+	height: 152px;
+	width: 244px;
     border: solid lightgray;
-    border-width: 0px 2px 2px 0px;
+    border-width: 0px 2px 2px 2px;
     border-radius: 2px;
     z-index: 13;
-    background-color: e6e6e6;
+    background-color: whitesmoke;
     overflow-x: hidden; 
     overflow-y: auto; 
 }
@@ -64,6 +77,7 @@ p {
     text-align: left;
 }
 #bigDiv{
+    touch-action: manipulation;
     text-align: center;
     margin: 5px;
     border: solid 2px lightgray;
@@ -124,18 +138,46 @@ padding: 5px 100px 2px 100px;
 #arrowDown {
 padding: 5px 100px 2px 100px;
 }
-.baddieDoctorWho {
-	background-image: url(../img/DoctorWho.png);
+.baddieAnna {
+	background-image: url(../img/anna.png);
+}
+.baddieAnnaWork {
+	background-image: url(../img/anna-work.png);
+}
+.baddieSebastian {
+	background-image: url(../img/sebastian.png);
+}
+.baddieSebastianWork {
+	background-image: url(../img/sebastian-work.png);
 }
 .baddieTardis {
-    background-image: url(../img/Tardis.png);
+    background-image: url(../img/rocket.png);
 }
+.baddieMoa {
+	background-image: url(../img/moa.png);
+}
+.baddieMoaWork {
+	background-image: url(../img/moa-work.png);
+}
+.baddie-up{}
 
 .baddie-right {}
 
 .baddie-left {
 	transform: rotateY(180deg);
 	-webkit-transform: rotateY(180deg);
+}
+.baddie-point-right{
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+.baddie-point-left{
+    transform: rotate(270deg);
+	-webkit-transform: rotate(270deg);
+}
+.baddie-down {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
 }
 
 .tile, .t {
@@ -145,100 +187,178 @@ padding: 5px 100px 2px 100px;
 	background-repeat: no-repeat;
 }
 
-.t10 {
+.g10 {
 	background: url(../img/tiles/grass.png);
 }
-.t11 {
-	background: url(../img/tiles/brick-wall.png);
+.s10 {
+    background: url(../img/tiles/space.png)
 }
-.t12 {
-	background: url(../img/tiles/dalek_grass.png);
+.a10 {
+    background: url(../img/tiles/agate.png)
 }
-.t13 {
-	background: url(../img/tiles/tardis_door2.png);
+.g11 {
+	background: url(../img/tiles/tree-grass.png);
 }
-.t14 {
-	background: url(../img/tiles/coin_gold_grass1.png);
+.s11 {
+    background: url(../img/tiles/wall-space.png);
 }
-.t15{
+.a11 {
+    background: url(../img/tiles/wall-agate.png);
+}
+.g12 {
+	background: url(../img/tiles/obstacle-grass.png);
+}
+.s12{
+    background: url(../img/tiles/obstacle-space.png);
+}
+.a12{
+    background: url(../img/tiles/obstacle-agate.png);
+}
+.g13 {
+	background: url(../img/tiles/spaceship-grass.png);
+}
+.s13 {
+    background: url(../img/tiles/planet-green.png);
+}
+.a13 {
+	background: url(../img/tiles/spaceship-agate.png);
+}
+.g14 {
+	background: url(../img/tiles/coin-grass.png);
+}
+.s14 {
+    background: url(../img/tiles/coin-space.png);
+}
+.a14 {
+    background: url(../img/tiles/coin-agate.png);
+}
+.g15{
     background: url(../img/tiles/vortex-grass.png);
 }
-.t16 {
-    background: url(../img/tiles/guard-grass.png);
-}
-.t17 {
-    background: url(../img/tiles/guard2-grass.png);
-}
-.t18 {
-    background: url(../img/tiles/penguin-grass.png);
-}
-.t19 {
-    background: url(../img/tiles/penguin-outline-grass.png);
-}
-
-.ti10 {
-    background: url(../img/tiles/space1.png)
-}
-.ti11 {
-    background: url(../img/tiles/space-wall.png);
-}
-.ti12{
-    background: url(../img/tiles/sun.png);
-}
-.ti13 {
-    background: url(../img/tiles/earth.png);
-}
-.ti14 {
-    background: url(../img/tiles/gem_red_space1.png);
-}
-.ti15{
+.s15{
     background: url(../img/tiles/vortex-space.png);
 }
-.ti16 {
+.g16 {
+    background: url(../img/tiles/guard-grass.png);
+}
+.s16 {
     background: url(../img/tiles/guard-space.png);
 }
-.ti17 {
+.g17 {
+    background: url(../img/tiles/guard2-grass.png);
+}
+.s17 {
     background: url(../img/tiles/guard2-space.png);
 }
-.ti18 {
-    background: url(../img/tiles/penguin-space.png);
+.g18 {
+    background: url(../img/tiles/bag-grass.png);
 }
-.ti19 {
-    background: url(../img/tiles/space1.png);
+.s18 {
+    background: url(../img/tiles/bag-space.png);
 }
-.guard{
-    background: url(../img/guard-small.png);
-    height: 20px;
-    width: 20px;
+.g19 {
+    background: url(../img/tiles/work-grass.png);
+}
+.s19 {
+    background: url(../img/tiles/work-grass.png);
+}
+.g20 {
+    background: url(../img/tiles/planet-blue.png);
+}
+.s20 {
+    background: url(../img/tiles/planet-blue.png);
+}
+.g21 {
+    background: url(../img/tiles/planet-orange.png);
+}
+.s21 {
+    background: url(../img/tiles/planet-orange.png);
+}
+.g22 {
+    background: url(../img/tiles/grass.png); /* exit*/
+}
+.s22 {
+    background: url(../img/tiles/space.png);
+}
+.g23 {
+    background: url(../img/tiles/grass.png); /* entry */
+}
+.s23 {
+    background: url(../img/tiles/space.png);
+}
+.g24 {
+    background: url(../img/tiles/vortex2-grass.png);
+}
+.s24 {
+    background: url(../img/tiles/vortex2-space.png);
+}
+.g25 {
+    background: url(../img/tiles/phone-grass.png);
+}
+.s25 {
+    background: url(../img/tiles/phone-space.png);
+}
+.a25 {
+    background: url(../img/tiles/phone-agate.png);
+}
+
+#guard{
+    content:url(../img/guard.png);
+    background-size: 100%;
+}
+#guard2{
+    content:url(../img/guard2.png);
+    background-size: 100%;
+}
+#vortex{
+    content:url(../img/vortex.png);
+    background-size: 100%;
+}
+#vortex2{
+    content:url(../img/vortex2.png);
+    background-size: 100%;
+}
+#doctorWho{
+    content:url(../img/anna.png);
+    background-size: 100%;
+}
+#phone{
+    content:url(../img/phone.png);
+    background-size: 100%;
+}
+#anna, .anna{
+    content:url(../img/anna.png);
+    background-size: 100%;
+}
+#sebastian, .sebastian {
+    content:url(../img/sebastian.png);
+    background-size: 100%;
+}
+#moa, .moa{
+    content:url(../img/moa.png);
+    background-size: 100%;
+}
+#swap-img{
+    height: 15px;
+    width: 15px;
     padding: 0;
     margin: 0;
     border: none;
-    margin-top: 5px;
+    vertical-align: middle;
 }
-.guard2{
-    background: url(../img/guard2-small.png);
-    height: 20px;
-    width: 20px;
+.profile-pic{
+    height: 18.4px;
+    width: 18.4px;
     padding: 0;
     margin: 0;
     border: none;
-    margin-top: 5px;
+    vertical-align: middle;
+    
 }
-.penguin{
-    background: url(../img/penguin-small.png);
-    height: 20px;
-    width: 20px;
-    padding: 0;
-    margin: 0;
-    border: none;
-    margin-top: 5px;
-}
-.doctorWho{
-    background-image: url(../img/DoctorWho-small.png);
-    height: 20px;
-    width: 20px;
-    padding: 0;
-    margin: 0;
-    border: none;
-    margin-top: 5px;
+.chat{
+    font-size: 16px;
+    display: inline;
+    vertical-align: middle;
+    padding: 0px;
+    margin: 0px;
 }

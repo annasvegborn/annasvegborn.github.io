@@ -3,7 +3,6 @@
 
 
 (function(){
-	// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
 	'use strict';
 	// HTML elements
 	var baddie, content, coinTab, messageTab, thirdTab, forthTab;
@@ -26,13 +25,13 @@
 	gridSize = 10;
 	// Sets content size to match tilesize and gridsize
 	content.style.width = content.style.height = gridSize*tileSize + "px";
-	coinTab.style.width = (gridSize*tileSize)/3 +1 + "px";
+	coinTab.style.width = (gridSize*tileSize)/4 +1 + "px";
 	coinTab.style.height = (gridSize*tileSize)/13 + "px";
 	messageTab.style.width = coinTab.style.width;
 	messageTab.style.height = coinTab.style.height;
-	thirdTab.style.width = (gridSize*tileSize)/6 +1 + "px";
+	thirdTab.style.width = (gridSize*tileSize)/4 +1 + "px";
 	thirdTab.style.height = coinTab.style.height;
-	forthTab.style.width = (gridSize*tileSize)/6 +1 + "px";
+	forthTab.style.width = (gridSize*tileSize)/4 +1 + "px";
 	forthTab.style.height = coinTab.style.height;
 	// Gets starting position of baddie
 	left = baddie.offsetLeft;
@@ -41,7 +40,11 @@
 	posLeft = 0;
 	posTop = 0;
 
+	//Other global variables
 	var unRead = 0;
+	var finishedMission1 = false;
+	var finishedMission2 = false;
+	var finishedMission3 = false;
 
 	/**
 	 * This is the game area with a 10x10 grid
@@ -58,30 +61,42 @@
 	 * 20 - enemy (deducts points)
 	 */
 
+	/* gameArea = [
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,11,11,11,11,11,11,11,11,11,
+		]; */
 
 	gameArea = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,10,10,10,10,12,10,10,13,11,
-		11,10,10,10,10,12,10,10,10,11,
-		11,10,14,10,10,12,10,10,10,11,
-		11,10,10,10,10,12,12,12,12,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,14,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
+		11,10,11,11,10,14,11,10,10,11,
+		11,10,11,10,10,11,11,13,10,11,
+		11,25,10,10,11,10,10,10,10,11,
+		11,11,11,10,11,11,11,12,12,11,
+		11,14,11,10,10,14,11,10,10,11,
+		11,10,11,10,11,11,11,11,10,11,
+		11,10,10,10,10,11,14,10,10,11,
+		11,14,11,11,10,10,10,11,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
 
     var level0 = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,10,10,10,10,12,10,10,13,11,
-		11,10,10,10,10,12,10,10,10,11,
-		11,10,14,10,10,12,10,10,10,11,
-		11,10,10,10,10,12,12,12,12,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,14,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
+		11,10,11,11,10,14,11,10,10,11,
+		11,10,11,10,10,11,11,13,10,11,
+		11,25,10,10,11,10,10,10,10,11,
+		11,11,11,10,11,11,11,12,12,11,
+		11,14,11,10,10,14,11,10,10,11,
+		11,10,11,10,11,11,11,11,10,11,
+		11,10,10,10,10,11,14,10,10,11,
+		11,14,11,11,10,10,10,11,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
     
@@ -89,102 +104,128 @@
 		11,11,11,11,11,11,11,11,11,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
-		11,10,14,12,10,14,12,10,10,11,
-		11,10,12,10,10,14,12,10,12,11,
+		11,10,10,13,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
-		11,10,13,10,10,10,10,10,10,11,
-		11,10,10,14,10,12,10,12,10,11,
+		11,20,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,21,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
     
     var level2 = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,14,10,10,10,10,10,10,14,11,
-		11,10,10,10,13,10,10,10,10,11,
+		22,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,12,10,10,11,
+		11,10,10,10,25,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,12,12,12,10,11,
-		11,14,10,10,10,10,10,10,14,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
     
     var level3 = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,14,10,12,10,10,10,10,14,11,
-		11,10,10,12,10,10,10,10,10,11,
-		11,10,10,12,10,10,10,10,10,11,
-		11,12,12,12,10,10,10,10,10,11,
-		11,10,10,10,10,10,12,10,10,11,
-		11,10,10,10,10,10,10,13,10,11,
-		11,10,10,10,10,12,12,12,10,11,
-		11,10,10,10,10,10,10,10,10,11,
+		23,10,10,10,10,12,10,10,10,11,
+		11,10,11,10,11,10,11,10,11,11,
+		11,10,11,10,11,10,11,10,11,11,
+		11,10,11,10,11,15,11,10,11,11,
+		11,14,11,14,11,14,11,14,11,11,
+		11,10,11,10,11,10,11,12,11,11,
+		11,10,11,10,11,10,11,10,11,11,
+		11,10,10,10,10,10,10,10,13,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
     
     var level4 = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,15,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
+		11,10,12,10,10,10,13,10,10,11,
+		11,10,10,12,12,10,10,10,10,11,
+		11,14,10,12,10,10,12,12,10,11,
+		11,10,10,10,10,12,10,10,14,11,
+		11,10,10,10,12,10,10,12,10,11,
+		11,10,14,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,11,16,11,10,10,10,10,10,11,
-		11,10,10,11,10,10,10,10,10,11,
-		11,13,10,11,10,10,10,10,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
     
     var level5 = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,13,14,14,14,14,14,14,14,11,
-		11,14,14,14,14,14,14,14,14,11,
-		11,14,14,14,14,14,14,14,14,11,
-		11,14,14,14,14,14,14,14,14,11,
-		11,14,14,14,14,14,14,14,14,11,
-		11,14,14,14,14,14,14,14,14,11,
-		11,14,14,14,14,14,14,14,14,11,
-		11,14,14,14,14,14,14,14,14,11,
-		11,11,11,11,11,11,11,11,11,11,
+		11,14,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,12,10,10,10,10,10,10,10,11,
+		11,10,12,12,11,11,11,11,11,11,
+		11,10,10,10,16,10,10,14,11,11,
+		11,10,10,12,11,10,11,10,10,11,
+		11,10,10,10,11,14,10,11,10,11,
+		11,24,10,10,11,11,10,10,10,11,
+		11,11,11,11,11,11,11,11,22,11,
 		];
 
 	var level6 = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,13,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,14,10,10,10,10,10,10,14,11,
-		11,11,11,11,11,11,11,11,11,11,
+		11,10,14,10,10,10,10,10,10,11,
+		11,10,18,10,10,10,10,24,10,11,
+		11,10,10,24,10,10,10,10,10,11,
+		11,10,10,10,10,14,10,10,14,11,
+		11,10,14,24,10,24,10,10,10,11,
+		11,10,10,10,10,10,10,24,10,11,
+		11,10,24,10,10,10,10,10,10,11,
+		11,10,10,10,13,10,10,10,10,11,
+		11,11,11,11,11,11,11,11,23,11,
 		];
 
 	var level7 = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,15,10,10,10,11,10,10,10,11,
-		11,10,10,10,10,11,10,10,10,11,
-		11,10,10,10,10,17,10,10,10,11,
-		11,14,10,10,10,11,13,10,10,11,
-		11,10,10,10,10,11,10,10,18,11,
-		11,10,10,10,10,11,10,10,10,11,
-		11,10,10,14,10,11,10,10,10,11,
-		11,14,10,10,10,11,10,10,14,11,
+		11,12,12,12,10,10,10,10,10,11,
+		11,10,12,10,10,10,13,10,10,11,
+		11,10,10,12,12,12,10,10,10,11,
+		11,10,10,10,12,10,10,10,10,11,
+		11,10,10,10,10,12,12,12,10,11,
+		11,10,10,10,10,10,12,10,10,11,
+		11,10,10,10,10,10,10,12,12,11,
+		11,10,10,10,10,10,10,10,12,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
 
 	var level8 = [
 		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,11,10,10,10,10,10,11,
+		11,10,10,17,10,10,10,10,10,11,
+		11,11,10,11,11,10,10,10,24,11,
+		11,10,10,10,10,11,11,11,11,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,19,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,13,11,
+		11,11,11,11,11,11,11,11,11,11,
+		];
+	
+	var level9 = [
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,13,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,20,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,21,10,11,
+		11,11,11,11,11,11,11,11,11,11,
+		];
+
+	var level20 = [
+		11,11,11,11,11,11,11,11,11,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,15,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,25,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,13,11,
+		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
@@ -204,7 +245,7 @@
 			// Writing out the current tile from gameArea
 			var tileFromArray = gameArea[i];
 			// Adding class name to tile
-			tile.className = "tile t" + tileFromArray;
+			tile.className = "tile g" + tileFromArray;
 			// Adding ID to tile
 			tile.id = "n" + i;
 			// Append tile to the content
@@ -216,6 +257,7 @@ var coinViewOpen = false;
 var coinView = document.getElementById("coinView");
 var messageViewOpen = false;
 var messageView = document.getElementById("messageView");
+var person = "anna";
 
 	document.getElementById("coinTab").addEventListener("click", function(){ 
 		if(coinViewOpen == false){
@@ -229,7 +271,6 @@ var messageView = document.getElementById("messageView");
 		}
 		console.log("In coins funciton");
 	});
-
 	document.getElementById("messageTab").addEventListener("click", function(){ 
 		if(messageViewOpen == false){
 			document.getElementById("messageTab").innerHTML = "Messages";
@@ -243,7 +284,19 @@ var messageView = document.getElementById("messageView");
 			messageView.style.display = "none";
 			messageViewOpen = false;
 		}
-		console.log("In coins funciton");
+	});
+	document.getElementById("thirdTab").addEventListener("click", function(){ 
+		console.log("Person1: " + person);
+		if(person === "anna" ){
+			person = "sebastian";
+		}else if(person === "sebastian"){
+			person = "moa";
+		}else{
+			person = "anna";
+		}
+		document.getElementById("swap-img").className = person;
+		moveBaddie(0,0);
+		console.log("Person2: " + person);
 	});
 
 /* ---- Mouse keys ----- */
@@ -266,13 +319,15 @@ var messageView = document.getElementById("messageView");
 	document.getElementById("arrowUp").addEventListener("click", function(){ 
                 if(isBaddieMovable(0, -1)) {
                     // Go up - Use moveBaddie-function
-                    moveBaddie(0, -1);
+					moveBaddie(0, -1);
+					turnUp();
                 }
 	});
 	document.getElementById("arrowDown").addEventListener("click", function(){ 
                 if(isBaddieMovable(0, 1)) {
                     // Go down - Use moveBaddie-function
-                    moveBaddie(0, 1);
+					moveBaddie(0, 1);
+					turnDown();
                 }
 	});
 
@@ -326,7 +381,8 @@ var messageView = document.getElementById("messageView");
             case 38:
                 if(isBaddieMovable(0, -1)) {
                     // Go up - Use moveBaddie-function
-                    moveBaddie(0, -1);
+					moveBaddie(0, -1);
+					turnUp();
                 }
                 break;
             case 39:
@@ -340,7 +396,8 @@ var messageView = document.getElementById("messageView");
             case 40:
                 if(isBaddieMovable(0, 1)) {
                     // Go down - Use moveBaddie-function
-                    moveBaddie(0, 1);
+					moveBaddie(0, 1);
+					turnDown();
                 }
                 break;
 			default:
@@ -368,6 +425,10 @@ var messageView = document.getElementById("messageView");
 	var swipeDirection = null;	
 
 	document.getElementById("swipeBox").addEventListener("touchstart", function(event) {
+		coinView.style.display = "none";
+		coinViewOpen = false;
+		messageView.style.display = "none";
+		messageViewOpen = false
 		// disable the standard ability to select the touched object
 		event.preventDefault();
 		// get the total number of fingers touching the screen
@@ -505,7 +566,7 @@ var messageView = document.getElementById("messageView");
 	 */
 
 	// Variables
-	var space = false;
+	var backdrop = "grass";
 	var coinCount = 0;
 	var level = 0;
 	var gotPenguin = false;
@@ -554,10 +615,15 @@ var messageView = document.getElementById("messageView");
 				}
 				break;
 			case 13: // Door
+				if(level == 20){
+					level = 1;
+				}else{
+					level = level + 1;
+				}
 				movable = true;
-				if(space === false){space = true;}
-				else{space = false;}
-				level = level + 1;
+				if(backdrop === "grass" || backdrop == "agate"){backdrop = "space";}
+				else{backdrop = "grass";}
+				
 				updateTiles(level);
 				console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 13")
 				console.log("Class: " + baddie.classList);
@@ -579,44 +645,98 @@ var messageView = document.getElementById("messageView");
 				document.getElementById("coinTab").innerHTML = "Coins: " + coinCount;
 			    break;
             case 15: //Vortex
-                level = 0;
+				// level = 0;
+				movable = true;
 				updateTiles(level);
 				updateMessage(15);
                 break;
             case 16: //Guard
 				updateMessage(16);
-                if(coinCount >= 15){
+                if(coinCount >= 1){
                     movable = true;
                     gameArea[tilePos] = 10;
 					emptyTile(tilePos);
-					coinCount = coinCount - 15;
+					coinCount = coinCount - 1;
+					document.getElementById("coinTab").innerHTML = "Coins: " + coinCount;
+					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
                 }else{
                     movable = false;
                 }
 				break;
 			case 17: //Guard 2
 				updateMessage(17);
-				if(coinCount >= 100){
+				if(coinCount >= 5){
 					movable = true;
 					gameArea[tilePos] = 10;
 					emptyTile(tilePos);
-					coinCount = coinCount - 100;
+					coinCount = coinCount - 5;
+					document.getElementById("coinTab").innerHTML = "Coins: " + coinCount;
+					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
 				}else{
 					movable = false;
 				}
 				break;
-			case 18: // Penguin
+			case 18: // Bag
 				updateMessage(18);
 				gotPenguin = true;
 				movable = true;
 				gameArea[tilePos] = 10;
 				emptyTile(tilePos);
+				moveBaddie(0,0);
 				break;
 			case 19: // Penguin-home
 				updateMessage(19);	
 				if(gotPenguin == true){
-					document.getElementById("n" + tilePos).className = "tile t" + 18;
+					movable = true;
+					document.getElementById("baddie").style.visibility = "hidden";
+					finishedMission1 = true;
+					setTimeout(baddieWorking, 3000);
+					moveBaddie(0, 1);
+				}else{
+					movable = false;
 				}
+				break;
+			case 20: // Blue planet
+				if(finishedMission1 == true){
+					movable = true;
+					level = 20;
+					backdrop = "agate";
+					updateTiles(level);
+					console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 13")
+					console.log("Class: " + baddie.classList);
+					console.log("Level: " + level);
+				}else{
+					movable = false;
+					updateMessage(20);
+				}
+				break;
+			case 21: // Orange planet
+				if(finishedMission1 == true && finishedMission2 == true){
+					movable = true;
+					level = 30; 
+				}else{
+					updateMessage(21);
+					movable = false;
+
+				}
+				break;
+			case 22: // Exit
+				movable = true;
+				backdrop = "grass";
+				level = level + 1;
+				updateTiles(level);
+				break;
+			case 24: //Vortex2
+				movable = true;
+                level = level - 2;
+				updateTiles(level);
+				updateMessage(15);
+				break;
+			case 25: //Phone
+				movable = true;
+				updateMessage(25);
+				gameArea[tilePos] = 10;
+				emptyTile(tilePos);
 				break;
 			default:
 				// Tile was impassible - collided, do not move baddie
@@ -627,44 +747,67 @@ var messageView = document.getElementById("messageView");
 		return movable;
 		
 	};
+	var baddieWorking = function(){
+		document.getElementById("baddie").style.visibility = "visible";
+		gotPenguin = false;
+	}
 	var firstMessage = true;
 	var updateMessage = function(tileNr) {
 		var addition = "";
 		switch(tileNr){
 			case 15: //Vortex
-				addition = "<img class='doctorWho'>: <em>Going back in time.</em>";
+				addition = "<img id='vortex' class='profile-pic'> <em>TIME VORTEX</em><br>";
+				addition += "<img id='"+ person +"' class='profile-pic'>: <em>Going back in time.</em>";
 				break;
 			case 16: //guard
-				addition = "<img class='guard'>: <em>Entrance is 15 coins.</em>";
+				addition = "<img id='guard' class='profile-pic'><p class='chat'>:<em> Entrance is 12 coins.</em></p>";
 				if(coinCount >= 15){
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					addition += "<br>" + "<img class='guard'>: <em>Thanks.</em>";
+					addition += "<br>" + "<img id='guard' class='profile-pic'>: <em>Thanks.</em>";
                 }
 				break;
 			case 17: //guard 2
-				addition = "<img class='guard2'>: <em>Entrance is 100 coins.</em>";
+				addition = "<img id='guard2' class='profile-pic'>: <em>Entrance is 5 coins.</em>";
 				if(coinCount >= 100){
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
-					addition += "<br>" + "<img class='guard2'>: <em>Thanks.</em>";
+					addition += "<br>" + "<img id='guard2' class='profile-pic'>: <em>Thanks.</em>";
 				}
 				break;
 			case 18: //penguin
-				addition = "<img class='doctorWho'>: <em>Penguin picked up!</em>";
+				addition = "<img id='"+ person +"' class='profile-pic'>: <em>Bag content picked up!</em>";
 				break;
-			case 19: //penguin home
+			case 19: //Work
 				if(gotPenguin == true){
-					addition = "<img class='doctorWho'>: <em>Penguin returned!<br><img class='penguin'>: Thank you!</em>";
+					addition = "<img id='"+ person +"' class='profile-pic'>: <em>Working!</em>";
 				}else{
-					addition = "<img class='doctorWho'>: <em>I don't have the penguin!</em>";
+					addition = "<img id='"+ person +"' class='profile-pic'>: <em>I don't have the right uniform!</em>";
 				} 
+				break;
+			case 20:
+				addition = "<img id='"+ person +"' class='profile-pic'>: <em>I have to complete mission 1 first!</em>";
+				break;
+			case 21:
+				addition = "<img id='"+ person +"' class='profile-pic'>: <em>I have to complete mission 1 and 2 first!</em>";
+				break;
+			case 24:
+				addition = "<img id='vortex2' class='profile-pic'> <em>TIME VORTEX</em><br>";
+				addition += "<img id='"+ person +"' class='profile-pic'>: <em>Going back in time.</em>";
+				break;
+			case 25:
+				if(level == 0){
+					addition = "<img id='phone' class='profile-pic'>: Complete one mission on each planet.";
+				}else if(level == 2){
+					addition = "<img id='phone' class='profile-pic'>: Get your uniform and go to work.";
+				}else if(level == 20){
+					addition = "<img id='phone' class='profile-pic'>: Mission 2 is not yet available.";
+				}
 				break;
 			default: 
 				console.log("No message");
 				break;
 		}
 		if(messageViewOpen == false){
-			unRead = unRead + 1;
-			document.getElementById("messageTab").innerHTML = "Messages (" + unRead + ")";
+			//unRead = unRead + 1;
+			//document.getElementById("messageTab").innerHTML = "Messages (" + unRead + ")";
+			unRead = 0;
 		}else{
 			unRead = 0;
 		}
@@ -675,9 +818,24 @@ var messageView = document.getElementById("messageView");
 		}else{
 			document.getElementById("message").innerHTML += addition + "<br>";
 		}
-		
 		messageView.scrollTop = messageView.scrollHeight - messageView.clientHeight;
-	};
+		popMessage(addition);
+	}
+
+	var popMessage = function(message){
+		console.log("In popMessage function")
+		console.log("Messge: " + message);
+		var popUp = document.createElement('div');
+		var parent = document.getElementById("content");
+		popUp.id = "popMessage";
+		popUp.className = "popMessage";
+		popUp.innerHTML = message;
+		parent.appendChild(popUp);
+		setTimeout(removePopMessage, 2000);
+	}
+	var removePopMessage = function(){
+		document.getElementById("content").removeChild(document.getElementById("popMessage"));
+	}
 
 	/**
 	 * Changes position variables for baddie and style to draw the change out on the screen
@@ -685,11 +843,24 @@ var messageView = document.getElementById("messageView");
 	 * @param  {[type]} y	- direction to move vertically
 	 */
 	var moveBaddie = function(x, y) {
-		if(space == true){
+		if(backdrop == "space"){
 			baddie.className = "baddieTardis";
+		}else if(backdrop == "grass" && person === "anna" && gotPenguin == false){
+			baddie.className = "baddieAnna";
+		}else if(backdrop == "grass" && person === "anna" && gotPenguin == true){
+			baddie.className = "baddieAnnaWork";
+		}else if(backdrop == "grass" && person === "sebastian" && gotPenguin == false){
+			baddie.className = "baddieSebastian";
+		}else if(backdrop == "grass" && person === "sebastian" && gotPenguin == true){
+			baddie.className = "baddieSebastianWork";
+		}else if(backdrop == "grass" && person === "moa" && gotPenguin == false){
+			baddie.className = "baddieMoa";
+		}else if(backdrop == "grass" && person === "moa" && gotPenguin == true){
+			baddie.className = "baddieMoaWork";
 		}else{
-			baddie.className = "baddieDoctorWho";
+			baddie.className = "baddieAnna";
 		}
+		console.log("Person3: " + person);
 		// Update baddies position variables
 		posLeft += x;
 		posTop += y;
@@ -717,25 +888,32 @@ var messageView = document.getElementById("messageView");
         tile = 12;
         gameArea[current] = 10;
 		// Giving the tiles new classnames to redraw them
-		if (space === false){
-                document.getElementById("n" + next).className = "tile t" + tile; // box tile here
-                document.getElementById("n" + current).className = "tile t" + 10; // current tile will be empty
+		if (backdrop === "grass"){
+                document.getElementById("n" + next).className = "tile g" + tile; // box tile here
+                document.getElementById("n" + current).className = "tile g" + 10; // current tile will be empty
 		}
-		else if (space === true){
-                document.getElementById("n" + next).className = "tile ti" + tile; // box tile here
-                document.getElementById("n" + current).className = "tile ti" + 10; // current tile will be empty
+		else if (backdrop === "space"){
+                document.getElementById("n" + next).className = "tile s" + tile; // box tile here
+                document.getElementById("n" + current).className = "tile s" + 10; // current tile will be empty
 		}
+		else if (backdrop === "agate"){
+			document.getElementById("n" + next).className = "tile a" + tile; // box tile here
+			document.getElementById("n" + current).className = "tile a" + 10; // current tile will be empty
+	}
 	};
 	var emptyTile = function(current){
         var tile = gameArea[current];
         tile = 14;
         gameArea[current] = 10;
         
-		if (space === false){
-                document.getElementById("n" + current).className = "tile t" + 10; // current tile will be empty
+		if (backdrop === "grass"){
+                document.getElementById("n" + current).className = "tile g" + 10; // current tile will be empty
 		}
-		else if (space === true){
-                document.getElementById("n" + current).className = "tile ti" + 10; // current tile will be empty
+		else if (backdrop === "space"){
+                document.getElementById("n" + current).className = "tile s" + 10; // current tile will be empty
+		}
+		else if (backdrop === "agate"){
+			document.getElementById("n" + current).className = "tile a" + 10; // current tile will be empty
 		}
 	};
     var updateTiles = function(level){
@@ -743,7 +921,7 @@ var messageView = document.getElementById("messageView");
         switch(level) {
             case 0:
                 currentLevel = level0;
-                space = false;
+                backdrop = "grass";
                 break;
             case 1:
                 currentLevel = level1;
@@ -769,6 +947,12 @@ var messageView = document.getElementById("messageView");
 			case 8:
 				currentLevel = level8;
 				break;
+			case 9:
+				currentLevel = level9;
+				break;
+			case 20:
+				currentLevel = level20;
+				break;
 			default:
 				break;
 		}
@@ -776,23 +960,49 @@ var messageView = document.getElementById("messageView");
         for(var i = 0; i < gameArea.length; i++){
             gameArea[i] = currentLevel[i];
             // emptyTile(i);            
-            if (space === false){
-				document.getElementById("n" + i).className = "tile t" + currentLevel[i]; // current tile will be empty
+            if (backdrop === "grass"){
+				document.getElementById("n" + i).className = "tile g" + currentLevel[i]; // current tile will be empty
             }
-            else if (space === true){
-				document.getElementById("n" + i).className = "tile ti" + currentLevel[i]; // current tile will be empty
+            else if (backdrop === "space"){
+				document.getElementById("n" + i).className = "tile s" + currentLevel[i]; // current tile will be empty
+			}
+			else if (backdrop === "agate"){
+				document.getElementById("n" + i).className = "tile a" + currentLevel[i]; // current tile will be empty
             }
         }
     };
 	/** Turn baddie image right or left - transform handled in style.css */
 	
 	function turnRight() {
-		baddie.classList.remove("baddie-left");
-		baddie.classList.add("baddie-right");
+		if (backdrop == "space") {
+			baddie.classList.remove("baddie-point-left");
+			baddie.classList.add("baddie-point-right");
+		}else{
+			baddie.classList.remove("baddie-left");
+			baddie.classList.add("baddie-right");
+		}
 	}
 	function turnLeft() {
-		baddie.classList.remove("baddie-right");
-		baddie.classList.add("baddie-left");
+		if (backdrop == "space") {
+			baddie.classList.remove("baddie-point-right");
+			baddie.classList.add("baddie-point-left");
+		}else{
+			baddie.classList.remove("baddie-right");
+			baddie.classList.add("baddie-left");
+		}
+	}
+	function turnUp() {
+		if(backdrop == "space"){
+			baddie.classList.remove("baddie-down");
+			baddie.classList.add("baddie-up");
+		}
+	}
+	function turnDown() {
+		if(backdrop == "space"){
+			console.log("turning down")
+			baddie.classList.remove("baddie-up");
+			baddie.classList.add("baddie-down");
+		}
 	}
 
 	/* ---- Run code ---- */
