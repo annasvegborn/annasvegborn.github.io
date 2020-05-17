@@ -34,6 +34,7 @@
 	var coinCount = 0;
 	var level = 0;
 	var gotBag = false;
+	var firstMessage = true;
 	
 
 	// Size of each tile
@@ -197,22 +198,9 @@
 		11,11,10,11,11,10,10,10,24,11,
 		11,10,10,10,10,11,11,11,11,11,
 		11,10,10,10,10,10,10,10,10,11,
-		11,10,19,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,13,11,
-		11,11,11,11,11,11,11,11,11,11,
-		];
-	
-	var level9 = [
-		11,11,11,11,11,11,11,11,11,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,13,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,20,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,21,10,11,
+		11,10,11,11,10,10,10,10,10,11,
+		11,10,19,11,10,10,10,10,10,11,
+		11,10,10,11,10,10,10,10,13,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
 
@@ -244,7 +232,7 @@
 			// Writing out the current tile from gameArea
 			var tileFromArray = gameArea[i];
 			// Adding class name to tile
-			tile.className = "tile g" + tileFromArray;
+			tile.className = "tile grass" + tileFromArray;
 			// Adding ID to tile
 			tile.id = "n" + i;
 			// Append tile to the content
@@ -702,7 +690,6 @@
 		baddie.style.visibility = "visible";
 		gotBag = false;
 	}
-	var firstMessage = true;
 	var updateMessage = function(tileNr) {
 		var addition = "";
 		switch(tileNr){
@@ -767,8 +754,6 @@
 	}
 
 	var popMessage = function(message){
-		console.log("In popMessage function")
-		console.log("Messge: " + message);
 		var popUp = document.createElement('div');
 		popUp.id = "popMessage";
 		popUp.className = "popMessage";
@@ -822,33 +807,15 @@
         tile = 12;
         gameArea[current] = 10;
 		// Giving the tiles new classnames to redraw them
-		if (backdrop === "grass"){
-                document.getElementById("n" + next).className = "tile g" + tile; // box tile here
-                document.getElementById("n" + current).className = "tile g" + 10; // current tile will be empty
-		}
-		else if (backdrop === "space"){
-                document.getElementById("n" + next).className = "tile s" + tile; // box tile here
-                document.getElementById("n" + current).className = "tile s" + 10; // current tile will be empty
-		}
-		else if (backdrop === "agate"){
-			document.getElementById("n" + next).className = "tile a" + tile; // box tile here
-			document.getElementById("n" + current).className = "tile a" + 10; // current tile will be empty
-	}
+		document.getElementById("n" + next).className = "tile " + backdrop + tile; // box tile here
+		document.getElementById("n" + current).className = "tile " + backdrop + 10; // current tile will be empty
 	};
 	var emptyTile = function(current){
         var tile = gameArea[current];
         tile = 14;
         gameArea[current] = 10;
         
-		if (backdrop === "grass"){
-                document.getElementById("n" + current).className = "tile g" + 10; // current tile will be empty
-		}
-		else if (backdrop === "space"){
-                document.getElementById("n" + current).className = "tile s" + 10; // current tile will be empty
-		}
-		else if (backdrop === "agate"){
-			document.getElementById("n" + current).className = "tile a" + 10; // current tile will be empty
-		}
+		document.getElementById("n" + current).className = "tile " + backdrop + 10; // current tile will be empty
 	};
     var updateTiles = function(level){
         var currentLevel = [];
@@ -899,15 +866,7 @@
         for(var i = 0; i < gameArea.length; i++){
             gameArea[i] = currentLevel[i];
             // emptyTile(i);            
-            if (backdrop === "grass"){
-				document.getElementById("n" + i).className = "tile g" + currentLevel[i]; // current tile will be empty
-            }
-            else if (backdrop === "space"){
-				document.getElementById("n" + i).className = "tile s" + currentLevel[i]; // current tile will be empty
-			}
-			else if (backdrop === "agate"){
-				document.getElementById("n" + i).className = "tile a" + currentLevel[i]; // current tile will be empty
-            }
+			document.getElementById("n" + i).className = "tile " + backdrop + currentLevel[i]; // current tile will be empty
         }
     };
 	/** Turn baddie image right or left - transform handled in style.css */

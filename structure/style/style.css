@@ -72,7 +72,7 @@ p {
 #coinDisplay {
 
 }
-#message {
+#messageDisplay {
     position: absolute;
     text-align: left;
 }
@@ -195,118 +195,118 @@ padding: 5px 100px 2px 100px;
 	background-repeat: no-repeat;
 }
 
-.g10 {
+.grass10 {
 	background: url(../img/tiles/grass.png);
 }
-.s10 {
+.space10 {
     background: url(../img/tiles/space.png)
 }
-.a10 {
+.agate10 {
     background: url(../img/tiles/agate.png)
 }
-.g11 {
+.grass11 {
 	background: url(../img/tiles/tree-grass.png);
 }
-.s11 {
+.space11 {
     background: url(../img/tiles/wall-space.png);
 }
-.a11 {
+.agate11 {
     background: url(../img/tiles/wall-agate.png);
 }
-.g12 {
+.grass12 {
 	background: url(../img/tiles/obstacle-grass.png);
 }
-.s12{
+.space12{
     background: url(../img/tiles/obstacle-space.png);
 }
-.a12{
+.agate12{
     background: url(../img/tiles/obstacle-agate.png);
 }
-.g13 {
+.grass13 {
 	background: url(../img/tiles/spaceship-grass.png);
 }
-.s13 {
+.space13 {
     background: url(../img/tiles/planet-green.png);
 }
-.a13 {
+.agate13 {
 	background: url(../img/tiles/spaceship-agate.png);
 }
-.g14 {
+.grass14 {
 	background: url(../img/tiles/coin-grass.png);
 }
-.s14 {
+.space14 {
     background: url(../img/tiles/coin-space.png);
 }
-.a14 {
+.agate14 {
     background: url(../img/tiles/coin-agate.png);
 }
-.g15{
+.grass15{
     background: url(../img/tiles/vortex-grass.png);
 }
-.s15{
+.space15{
     background: url(../img/tiles/vortex-space.png);
 }
-.g16 {
+.grass16 {
     background: url(../img/tiles/guard-grass.png);
 }
-.s16 {
+.space16 {
     background: url(../img/tiles/guard-space.png);
 }
-.g17 {
+.grass17 {
     background: url(../img/tiles/guard2-grass.png);
 }
-.s17 {
+.space17 {
     background: url(../img/tiles/guard2-space.png);
 }
-.g18 {
+.grass18 {
     background: url(../img/tiles/bag-grass.png);
 }
-.s18 {
+.space18 {
     background: url(../img/tiles/bag-space.png);
 }
-.g19 {
+.grass19 {
     background: url(../img/tiles/work-grass.png);
 }
-.s19 {
+.space19 {
     background: url(../img/tiles/work-grass.png);
 }
-.g20 {
+.grass20 {
     background: url(../img/tiles/planet-blue.png);
 }
-.s20 {
+.space20 {
     background: url(../img/tiles/planet-blue.png);
 }
-.g21 {
+.grass21 {
     background: url(../img/tiles/planet-orange.png);
 }
-.s21 {
+.space21 {
     background: url(../img/tiles/planet-orange.png);
 }
-.g22 {
+.grass22 {
     background: url(../img/tiles/grass.png); /* exit*/
 }
-.s22 {
+.space22 {
     background: url(../img/tiles/space.png);
 }
-.g23 {
+.grass23 {
     background: url(../img/tiles/grass.png); /* entry */
 }
-.s23 {
+.space23 {
     background: url(../img/tiles/space.png);
 }
-.g24 {
+.grass24 {
     background: url(../img/tiles/vortex2-grass.png);
 }
-.s24 {
+.space24 {
     background: url(../img/tiles/vortex2-space.png);
 }
-.g25 {
+.grass25 {
     background: url(../img/tiles/phone-grass.png);
 }
-.s25 {
+.space25 {
     background: url(../img/tiles/phone-space.png);
 }
-.a25 {
+.agate25 {
     background: url(../img/tiles/phone-agate.png);
 }
 
