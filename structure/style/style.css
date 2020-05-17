@@ -339,14 +339,14 @@ padding: 5px 100px 2px 100px;
     background-size: 100%;
 }
 #swap-img{
-    height: 13px;
-    width: 13px;
+    height: 11px;
+    width: 11px;
     padding: 0;
     margin: 0;
     border: none;
     vertical-align: middle;
 }
-.profile-pic{
+.profile-pic {
     height: 18.4px;
     width: 18.4px;
     padding: 0;
