@@ -272,6 +272,12 @@ padding: 5px 100px 2px 100px;
 .ti24 {
     background: url(../img/tiles/vortex2-space.png);
 }
+.t25 {
+    background: url(../img/tiles/phone-grass.png);
+}
+.ti25 {
+    background: url(../img/tiles/phone-space.png);
+}
 
 #guard{
     content:url(../img/guard.png);
@@ -287,6 +293,10 @@ padding: 5px 100px 2px 100px;
 }
 #doctorWho{
     content:url(../img/anna.png);
+    background-size: 100%;
+}
+#phone{
+    content:url(../img/phone.png);
     background-size: 100%;
 }
 .profile-pic{

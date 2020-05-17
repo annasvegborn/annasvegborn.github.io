@@ -40,7 +40,11 @@
 	posLeft = 0;
 	posTop = 0;
 
+	//Other global variables
 	var unRead = 0;
+	var finishedMission1 = false;
+	var finishedMission2 = false;
+	var finishedMission3 = false;
 
 	/**
 	 * This is the game area with a 10x10 grid
@@ -74,7 +78,7 @@
 		11,11,11,11,11,11,11,11,11,11,
 		11,10,11,11,10,14,11,10,10,11,
 		11,10,11,10,10,11,11,13,10,11,
-		11,10,10,10,11,10,10,10,10,11,
+		11,25,10,10,11,10,10,10,10,11,
 		11,11,11,10,11,11,11,12,12,11,
 		11,14,11,10,10,14,11,10,10,11,
 		11,10,11,10,11,11,11,11,10,11,
@@ -87,7 +91,7 @@
 		11,11,11,11,11,11,11,11,11,11,
 		11,10,11,11,10,14,11,10,10,11,
 		11,10,11,10,10,11,11,13,10,11,
-		11,10,10,10,11,10,10,10,10,11,
+		11,25,10,10,11,10,10,10,10,11,
 		11,11,11,10,11,11,11,12,12,11,
 		11,14,11,10,10,14,11,10,10,11,
 		11,10,11,10,11,11,11,11,10,11,
@@ -114,7 +118,7 @@
 		22,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,25,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
@@ -620,6 +624,7 @@ var person = "anna";
 					emptyTile(tilePos);
 					coinCount = coinCount - 1;
 					document.getElementById("coinTab").innerHTML = "Coins: " + coinCount;
+					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
                 }else{
                     movable = false;
                 }
@@ -631,6 +636,8 @@ var person = "anna";
 					gameArea[tilePos] = 10;
 					emptyTile(tilePos);
 					coinCount = coinCount - 5;
+					document.getElementById("coinTab").innerHTML = "Coins: " + coinCount;
+					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
 				}else{
 					movable = false;
 				}
@@ -648,10 +655,30 @@ var person = "anna";
 				if(gotPenguin == true){
 					movable = true;
 					document.getElementById("baddie").style.visibility = "hidden";
+					finishedMission1 = true;
 					setTimeout(baddieWorking, 3000);
 					moveBaddie(0, 1);
 				}else{
 					movable = false;
+				}
+				break;
+			case 20: // Blue planet
+				if(finishedMission1 == true){
+					movable = true;
+					level = 20
+				}else{
+					movable = false;
+					updateMessage(20);
+				}
+				break;
+			case 21: // Orange planet
+				if(finishedMission1 == true && finishedMission2 == true){
+					movable = true;
+					level = 30; 
+				}else{
+					updateMessage(21);
+					movable = false;
+
 				}
 				break;
 			case 22: // Exit
@@ -665,7 +692,13 @@ var person = "anna";
                 level = level - 2;
 				updateTiles(level);
 				updateMessage(15);
-                break;
+				break;
+			case 25: //Phone
+				movable = true;
+				updateMessage(25);
+				gameArea[tilePos] = 10;
+				emptyTile(tilePos);
+				break;
 			default:
 				// Tile was impassible - collided, do not move baddie
 				console.log("Oh no, baddie collided with the wall");
@@ -689,14 +722,12 @@ var person = "anna";
 			case 16: //guard
 				addition = "<img id='guard' class='profile-pic'><p class='chat'>:<em> Entrance is 12 coins.</em></p>";
 				if(coinCount >= 15){
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
 					addition += "<br>" + "<img id='guard' class='profile-pic'>: <em>Thanks.</em>";
                 }
 				break;
 			case 17: //guard 2
-				addition = "<img id='guard2 class='profile-pic'>: <em>Entrance is 5 coins.</em>";
+				addition = "<img id='guard2' class='profile-pic'>: <em>Entrance is 5 coins.</em>";
 				if(coinCount >= 100){
-					document.getElementById("coin_count").innerHTML = "Coins: " + coinCount;
 					addition += "<br>" + "<img id='guard2' class='profile-pic'>: <em>Thanks.</em>";
 				}
 				break;
@@ -705,10 +736,23 @@ var person = "anna";
 				break;
 			case 19: //Work
 				if(gotPenguin == true){
-					addition = "<img id='doctorWho' class='profile-pic'>: <em>Penguin returned!<br><img class='penguin'>: Thank you!</em>";
+					addition = "<img id='doctorWho' class='profile-pic'>: <em>Working!</em>";
 				}else{
 					addition = "<img id='doctorWho' class='profile-pic'>: <em>I don't have the right uniform!</em>";
 				} 
+				break;
+			case 20:
+				addition = "<img id='doctorWho' class='profile-pic'>: <em>I have to comeplete mission 1 first!</em>";
+				break;
+			case 21:
+				addition = "<img id='doctorWho' class='profile-pic'>: <em>I have to complete mission 1 and 2 first!</em>";
+				break;
+			case 25:
+				if(level == 0){
+					addition = "<img id='phone' class='profile-pic'>: Complete one mission on each planet.";
+				}else if(level == 2){
+					addition = "<img id='phone' class='profile-pic'>: Get your uniform and go to work.";
+				}
 				break;
 			default: 
 				console.log("No message");
