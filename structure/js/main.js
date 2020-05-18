@@ -629,7 +629,7 @@
 					movable = true;
 					baddie.style.visibility = "hidden";
 					finishedMission1 = true;
-					setTimeout(baddieWorking, 3000);
+					setTimeout(baddieWorking, 2500);
 					moveBaddie(0, 1);
 				}else{
 					movable = false;
