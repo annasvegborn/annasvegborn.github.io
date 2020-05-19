@@ -35,7 +35,10 @@
 	var level = 0;
 	var gotBag = false;
 	var firstMessage = true;
-	
+
+	 var coinSound = new sound("sound/coin-shortest.wav");
+	 var vortexSound = new sound("sound/vortex.wav");
+	 var workingSound = new sound("sound/working.wav");
 
 	// Size of each tile
 	tileSize = 32;
@@ -569,6 +572,7 @@
 				console.log("Level: " + level);
 				break;
 			case 14: // Coin - pick up
+				coinSound.play();
 				coinCount = coinCount + 1;
 				if(coinCount == 1){
 					coinDisplay.innerHTML = "You have " + coinCount + " coin. ";
@@ -583,7 +587,8 @@
 				
 				coinTab.innerHTML = "Coins: " + coinCount;
 			    break;
-            case 15: //Vortex
+			case 15: //Vortex
+				vortexSound.play();
 				// level = 0;
 				movable = true;
 				updateTiles(level);
@@ -624,6 +629,7 @@
 				moveBaddie(0,0);
 				break;
 			case 19: // Penguin-home
+				workingSound.play();
 				updateMessage(19);	
 				if(gotBag == true){
 					movable = true;
@@ -666,6 +672,7 @@
 				updateTiles(level);
 				break;
 			case 24: //Vortex2
+				vortexSound.play();
 				movable = true;
                 level = level - 2;
 				updateTiles(level);
@@ -901,6 +908,21 @@
 			baddie.classList.remove("baddieUp");
 			baddie.classList.add("baddieDown");
 		}
+	}
+
+	function sound(src) {
+		this.sound = document.createElement("audio");
+		this.sound.src = src;
+		this.sound.setAttribute("preload", "auto");
+		this.sound.setAttribute("controls", "none");
+		this.sound.style.display = "none";
+		document.body.appendChild(this.sound);
+		this.play = function(){
+			this.sound.play();
+		}
+		this.stop = function(){
+			this.sound.pause();
+		}    
 	}
 
 	/* ---- Run code ---- */
