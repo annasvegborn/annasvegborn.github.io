@@ -37,8 +37,9 @@
 	var firstMessage = true;
 
 	 var coinSound = new sound("sound/coin-shortest.wav");
-	 var vortexSound = new sound("sound/vortex.wav");
+	 var vortexSound = new sound("sound/vortex-shortest.wav");
 	 var workingSound = new sound("sound/working.wav");
+	 var phoneSound = new sound("sound/phone.wav");
 
 	// Size of each tile
 	tileSize = 32;
@@ -629,9 +630,9 @@
 				moveBaddie(0,0);
 				break;
 			case 19: // Penguin-home
-				workingSound.play();
 				updateMessage(19);	
 				if(gotBag == true){
+					workingSound.play();
 					movable = true;
 					baddie.style.visibility = "hidden";
 					finishedMission1 = true;
@@ -679,6 +680,7 @@
 				updateMessage(15);
 				break;
 			case 25: //Phone
+				phoneSound.play();
 				movable = true;
 				updateMessage(25);
 				gameArea[tilePos] = 10;
