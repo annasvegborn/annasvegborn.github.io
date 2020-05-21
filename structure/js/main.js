@@ -597,11 +597,11 @@
                 break;
             case 16: //Guard
 				updateMessage(16);
-                if(coinCount >= 1){
+                if(coinCount >= 12){
                     movable = true;
                     gameArea[tilePos] = 10;
 					emptyTile(tilePos);
-					coinCount = coinCount - 1;
+					coinCount = coinCount - 12;
 					coinTab.innerHTML = "Coins: " + coinCount;
 					coinDisplay.innerHTML = "Coins: " + coinCount;
                 }else{
