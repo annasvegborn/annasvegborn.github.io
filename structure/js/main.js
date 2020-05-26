@@ -708,13 +708,13 @@
 				break;
 			case 16: //guard
 				addition = "<img id='guard' class='profilePic'><p class='chat'>:<em> Entrance is 10 coins.</em></p>";
-				if(coinCount >= 15){
+				if(coinCount >= 10){
 					addition += "<br>" + "<img id='guard' class='profilePic'>: <em>Thanks.</em>";
                 }
 				break;
 			case 17: //guard 2
 				addition = "<img id='guard2' class='profilePic'>: <em>Entrance is 5 coins.</em>";
-				if(coinCount >= 100){
+				if(coinCount >= 5){
 					addition += "<br>" + "<img id='guard2' class='profilePic'>: <em>Thanks.</em>";
 				}
 				break;
