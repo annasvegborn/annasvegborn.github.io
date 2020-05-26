@@ -597,11 +597,11 @@
                 break;
             case 16: //Guard
 				updateMessage(16);
-                if(coinCount >= 12){
+                if(coinCount >= 10){
                     movable = true;
                     gameArea[tilePos] = 10;
 					emptyTile(tilePos);
-					coinCount = coinCount - 12;
+					coinCount = coinCount - 10;
 					coinTab.innerHTML = "Coins: " + coinCount;
 					coinDisplay.innerHTML = "Coins: " + coinCount;
                 }else{
@@ -707,7 +707,7 @@
 				addition += "<img id='"+ person +"' class='profilePic'>: <em>Going back in time.</em>";
 				break;
 			case 16: //guard
-				addition = "<img id='guard' class='profilePic'><p class='chat'>:<em> Entrance is 12 coins.</em></p>";
+				addition = "<img id='guard' class='profilePic'><p class='chat'>:<em> Entrance is 10 coins.</em></p>";
 				if(coinCount >= 15){
 					addition += "<br>" + "<img id='guard' class='profilePic'>: <em>Thanks.</em>";
                 }
