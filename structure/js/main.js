@@ -24,17 +24,19 @@
 	swapImg = document.getElementById("swapImg");
 
 	//Other global variables
-	var finishedMission1 = false;
+	var finishedMission1 = true;
 	var finishedMission2 = false;
 	var finishedMission3 = false;
 	var coinViewOpen = false;
 	var messageViewOpen = false;
 	var person = "Anna";
 	var backdrop = "grass";
+	var gotWand = false;
 	var coinCount = 0;
 	var level = 0;
 	var gotBag = false;
 	var firstMessage = true;
+	var makeSpell = false;
 
 	 var coinSound = new sound("sound/coin-shortest.wav");
 	 var vortexSound = new sound("sound/vortex-shortest.wav");
@@ -209,17 +211,43 @@
 		];
 
 	var level20 = [
-		11,11,11,11,11,11,11,11,11,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
+		11,11,11,11,11,22,11,11,11,11,
+		11,10,11,10,10,10,11,10,10,11,
+		11,10,11,11,14,10,11,11,11,11,
+		11,10,10,11,11,10,10,11,10,11,
+		11,10,10,11,10,10,10,11,10,11,
 		11,10,25,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,13,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
+		11,11,10,10,11,10,10,10,13,11,
+		11,10,10,10,11,10,10,14,10,11,
+		11,10,10,10,11,10,10,10,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
+
+	var level21 = [
+		11,11,11,11,11,23,11,11,11,11,
+		11,11,11,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,19,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,26,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,11,11,11,11,11,11,11,11,11,
+		]; 
+
+	var level22 = [
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,10,10,10,10,10,11,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,11,11,11,11,11,11,11,11,11,
+		]; 
 
 	/**
 	 * Initiates the game area by adding each tile as a div with class and id to content area
@@ -530,6 +558,7 @@
 		console.log("Move to: " + newLeft + "," + newTop);
 		console.log("Tile " + tilePos + " contains " + gameArea[tilePos]);
 		
+		makeSpell = false;
 		// Switch case on the tile value - do different things depending on what tile baddie is moving to
 		switch(tile) {
 			case 10: // Empty tile
@@ -558,9 +587,9 @@
 				}
 				break;
 			case 13: // Door
-				if(level == 20){
+				if(level == 8){
 					level = 1;
-				}else if(level == 8){
+				}else if(level == 20){
 					level = 1;
 				}else{
 					level = level + 1;
@@ -629,28 +658,36 @@
 				emptyTile(tilePos);
 				moveBaddie(0,0);
 				break;
-			case 19: // Penguin-home
-				updateMessage(19);	
-				if(gotBag == true){
-					workingSound.play();
-					movable = true;
-					baddie.style.visibility = "hidden";
-					finishedMission1 = true;
-					setTimeout(baddieWorking, 2500);
-					moveBaddie(0, 1);
+			case 19: // Work
+				if(backdrop == "agate"){
+						movable = true;
+						baddie.style.visibility = "hidden";
+						gotWand = true;
+						setTimeout(baddieWorking, 2500);
+						moveBaddie(0, 1);
 				}else{
-					movable = false;
+					updateMessage(19);	
+					if(gotBag == true){
+						workingSound.play();
+						movable = true;
+						baddie.style.visibility = "hidden";
+						finishedMission1 = true;
+						setTimeout(baddieWorking, 2500);
+						moveBaddie(0, 1);
+					}else{
+						movable = false;
+					}
 				}
 				break;
 			case 20: // Blue planet
 				if(finishedMission1 == true){
 					movable = true;
 					level = 20;
-					backdrop = "agate";
-					updateTiles(level);
-					console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 13")
+					//backdrop = "agate";
+					console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 20")
 					console.log("Class: " + baddie.classList);
 					console.log("Level: " + level);
+					updateTiles(level);
 				}else{
 					movable = false;
 					updateMessage(20);
@@ -685,6 +722,11 @@
 				updateMessage(25);
 				gameArea[tilePos] = 10;
 				emptyTile(tilePos);
+				break;
+			case 26:
+				makeSpell = true;
+				moveBaddie(0,0);
+				movable = false;
 				break;
 			default:
 				// Tile was impassible - collided, do not move baddie
@@ -744,7 +786,7 @@
 				}else if(level == 2){
 					addition = "<img id='phone' class='profilePic'>: Get your uniform and go to work.";
 				}else if(level == 20){
-					addition = "<img id='phone' class='profilePic'>: Mission 2 is not yet available.";
+					addition = "<img id='phone' class='profilePic'>: Defeat the evil wizard by getting a wand and learning spells.";
 				}
 				break;
 			default: 
@@ -780,14 +822,18 @@
 	 * @param  {[type]} y	- direction to move vertically
 	 */
 	var moveBaddie = function(x, y) {
+
 		if(backdrop == "space"){
 			baddie.className = "baddieTardis";
-		}else if(backdrop == "grass" && gotBag == false){
-			baddie.className = "baddie" + person;
-		}else if(backdrop == "grass" && gotBag == true){
+		}else if(gotBag == true){
 			baddie.className = "baddie" + person + "Work";
+		}else if(gotWand == true && makeSpell == true){
+			baddie.classList = "animation";
+			console.log("Doing animation");
+		}else if(gotWand == true){
+			baddie.className = "baddie" + person + "Wand";
 		}else{
-			baddie.className = "baddieAnna";
+			baddie.className = "baddie" + person;
 		}
 		// Update baddies position variables
 		posLeft += x;
@@ -867,19 +913,29 @@
 				break;
 			case 20: //agate level 1
 				currentLevel = level20;
+				backdrop = "agate";
+				break;
+			case 21:
+				currentLevel = level21;
+				backdrop = "agate";
+				break;
+			case 22:
+				currentLevel = level22;
+				backdrop = "agate";
 				break;
 			default:
 				break;
 		}
+		console.log("Current level: " + level);
 		//Redrawing the gameArea with the new level
         for(var i = 0; i < gameArea.length; i++){
             gameArea[i] = currentLevel[i];
             // emptyTile(i);            
 			document.getElementById("n" + i).className = "tile " + backdrop + currentLevel[i]; // current tile will be empty
         }
-    };
-	/** Turn baddie image right or left - transform handled in style.css */
+	};
 	
+	/** Turn baddie image right or left - transform handled in style.css */
 	function turnRight() {
 		if (backdrop == "space") {
 			baddie.classList.remove("baddiePointLeft");

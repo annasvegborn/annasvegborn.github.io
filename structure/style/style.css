@@ -2,6 +2,17 @@
     width: device-width ;
     zoom: 2.0 ;
   }*/
+@keyframes example {
+    0%   {background-image: url(../img/anna-wand-spell2.png);}
+    50%  {background-image: url(../img/anna-wand-spell1.png);}
+    100% {background-image: url(../img/anna-wand-spell2.png);}
+}
+
+.animation{
+    background-image: url(../img/anna-wand.png);
+    animation-name: example;
+    animation-duration: 2s;
+}
 
 body{
     background-color: white;
@@ -146,11 +157,17 @@ padding: 5px 100px 2px 100px;
 #arrowDown {
 padding: 5px 100px 2px 100px;
 }
+.baddieTardis {
+    background-image: url(../img/rocket.png);
+}
 .baddieAnna {
 	background-image: url(../img/anna.png);
 }
 .baddieAnnaWork {
 	background-image: url(../img/anna-work.png);
+}
+.baddieAnnaWand {
+	background-image: url(../img/anna-wand.png);
 }
 .baddieSebastian {
 	background-image: url(../img/sebastian.png);
@@ -158,14 +175,17 @@ padding: 5px 100px 2px 100px;
 .baddieSebastianWork {
 	background-image: url(../img/sebastian-work.png);
 }
-.baddieTardis {
-    background-image: url(../img/rocket.png);
+.baddieSebastianWand {
+	background-image: url(../img/sebastian-wand.png);
 }
 .baddieMoa {
 	background-image: url(../img/moa.png);
 }
 .baddieMoaWork {
 	background-image: url(../img/moa-work.png);
+}
+.baddieMoaWand {
+	background-image: url(../img/moa-wand.png);
 }
 .baddieUp{}
 
@@ -270,6 +290,9 @@ padding: 5px 100px 2px 100px;
 .space19 {
     background: url(../img/tiles/work-grass.png);
 }
+.agate19 {
+    background: url(../img/tiles/wand-shop-agate.png);
+}
 .grass20 {
     background: url(../img/tiles/planet-blue.png);
 }
@@ -288,11 +311,17 @@ padding: 5px 100px 2px 100px;
 .space22 {
     background: url(../img/tiles/space.png);
 }
+.agate22 {
+    background: url(../img/tiles/agate.png);
+}
 .grass23 {
     background: url(../img/tiles/grass.png); /* entry */
 }
 .space23 {
     background: url(../img/tiles/space.png);
+}
+.agate23 {
+    background: url(../img/tiles/agate.png);
 }
 .grass24 {
     background: url(../img/tiles/vortex2-grass.png);
@@ -308,6 +337,9 @@ padding: 5px 100px 2px 100px;
 }
 .agate25 {
     background: url(../img/tiles/phone-agate.png);
+}
+.agate26 {
+    background: url(../img/tiles/obstacle-agate.png);
 }
 
 #guard{
