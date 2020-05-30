@@ -122,7 +122,7 @@
     var level2 = [
 		11,11,11,11,11,11,11,11,11,11,
 		22,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,13,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,25,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
@@ -211,34 +211,60 @@
 		];
 
 	var level20 = [
-		11,11,11,11,11,22,11,11,11,11,
-		11,10,11,10,10,10,11,10,10,11,
-		11,10,11,11,14,10,11,11,11,11,
-		11,10,10,11,11,10,10,11,10,11,
-		11,10,10,11,10,10,10,11,10,11,
-		11,10,25,10,10,10,10,10,10,11,
-		11,11,10,10,11,10,10,10,13,11,
-		11,10,10,10,11,10,10,14,10,11,
-		11,10,10,10,11,10,10,10,10,11,
+		11,11,11,11,11,11,22,11,11,11,
+		11,11,11,11,11,10,10,11,11,11,
+		11,11,10,10,10,10,11,13,11,11,
+		11,11,11,10,11,10,11,10,11,11,
+		11,11,11,10,11,10,10,10,11,11,
+		11,10,10,25,11,11,11,11,11,11,
+		11,11,11,10,10,10,11,14,11,11,
+		11,10,10,10,11,10,10,10,11,11,
+		11,14,11,11,11,11,11,11,11,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
 
 	var level21 = [
-		11,11,11,11,11,23,11,11,11,11,
-		11,11,11,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,19,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,26,10,11,
+		11,11,11,11,11,11,23,11,11,11,
+		11,11,11,11,11,12,10,12,10,11,
+		11,11,11,10,10,10,12,10,10,11,
+		11,11,10,10,10,10,10,10,26,11,
+		11,10,19,10,10,11,10,10,26,11,
+		11,10,10,10,10,11,11,10,26,11,
+		11,11,11,11,11,11,11,10,26,22,
+		11,10,10,10,10,11,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		]; 
 
 	var level22 = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,10,10,10,10,10,10,10,11,11,
+		11,10,11,10,10,10,11,14,11,11,
+		11,10,11,14,10,11,10,10,14,11,
+		11,10,11,11,10,10,10,11,11,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,11,11,10,11,10,10,11,10,11,
+		11,11,10,10,11,10,10,10,10,23,
+		11,10,10,11,11,10,11,10,10,11,
+		11,10,10,11,11,10,11,11,10,11,
+		11,11,11,11,11,22,11,11,11,11,
+		]; 
+
+	var level23 = [ // 
+		11,11,11,11,11,11,11,11,11,11,
+		11,11,11,11,10,10,10,11,11,11,
+		22,10,10,10,10,13,10,11,11,11,
+		11,11,11,11,10,10,10,11,11,11,
+		11,11,11,11,11,10,11,11,11,11,
+		11,11,11,11,11,10,11,11,11,11,
+		11,11,11,11,11,10,11,11,11,11,
+		11,11,11,11,11,10,11,11,11,11,
+		11,11,11,11,11,10,11,11,11,11,
+		11,11,11,11,11,23,11,11,11,11,
+		];
+
+	var level23b = [ // Castle
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
@@ -247,7 +273,33 @@
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,11,11,11,11,11,11,11,11,11,
-		]; 
+		];
+
+	var level24 = [
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,10,10,10,11,10,10,11,
+		23,10,11,11,11,10,11,10,10,11,
+		11,10,11,11,11,10,10,10,10,11,
+		11,10,11,11,11,10,11,10,10,11,
+		11,10,10,10,10,10,11,10,10,11,
+		11,10,11,11,11,10,11,11,10,11,
+		11,10,11,11,11,10,11,10,10,11,
+		11,10,10,10,10,10,11,10,10,11,
+		11,11,11,11,11,11,11,11,22,11,
+		];
+
+	var level25 = [
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,11,11,11,11,11,11,10,11,
+		11,10,11,10,10,10,10,11,10,11,
+		11,10,11,10,11,11,10,11,10,11,
+		11,10,11,10,11,11,10,11,10,11,
+		11,10,11,10,13,11,10,11,10,11,
+		11,10,11,11,11,11,10,11,10,11,
+		11,10,10,10,10,10,10,11,10,11,
+		11,11,11,11,11,11,11,11,23,11,
+		];
 
 	/**
 	 * Initiates the game area by adding each tile as a div with class and id to content area
@@ -586,10 +638,14 @@
 					console.log("Can't push obstacle - next tile is not empty");					
 				}
 				break;
-			case 13: // Door
+			case 13: // Spaceship
 				if(level == 8){
 					level = 1;
+				}else if(level == 2){
+					level = 1;
 				}else if(level == 20){
+					level = 1;
+				}else if(level == 25){
 					level = 1;
 				}else{
 					level = level + 1;
@@ -658,12 +714,12 @@
 				emptyTile(tilePos);
 				moveBaddie(0,0);
 				break;
-			case 19: // Work
+			case 19: // Work / Wand shop
 				if(backdrop == "agate"){
 						movable = true;
 						baddie.style.visibility = "hidden";
 						gotWand = true;
-						setTimeout(baddieWorking, 2500);
+						setTimeout(baddieWorking, 1000);
 						moveBaddie(0, 1);
 				}else{
 					updateMessage(19);	
@@ -709,6 +765,8 @@
 				level = level + 1;
 				updateTiles(level);
 				break;
+			case 23: //
+				break;
 			case 24: //Vortex2
 				vortexSound.play();
 				movable = true;
@@ -723,10 +781,14 @@
 				gameArea[tilePos] = 10;
 				emptyTile(tilePos);
 				break;
-			case 26:
-				makeSpell = true;
-				moveBaddie(0,0);
+			case 26: //Spell-object
 				movable = false;
+				if(gotWand){
+					animateTile(tilePos);
+					setTimeout(emptyTile, 1000, tilePos);
+					makeSpell = 1;
+					moveBaddie(0,0);
+				}
 				break;
 			default:
 				// Tile was impassible - collided, do not move baddie
@@ -827,7 +889,7 @@
 			baddie.className = "baddieTardis";
 		}else if(gotBag == true){
 			baddie.className = "baddie" + person + "Work";
-		}else if(gotWand == true && makeSpell == true){
+		}else if(gotWand == true && makeSpell == 1){
 			baddie.classList = "animation";
 			console.log("Doing animation");
 		}else if(gotWand == true){
@@ -865,12 +927,20 @@
 		document.getElementById("n" + next).className = "tile " + backdrop + tile; // box tile here
 		document.getElementById("n" + current).className = "tile " + backdrop + 10; // current tile will be empty
 	};
+
+	var animateTile = function(current){
+		if(gameArea[current] == 26){
+			console.log("Running explotion");
+			document.getElementById("n" + current).className = "tile explotion-yellow";
+		}
+	}
 	var emptyTile = function(current){
         var tile = gameArea[current];
         tile = 14;
         gameArea[current] = 10;
         
 		document.getElementById("n" + current).className = "tile " + backdrop + 10; // current tile will be empty
+
 	};
     var updateTiles = function(level){
         var currentLevel = [];
@@ -923,9 +993,26 @@
 				currentLevel = level22;
 				backdrop = "agate";
 				break;
+			case 23:
+				currentLevel = level23;
+				backdrop = "agate";
+				break;
+			case 24:
+				currentLevel = level24;
+				backdrop = "agate";
+				break;
+			case 25:
+				currentLevel = level25;
+				backdrop = "agate";
+				break;
+			/* case 26:
+				currentLevel = level26;
+				backdrop = "agate";
+				break; */
 			default:
 				break;
 		}
+		
 		console.log("Current level: " + level);
 		//Redrawing the gameArea with the new level
         for(var i = 0; i < gameArea.length; i++){
