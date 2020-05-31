@@ -2,28 +2,57 @@
     width: device-width ;
     zoom: 2.0 ;
   }*/
-@keyframes spell-yellow {
-    0%   {background-image: url(../img/anna-wand-spell2.png);}
-    50%  {background-image: url(../img/anna-wand-spell1.png);}
-    100% {background-image: url(../img/anna-wand-spell2.png);}
+
+.AnnaSpellYellow {
+    background-image: url(../img/anna-wand.png);
+    animation-name: anna-spell-yellow;
+    animation-duration: 1s;
+}
+@keyframes anna-spell-yellow {
+    0%   {background-image: url(../img/anna-wand.png);}
+    50%  {background-image: url(../img/anna-wand-yellow.png);}
+    100% {background-image: url(../img/anna-wand-yellow.png);}
+}
+.AnnaSpellGreen {
+    background-image: url(../img/anna-wand.png);
+    animation-name: anna-spell-green;
+    animation-duration: 1s;
+}
+@keyframes anna-spell-green {
+    0%   {background-image: url(../img/anna-wand.png);}
+    50%  {background-image: url(../img/anna-wand-green.png);}
+    100% {background-image: url(../img/anna-wand-green.png);}
 }
 
+.explotionYellow{
+    background-image: url(../img/tiles/explotion-yellow1.png);
+    animation-name: explotion-yellow;
+    animation-duration: 1s;
+}
 @keyframes explotion-yellow {
     0%   {background-image: url(../img/tiles/explotion-yellow1.png);}
     50%  {background-image: url(../img/tiles/explotion-yellow2.png);}
     100% {background-image: url(../img/tiles/explotion-yellow3.png);}
 }
-
-.explotion-yellow{
-    background-image: url(../img/tiles/explotion-yellow1.png);
-    animation-name: explotion-yellow;
+.magicianYellow{
+    background-image: url(../img/tiles/magician-agate.png);
+    animation-name: magician-yellow;
     animation-duration: 1s;
 }
-
-.animation{
-    background-image: url(../img/anna-wand.png);
-    animation-name: spell-yellow;
+@keyframes magician-yellow {
+    0%   {background-image: url(../img/tiles/magician-yellow-agate.png);}
+    50%  {background-image: url(../img/tiles/magician-yellow-agate.png);}
+    100% {background-image: url(../img/tiles/magician-yellow-agate.png);}
+}
+.magicianGreen{
+    background-image: url(../img/tiles/magician2-agate.png);
+    animation-name: magician-green;
     animation-duration: 1s;
+}
+@keyframes magician-green {
+    0%   {background-image: url(../img/tiles/magician2-green-agate.png);}
+    50%  {background-image: url(../img/tiles/magician2-green-agate.png);}
+    100% {background-image: url(../img/tiles/magician2-green-agate.png);}
 }
 
 body{
@@ -296,6 +325,9 @@ padding: 5px 100px 2px 100px;
 .space18 {
     background: url(../img/tiles/bag-space.png);
 }
+.agate18 {
+    background: url(../img/tiles/bag-agate.png);
+}
 .grass19 {
     background: url(../img/tiles/work-grass.png);
 }
@@ -341,6 +373,9 @@ padding: 5px 100px 2px 100px;
 .space24 {
     background: url(../img/tiles/vortex2-space.png);
 }
+.agate24 {
+    background: url(../img/tiles/vortex2-agate.png);
+}
 .grass25 {
     background: url(../img/tiles/phone-grass.png);
 }
@@ -352,6 +387,12 @@ padding: 5px 100px 2px 100px;
 }
 .agate26 {
     background-image: url(../img/tiles/explotion-yellow1.png);
+}
+.agate27 {
+    background-image: url(../img/tiles/magician-agate.png);
+}
+.agate28 {
+    background-image: url(../img/tiles/magician2-agate.png);
 }
 
 #guard{
@@ -376,6 +417,10 @@ padding: 5px 100px 2px 100px;
 }
 #phone{
     content:url(../img/phone.png);
+    background-size: 100%;
+}
+#magician{
+    content:url(../img/magician.png);
     background-size: 100%;
 }
 #anna, .anna{

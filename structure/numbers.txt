@@ -13,12 +13,15 @@
 	 * 20 - Blue planet
      * 21 - Orange planet
      * 22 - Exit level
-     * 23 - 
+     * 23 - Enter level
      * 24 - Vortex 2
      * 25 - Phone
      * 26 - Spell object
-     * 27 - 
-     * 28 - 
+     * 27 - Magic teacher1
+     * 28 - Magic teacher2
      * 29 - 
      * 30 - 
 	 */
+
+
+     

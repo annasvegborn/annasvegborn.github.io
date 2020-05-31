@@ -35,13 +35,20 @@
 	var coinCount = 0;
 	var level = 0;
 	var gotBag = false;
+	var gotWizardsBag = false;
 	var firstMessage = true;
-	var makeSpell = false;
+	var makeSpell = "";
+	var spellYellow = false;
+	var spellGreen = false;
+	var newLevelBol = false;
 
 	 var coinSound = new sound("sound/coin-shortest.wav");
 	 var vortexSound = new sound("sound/vortex-shortest.wav");
 	 var workingSound = new sound("sound/working.wav");
 	 var phoneSound = new sound("sound/phone.wav");
+	 var spellYellowSound = new sound("sound/spell-yellow.wav");
+	 var spellGreenSound = new sound("sound/spell-green.wav");
+	 var spellExplotionSound = new sound("sound/spell-explotion.wav");
 
 	// Size of each tile
 	tileSize = 32;
@@ -76,8 +83,6 @@
 	 * 16 - guard (passable if payed)
 	 * 17 - guard 2 (passable if payed)
 	 * 18 - Bag (picked up)
-	 * 19 - Work (dropped off)
-	 * 20 - enemy (deducts points)
 	 */
 
 	/* gameArea = [
@@ -212,8 +217,8 @@
 
 	var level20 = [
 		11,11,11,11,11,11,22,11,11,11,
-		11,11,11,11,11,10,10,11,11,11,
-		11,11,10,10,10,10,11,13,11,11,
+		11,10,11,11,11,10,10,11,11,11,
+		11,10,10,10,10,10,11,13,11,11,
 		11,11,11,10,11,10,11,10,11,11,
 		11,11,11,10,11,10,10,10,11,11,
 		11,10,10,25,11,11,11,11,11,11,
@@ -231,21 +236,21 @@
 		11,10,19,10,10,11,10,10,26,11,
 		11,10,10,10,10,11,11,10,26,11,
 		11,11,11,11,11,11,11,10,26,22,
-		11,10,10,10,10,11,10,10,10,11,
+		11,10,27,10,10,11,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		]; 
 
 	var level22 = [
 		11,11,11,11,11,11,11,11,11,11,
-		11,10,11,10,10,10,11,14,11,11,
-		11,10,11,14,10,11,10,10,14,11,
+		11,24,11,10,10,18,11,14,11,11,
+		11,10,11,14,26,11,10,10,14,11,
 		11,10,11,11,10,10,10,11,11,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,11,11,10,11,10,10,11,10,11,
-		11,11,10,10,11,10,10,10,10,23,
+		11,11,10,10,11,10,26,10,10,23,
 		11,10,10,11,11,10,11,10,10,11,
-		11,10,10,11,11,10,11,11,10,11,
+		11,28,10,11,11,10,11,11,10,11,
 		11,11,11,11,11,22,11,11,11,11,
 		]; 
 
@@ -300,6 +305,26 @@
 		11,10,10,10,10,10,10,11,10,11,
 		11,11,11,11,11,11,11,11,23,11,
 		];
+
+	var newLevel0 = [];
+	var newLevel1 = [];
+	var newLevel2 = [];
+	var newLevel3 = [];
+	var newLevel4 = [];
+	var newLevel5 = [];
+	var newLevel6 = [];
+	var newLevel7 = [];
+	var newLevel8 = [];
+	var newLevel20 = [];
+	var newLevel21 = [];
+	var newLevel22 = [];
+	var newLevel23 = [];
+	var newLevel24 = [];
+	var newLevel25 = [];
+	var newLevel26 = [];
+
+	var newLevel = [newLevel0, newLevel1, newLevel2, newLevel3, newLevel4, newLevel5, newLevel6, newLevel7, newLevel8];
+
 
 	/**
 	 * Initiates the game area by adding each tile as a div with class and id to content area
@@ -610,8 +635,9 @@
 		console.log("Move to: " + newLeft + "," + newTop);
 		console.log("Tile " + tilePos + " contains " + gameArea[tilePos]);
 		
-		makeSpell = false;
+		makeSpell = "";
 		// Switch case on the tile value - do different things depending on what tile baddie is moving to
+		updateMessage(tile);
 		switch(tile) {
 			case 10: // Empty tile
 				movable = true;
@@ -665,7 +691,6 @@
 				}else{
 					coinDisplay.innerHTML = "You have " + coinCount + " coins. ";
 				}
-				
 			    movable = true;
 			    console.log("Picked up coin/gem. coinCount: " + coinCount);
 			    gameArea[tilePos] = 10;
@@ -678,10 +703,8 @@
 				// level = 0;
 				movable = true;
 				updateTiles(level);
-				updateMessage(15);
                 break;
             case 16: //Guard
-				updateMessage(16);
                 if(coinCount >= 10){
                     movable = true;
                     gameArea[tilePos] = 10;
@@ -694,7 +717,6 @@
                 }
 				break;
 			case 17: //Guard 2
-				updateMessage(17);
 				if(coinCount >= 5){
 					movable = true;
 					gameArea[tilePos] = 10;
@@ -707,10 +729,13 @@
 				}
 				break;
 			case 18: // Bag
-				updateMessage(18);
-				gotBag = true;
+				if(level == 6){
+					gotBag = true;
+				} else if(level == 22){
+					gotWizardsBag = true;	
+				}
 				movable = true;
-				gameArea[tilePos] = 10;
+				//gameArea[tilePos] = 10;
 				emptyTile(tilePos);
 				moveBaddie(0,0);
 				break;
@@ -721,8 +746,7 @@
 						gotWand = true;
 						setTimeout(baddieWorking, 1000);
 						moveBaddie(0, 1);
-				}else{
-					updateMessage(19);	
+				}else{	
 					if(gotBag == true){
 						workingSound.play();
 						movable = true;
@@ -746,7 +770,6 @@
 					updateTiles(level);
 				}else{
 					movable = false;
-					updateMessage(20);
 				}
 				break;
 			case 21: // Orange planet
@@ -754,39 +777,62 @@
 					movable = true;
 					level = 30; 
 				}else{
-					updateMessage(21);
 					movable = false;
 
 				}
 				break;
 			case 22: // Exit
+				newLevelBol = false;
 				movable = true;
-				backdrop = "grass";
 				level = level + 1;
 				updateTiles(level);
 				break;
-			case 23: //
+			case 23: // Re-entry
+				newLevelBol = true;
+				movable = true;
+				level = level - 1;
+				updateTiles(level);
 				break;
 			case 24: //Vortex2
 				vortexSound.play();
 				movable = true;
                 level = level - 2;
 				updateTiles(level);
-				updateMessage(15);
 				break;
 			case 25: //Phone
 				phoneSound.play();
 				movable = true;
-				updateMessage(25);
 				gameArea[tilePos] = 10;
 				emptyTile(tilePos);
 				break;
 			case 26: //Spell-object
 				movable = false;
-				if(gotWand){
+				if(gotWand && spellYellow == true){
 					animateTile(tilePos);
+					spellExplotionSound.play();
 					setTimeout(emptyTile, 1000, tilePos);
-					makeSpell = 1;
+					makeSpell = "Yellow";
+					moveBaddie(0,0);
+				}
+				break;
+			case 27: // Magician
+				movable = false;
+				if(gotWand){
+					spellYellow = true;
+					spellYellowSound.play();
+					animateTile(tilePos);
+					makeSpell = "Yellow";
+					moveBaddie(0,0);
+					
+				}
+				break;
+			case 28: // Magician 2
+				movable = false;
+				if(gotWand && gotWizardsBag){
+					spellGreen = true;
+					spellGreenSound.play();
+					animateTile(tilePos);
+					makeSpell = "Green";
 					moveBaddie(0,0);
 				}
 				break;
@@ -826,17 +872,23 @@
 				addition = "<img id='"+ person +"' class='profilePic'>: <em>Bag content picked up!</em>";
 				break;
 			case 19: //Work
-				if(gotBag == true){
-					addition = "<img id='"+ person +"' class='profilePic'>: <em>Working!</em>";
-				}else{
-					addition = "<img id='"+ person +"' class='profilePic'>: <em>I don't have the right uniform!</em>";
-				} 
+				if(backdrop == "grass"){
+					if(gotBag == true){
+						addition = "<img id='"+ person +"' class='profilePic'>: <em>Working!</em>";
+					}else{
+						addition = "<img id='"+ person +"' class='profilePic'>: <em>I don't have the right uniform!</em>";
+					}
+				}
 				break;
 			case 20:
-				addition = "<img id='"+ person +"' class='profilePic'>: <em>I have to complete mission 1 first!</em>";
+				if(finishedMission1 == false){
+					addition = "<img id='"+ person +"' class='profilePic'>: <em>I have to complete mission 1 first!</em>";
+				}
 				break;
 			case 21:
-				addition = "<img id='"+ person +"' class='profilePic'>: <em>I have to complete mission 1 and 2 first!</em>";
+				if(finishedMission1 == false || finishedMission2 == false){
+					addition = "<img id='"+ person +"' class='profilePic'>: <em>I have to complete mission 1 and 2 first!</em>";
+				}
 				break;
 			case 24:
 				addition = "<img id='vortex2' class='profilePic'> <em>TIME VORTEX</em><br>";
@@ -851,19 +903,25 @@
 					addition = "<img id='phone' class='profilePic'>: Defeat the evil wizard by getting a wand and learning spells.";
 				}
 				break;
+			case 27:
+					addition = "<img id='magician' class='profilePic'>: <em>Let me teach you a spell to destroy those rocks.</em>";
+				break;
 			default: 
 				console.log("No message");
 				break;
 		}
 		console.log("Firstmessage: " + firstMessage);
-		if(firstMessage == true){
-			messageDisplay.innerHTML = addition + "<br>"; 
-			firstMessage = false;
-		}else{
-			messageDisplay.innerHTML += addition + "<br>";
+
+		if(addition !== ""){
+			if(firstMessage == true){
+				messageDisplay.innerHTML = addition + "<br>"; 
+				firstMessage = false;
+			}else{
+				messageDisplay.innerHTML += addition + "<br>";
+			}
+			messageView.scrollTop = messageView.scrollHeight - messageView.clientHeight;
+			popMessage(addition);
 		}
-		messageView.scrollTop = messageView.scrollHeight - messageView.clientHeight;
-		popMessage(addition);
 	}
 
 	var popMessage = function(message){
@@ -889,8 +947,8 @@
 			baddie.className = "baddieTardis";
 		}else if(gotBag == true){
 			baddie.className = "baddie" + person + "Work";
-		}else if(gotWand == true && makeSpell == 1){
-			baddie.classList = "animation";
+		}else if(gotWand == true && makeSpell != ""){
+			baddie.classList = person + "Spell" + makeSpell;
 			console.log("Doing animation");
 		}else if(gotWand == true){
 			baddie.className = "baddie" + person + "Wand";
@@ -920,28 +978,40 @@
 		// Switching the tiles
 		// Placing tile into the next positon in the array gameArea
 		// Then making sure the current tile is empty in the array gameArea
-        gameArea[next] = tile; 
+		gameArea[next] = tile; 
+		newLevel[level][next] = tile;
         tile = 12;
-        gameArea[current] = 10;
+		gameArea[current] = 10;
+		newLevel[level][current] = 10;
+
 		// Giving the tiles new classnames to redraw them
 		document.getElementById("n" + next).className = "tile " + backdrop + tile; // box tile here
 		document.getElementById("n" + current).className = "tile " + backdrop + 10; // current tile will be empty
 	};
 
-	var animateTile = function(current){
-		if(gameArea[current] == 26){
-			console.log("Running explotion");
-			document.getElementById("n" + current).className = "tile explotion-yellow";
-		}
-	}
 	var emptyTile = function(current){
         var tile = gameArea[current];
         tile = 14;
-        gameArea[current] = 10;
+		gameArea[current] = 10;
+		
+		newLevel[level][current] = 10;
         
 		document.getElementById("n" + current).className = "tile " + backdrop + 10; // current tile will be empty
 
 	};
+	var animateTile = function(current){
+		if(gameArea[current] == 26){
+			console.log("Running explotion");
+			document.getElementById("n" + current).className = "tile explotionYellow";
+		} else if(gameArea[current] == 27){
+			console.log("Running spell practice");
+			document.getElementById("n" + current).className = "tile magicianYellow";
+		}else if(gameArea[current] == 28){
+			console.log("Running spell practice");
+			document.getElementById("n" + current).className = "tile magicianGreen";
+		}
+	};
+
     var updateTiles = function(level){
         var currentLevel = [];
         switch(level) {
@@ -952,22 +1022,27 @@
             case 1:
 				currentLevel = level1;
 				backdrop = "space";
+				newLevel1 = level1;
                 break;
             case 2:
 				currentLevel = level2;
 				backdrop = "grass";
+				newLevel2 = level2;
                 break;
             case 3:
 				currentLevel = level3;
 				backdrop = "grass";
+				newLevel3 = level3;
                 break;
             case 4:
 				currentLevel = level4;
 				backdrop = "space";
+				newLevel4 = level4;
                 break;
             case 5:
 				currentLevel = level5;
 				backdrop = "grass";
+				newLevel5 = level5;
 				break;
 			case 6:
 				currentLevel = level6;
@@ -1005,10 +1080,10 @@
 				currentLevel = level25;
 				backdrop = "agate";
 				break;
-			/* case 26:
+			case 26:
 				currentLevel = level26;
 				backdrop = "agate";
-				break; */
+				break;
 			default:
 				break;
 		}
@@ -1016,7 +1091,11 @@
 		console.log("Current level: " + level);
 		//Redrawing the gameArea with the new level
         for(var i = 0; i < gameArea.length; i++){
-            gameArea[i] = currentLevel[i];
+			if(newLevelBol == true){
+				gameArea[i] = newLevel[level][i];
+			}else{
+				gameArea[i] = currentLevel[i];
+			}
             // emptyTile(i);            
 			document.getElementById("n" + i).className = "tile " + backdrop + currentLevel[i]; // current tile will be empty
         }
