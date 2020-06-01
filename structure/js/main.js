@@ -40,7 +40,6 @@
 	var makeSpell = "";
 	var spellYellow = false;
 	var spellGreen = false;
-	var newLevelBol = false;
 
 	 var coinSound = new sound("sound/coin-shortest.wav");
 	 var vortexSound = new sound("sound/vortex-shortest.wav");
@@ -306,24 +305,6 @@
 		11,11,11,11,11,11,11,11,23,11,
 		];
 
-	var newLevel0 = [];
-	var newLevel1 = [];
-	var newLevel2 = [];
-	var newLevel3 = [];
-	var newLevel4 = [];
-	var newLevel5 = [];
-	var newLevel6 = [];
-	var newLevel7 = [];
-	var newLevel8 = [];
-	var newLevel20 = [];
-	var newLevel21 = [];
-	var newLevel22 = [];
-	var newLevel23 = [];
-	var newLevel24 = [];
-	var newLevel25 = [];
-	var newLevel26 = [];
-
-	var newLevel = [newLevel0, newLevel1, newLevel2, newLevel3, newLevel4, newLevel5, newLevel6, newLevel7, newLevel8];
 
 
 	/**
@@ -782,13 +763,11 @@
 				}
 				break;
 			case 22: // Exit
-				newLevelBol = false;
 				movable = true;
 				level = level + 1;
 				updateTiles(level);
 				break;
 			case 23: // Re-entry
-				newLevelBol = true;
 				movable = true;
 				level = level - 1;
 				updateTiles(level);
@@ -834,6 +813,7 @@
 					animateTile(tilePos);
 					makeSpell = "Green";
 					moveBaddie(0,0);
+					spellGreen = true;
 				}
 				break;
 			default:
@@ -978,11 +958,9 @@
 		// Switching the tiles
 		// Placing tile into the next positon in the array gameArea
 		// Then making sure the current tile is empty in the array gameArea
-		gameArea[next] = tile; 
-		newLevel[level][next] = tile;
+		gameArea[next] = tile;
         tile = 12;
 		gameArea[current] = 10;
-		newLevel[level][current] = 10;
 
 		// Giving the tiles new classnames to redraw them
 		document.getElementById("n" + next).className = "tile " + backdrop + tile; // box tile here
@@ -994,7 +972,7 @@
         tile = 14;
 		gameArea[current] = 10;
 		
-		newLevel[level][current] = 10;
+
         
 		document.getElementById("n" + current).className = "tile " + backdrop + 10; // current tile will be empty
 
@@ -1022,27 +1000,22 @@
             case 1:
 				currentLevel = level1;
 				backdrop = "space";
-				newLevel1 = level1;
                 break;
             case 2:
 				currentLevel = level2;
 				backdrop = "grass";
-				newLevel2 = level2;
                 break;
             case 3:
 				currentLevel = level3;
 				backdrop = "grass";
-				newLevel3 = level3;
                 break;
             case 4:
 				currentLevel = level4;
 				backdrop = "space";
-				newLevel4 = level4;
                 break;
             case 5:
 				currentLevel = level5;
 				backdrop = "grass";
-				newLevel5 = level5;
 				break;
 			case 6:
 				currentLevel = level6;
@@ -1091,11 +1064,9 @@
 		console.log("Current level: " + level);
 		//Redrawing the gameArea with the new level
         for(var i = 0; i < gameArea.length; i++){
-			if(newLevelBol == true){
-				gameArea[i] = newLevel[level][i];
-			}else{
-				gameArea[i] = currentLevel[i];
-			}
+			
+			gameArea[i] = currentLevel[i];
+			
             // emptyTile(i);            
 			document.getElementById("n" + i).className = "tile " + backdrop + currentLevel[i]; // current tile will be empty
         }
