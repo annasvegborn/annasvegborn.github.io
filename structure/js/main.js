@@ -109,6 +109,19 @@
 		11,14,11,11,10,10,10,11,10,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
+
+	var level0 = [
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,11,11,10,14,11,10,10,11,
+		11,10,11,10,10,11,11,13,10,11,
+		11,25,10,10,11,10,10,10,10,11,
+		11,11,11,10,11,11,11,12,12,11,
+		11,14,11,10,10,14,11,10,10,11,
+		11,10,11,10,11,11,11,11,10,11,
+		11,10,10,10,10,11,14,10,10,11,
+		11,14,11,11,10,10,10,11,10,11,
+		11,11,11,11,11,11,11,11,11,11,
+		];
     
     var level1 = [
 		11,11,11,11,11,11,11,11,11,11,
@@ -213,8 +226,10 @@
 		11,10,10,11,10,10,10,10,13,11,
 		11,11,11,11,11,11,11,11,11,11,
 		];
+	
+	var level9 = [];
 
-	var level20 = [
+	var level10 = [
 		11,11,11,11,11,11,22,11,11,11,
 		11,10,11,11,11,10,10,11,11,11,
 		11,10,10,10,10,10,11,13,11,11,
@@ -227,7 +242,7 @@
 		11,11,11,11,11,11,11,11,11,11,
 		];
 
-	var level21 = [
+	var level11 = [
 		11,11,11,11,11,11,23,11,11,11,
 		11,11,11,11,11,12,10,12,10,11,
 		11,11,11,10,10,10,12,10,10,11,
@@ -240,7 +255,7 @@
 		11,11,11,11,11,11,11,11,11,11,
 		]; 
 
-	var level22 = [
+	var level12 = [
 		11,11,11,11,11,11,11,11,11,11,
 		11,24,11,10,10,18,11,14,11,11,
 		11,10,11,14,26,11,10,10,14,11,
@@ -253,7 +268,7 @@
 		11,11,11,11,11,22,11,11,11,11,
 		]; 
 
-	var level23 = [ // 
+	var level13 = [ // 
 		11,11,11,11,11,11,11,11,11,11,
 		11,11,11,11,10,10,10,11,11,11,
 		22,10,10,10,10,13,10,11,11,11,
@@ -266,7 +281,7 @@
 		11,11,11,11,11,23,11,11,11,11,
 		];
 
-	var level23b = [ // Castle
+	var level14 = [ // Castle
 		11,11,11,11,11,11,11,11,11,11,
 		11,10,10,10,10,10,10,10,10,11,
 		11,10,10,10,10,10,10,10,10,11,
@@ -279,7 +294,7 @@
 		11,11,11,11,11,11,11,11,11,11,
 		];
 
-	var level24 = [
+	var level15 = [
 		11,11,11,11,11,11,11,11,11,11,
 		11,10,10,10,10,10,11,10,10,11,
 		23,10,11,11,11,10,11,10,10,11,
@@ -292,19 +307,38 @@
 		11,11,11,11,11,11,11,11,22,11,
 		];
 
-	var level25 = [
-		11,11,11,11,11,11,11,11,11,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,11,11,11,11,11,11,10,11,
-		11,10,11,10,10,10,10,11,10,11,
-		11,10,11,10,11,11,10,11,10,11,
-		11,10,11,10,11,11,10,11,10,11,
-		11,10,11,10,13,11,10,11,10,11,
-		11,10,11,11,11,11,10,11,10,11,
-		11,10,10,10,10,10,10,11,10,11,
-		11,11,11,11,11,11,11,11,23,11,
-		];
 
+	var levels = [
+		level0, level1, level2, level3, level4, 
+		level5, level6, level7, level8, level9, 
+		level10, level11, level12, level13, level14,
+		level15
+	];
+
+	var newLevel0 = [];
+	var newLevel1 = [];
+	var newLevel2 = [];
+	var newLevel3 = [];
+	var newLevel4 = [];
+	var newLevel5 = [];
+	var newLevel6 = [];
+	var newLevel7 = [];
+	var newLevel8 = [];
+	var newLevel9 = [];
+	var newLevel10 = [];
+	var newLevel11 = [];
+	var newLevel12 = [];
+	var newLevel13 = [];
+	var newLevel14 = [];
+	var newLevel15 = [];
+
+
+	var newLevels = [
+		newLevel0, newLevel1, newLevel2, newLevel3, newLevel4,
+		newLevel5, newLevel6, newLevel7, newLevel8, newLevel9,
+		newLevel10, newLevel11, newLevel12, newLevel13, newLevel14,
+		newLevel15
+	];
 
 
 	/**
@@ -328,7 +362,14 @@
 			// Append tile to the content
 			content.appendChild(tile);
 		}
+
+		for (var j = 0; j < levels.length; j++) {
+			newLevels[j] = Array.from(levels[j]);
+			//console.log(levels[j]);
+			console.log(newLevels[j]);
+		}
 	};
+
 /* ---- Coins menu ----- */
 
 	document.getElementById("coinTab").addEventListener("click", function(){ 
@@ -650,9 +691,9 @@
 					level = 1;
 				}else if(level == 2){
 					level = 1;
-				}else if(level == 20){
+				}else if(level == 10){
 					level = 1;
-				}else if(level == 25){
+				}else if(level == 15){
 					level = 1;
 				}else{
 					level = level + 1;
@@ -683,6 +724,7 @@
 				vortexSound.play();
 				// level = 0;
 				movable = true;
+				rewindTime(level);
 				updateTiles(level);
                 break;
             case 16: //Guard
@@ -712,7 +754,7 @@
 			case 18: // Bag
 				if(level == 6){
 					gotBag = true;
-				} else if(level == 22){
+				} else if(level == 12){
 					gotWizardsBag = true;	
 				}
 				movable = true;
@@ -743,7 +785,7 @@
 			case 20: // Blue planet
 				if(finishedMission1 == true){
 					movable = true;
-					level = 20;
+					level = 10;
 					//backdrop = "agate";
 					console.log("In the tardis! gameArea[titlePos]: " + gameArea[tilePos] + ". Should be: 20")
 					console.log("Class: " + baddie.classList);
@@ -775,7 +817,8 @@
 			case 24: //Vortex2
 				vortexSound.play();
 				movable = true;
-                level = level - 2;
+				level = level - 2;
+				rewindTime(level);
 				updateTiles(level);
 				break;
 			case 25: //Phone
@@ -808,7 +851,6 @@
 			case 28: // Magician 2
 				movable = false;
 				if(gotWand && gotWizardsBag){
-					spellGreen = true;
 					spellGreenSound.play();
 					animateTile(tilePos);
 					makeSpell = "Green";
@@ -879,7 +921,7 @@
 					addition = "<img id='phone' class='profilePic'>: Complete one mission on each planet.";
 				}else if(level == 2){
 					addition = "<img id='phone' class='profilePic'>: Get your uniform and go to work.";
-				}else if(level == 20){
+				}else if(level == 10){
 					addition = "<img id='phone' class='profilePic'>: Defeat the evil wizard by getting a wand and learning spells.";
 				}
 				break;
@@ -972,9 +1014,9 @@
         tile = 14;
 		gameArea[current] = 10;
 		
-
-        
 		document.getElementById("n" + current).className = "tile " + backdrop + 10; // current tile will be empty
+
+		newLevels[level][current] = 10;
 
 	};
 	var animateTile = function(current){
@@ -990,12 +1032,18 @@
 		}
 	};
 
+	var rewindTime = function(backToLevel){
+		for (var i = backToLevel; i < newLevels.length; i++) {
+			newLevels[i] = Array.from(levels[i]);
+		}
+	};
+
     var updateTiles = function(level){
         var currentLevel = [];
         switch(level) {
             case 0:
                 currentLevel = gameArea;
-                backdrop = "grass";
+				backdrop = "grass";
                 break;
             case 1:
 				currentLevel = level1;
@@ -1029,47 +1077,50 @@
 				currentLevel = level8;
 				backdrop = "grass";
 				break;
-			case 20: //agate level 1
-				currentLevel = level20;
+			case 10: //agate level 1
+				currentLevel = level10;
 				backdrop = "agate";
 				break;
-			case 21:
-				currentLevel = level21;
+			case 11:
+				currentLevel = level11;
 				backdrop = "agate";
 				break;
-			case 22:
-				currentLevel = level22;
+			case 12:
+				currentLevel = level12;
 				backdrop = "agate";
 				break;
-			case 23:
-				currentLevel = level23;
+			case 13:
+				currentLevel = level13;
 				backdrop = "agate";
 				break;
-			case 24:
-				currentLevel = level24;
+			case 14:
+				currentLevel = level14;
 				backdrop = "agate";
 				break;
-			case 25:
-				currentLevel = level25;
-				backdrop = "agate";
-				break;
-			case 26:
-				currentLevel = level26;
+			case 15:
+				currentLevel = level15;
 				backdrop = "agate";
 				break;
 			default:
 				break;
 		}
 		
-		console.log("Current level: " + level);
+		//console.log("Current level: " + level);
 		//Redrawing the gameArea with the new level
+
         for(var i = 0; i < gameArea.length; i++){
-			
-			gameArea[i] = currentLevel[i];
-			
+			/*gameArea[i] = currentLevel[i];
             // emptyTile(i);            
-			document.getElementById("n" + i).className = "tile " + backdrop + currentLevel[i]; // current tile will be empty
-        }
+			document.getElementById("n" + i).className = "tile " + backdrop + currentLevel[i];  */
+
+			gameArea[i] = newLevels[level][i];
+            // emptyTile(i);            
+			document.getElementById("n" + i).className = "tile " + backdrop + newLevels[level][i]; 
+		}
+		console.log("Level:");
+		console.log(currentLevel);
+		console.log("NewLevel:");
+		console.log(newLevels[level]);
 	};
 	
 	/** Turn baddie image right or left - transform handled in style.css */
