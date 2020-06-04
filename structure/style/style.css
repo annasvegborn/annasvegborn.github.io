@@ -394,6 +394,32 @@ padding: 5px 100px 2px 100px;
 .agate28 {
     background-image: url(../img/tiles/magician2-agate.png);
 }
+.agate29 {
+    background-image: url(../img/tiles/dueller-agate.png);
+}
+.agate29b {
+    background-image: url(../img/tiles/dueller-done-agate.png);
+    animation-name: dueller;
+    animation-duration: 1s;
+}
+@keyframes dueller {
+    0%   {background-image: url(../img/tiles/dueller-spell-agate.png);}
+    50%  {background-image: url(../img/tiles/dueller-spell-agate.png);}
+    100% {background-image: url(../img/tiles/dueller-done-agate.png);}
+}
+.agate30 {
+    background-image: url(../img/tiles/castle-agate.png);
+}
+.agate30b {
+    background-image: url(../img/tiles/castle-door.png);
+}
+.agate31 {
+    background-image: url(../img/tiles/castle-wall.png);
+}
+.agate32 {
+    background-image: url(../img/tiles/castle-floor.png);
+}
+
 
 #guard{
     content:url(../img/guard.png);
@@ -421,6 +447,14 @@ padding: 5px 100px 2px 100px;
 }
 #magician{
     content:url(../img/magician.png);
+    background-size: 100%;
+}
+#magician2{
+    content:url(../img/magician2.png);
+    background-size: 100%;
+}
+#dueller{
+    content:url(../img/dueller.png);
     background-size: 100%;
 }
 #anna, .anna{

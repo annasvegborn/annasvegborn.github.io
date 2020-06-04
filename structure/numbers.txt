@@ -19,8 +19,13 @@
      * 26 - Spell object
      * 27 - Magic teacher1
      * 28 - Magic teacher2
-     * 29 - 
-     * 30 - 
+     * 29 - Spell object 2
+     * 30 - Castle
+	 * 31 - Castle wall
+	 * 32 - Castle floor
+	 * 33 - Magic teacher 3
+	 * 34 - Magic teacher 4
+	 * 35 - Random person
 	 */
 
 

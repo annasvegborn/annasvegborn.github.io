@@ -40,6 +40,8 @@
 	var makeSpell = "";
 	var spellYellow = false;
 	var spellGreen = false;
+	var defeatedDueller = false;
+	var inCastle = false;
 
 	 var coinSound = new sound("sound/coin-shortest.wav");
 	 var vortexSound = new sound("sound/vortex-shortest.wav");
@@ -260,10 +262,10 @@
 		11,24,11,10,10,18,11,14,11,11,
 		11,10,11,14,26,11,10,10,14,11,
 		11,10,11,11,10,10,10,11,11,11,
-		11,10,10,10,10,10,10,10,10,11,
+		11,10,10,10,10,10,10,10,26,11,
 		11,11,11,10,11,10,10,11,10,11,
 		11,11,10,10,11,10,26,10,10,23,
-		11,10,10,11,11,10,11,10,10,11,
+		11,10,10,11,11,29,11,10,10,11,
 		11,28,10,11,11,10,11,11,10,11,
 		11,11,11,11,11,22,11,11,11,11,
 		]; 
@@ -271,7 +273,7 @@
 	var level13 = [ // 
 		11,11,11,11,11,11,11,11,11,11,
 		11,11,11,11,10,10,10,11,11,11,
-		22,10,10,10,10,13,10,11,11,11,
+		22,10,10,10,10,30,10,11,11,11,
 		11,11,11,11,10,10,10,11,11,11,
 		11,11,11,11,11,10,11,11,11,11,
 		11,11,11,11,11,10,11,11,11,11,
@@ -282,16 +284,16 @@
 		];
 
 	var level14 = [ // Castle
-		11,11,11,11,11,11,11,11,11,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,10,10,10,10,10,10,10,10,11,
-		11,11,11,11,11,11,11,11,11,11,
+		10,10,10,10,10,10,10,10,10,10,
+		10,10,10,10,10,10,10,10,10,10,
+		31,31,31,31,31,30,31,31,31,31,
+		31,32,32,32,32,32,31,32,32,31,
+		31,32,32,31,32,32,31,32,32,31,
+		31,32,32,31,32,32,32,32,32,31,
+		31,31,31,31,32,32,31,32,32,31,
+		31,32,32,32,32,32,31,32,32,31,
+		31,32,32,31,32,32,31,32,32,31,
+		31,31,31,31,31,31,31,31,31,31,
 		];
 
 	var level15 = [
@@ -307,12 +309,25 @@
 		11,11,11,11,11,11,11,11,22,11,
 		];
 
+	var level16 = [
+		11,11,11,11,11,11,11,11,11,11,
+		11,10,10,10,10,10,10,10,10,11,
+		11,10,11,11,11,11,11,11,10,11,
+		11,10,11,10,10,10,10,11,10,11,
+		11,10,11,10,11,11,10,11,10,11,
+		11,10,11,10,11,11,10,11,10,11,
+		11,10,11,10,13,11,10,11,10,11,
+		11,10,11,11,11,11,10,11,10,11,
+		11,10,10,10,10,10,10,11,10,11,
+		11,11,11,11,11,11,11,11,23,11,
+		]; 
+
 
 	var levels = [
 		level0, level1, level2, level3, level4, 
 		level5, level6, level7, level8, level9, 
 		level10, level11, level12, level13, level14,
-		level15
+		level15, level16
 	];
 
 	var newLevel0 = [];
@@ -331,13 +346,14 @@
 	var newLevel13 = [];
 	var newLevel14 = [];
 	var newLevel15 = [];
+	var newLevel16 = [];
 
 
 	var newLevels = [
 		newLevel0, newLevel1, newLevel2, newLevel3, newLevel4,
 		newLevel5, newLevel6, newLevel7, newLevel8, newLevel9,
 		newLevel10, newLevel11, newLevel12, newLevel13, newLevel14,
-		newLevel15
+		newLevel15, newLevel16
 	];
 
 
@@ -693,7 +709,7 @@
 					level = 1;
 				}else if(level == 10){
 					level = 1;
-				}else if(level == 15){
+				}else if(level == 16){
 					level = 1;
 				}else{
 					level = level + 1;
@@ -762,7 +778,7 @@
 				emptyTile(tilePos);
 				moveBaddie(0,0);
 				break;
-			case 19: // Work / Wand shop
+			case 19: // Work/Wand shop
 				if(backdrop == "agate"){
 						movable = true;
 						baddie.style.visibility = "hidden";
@@ -806,12 +822,21 @@
 				break;
 			case 22: // Exit
 				movable = true;
-				level = level + 1;
+				if(level == 13){
+					level = level + 2;
+				}else{
+					level = level + 1;
+				}
 				updateTiles(level);
 				break;
 			case 23: // Re-entry
 				movable = true;
-				level = level - 1;
+				if(level == 15){
+					level = level - 2;
+				}else{
+					level = level - 1;
+				}
+				
 				updateTiles(level);
 				break;
 			case 24: //Vortex2
@@ -857,6 +882,41 @@
 					moveBaddie(0,0);
 					spellGreen = true;
 				}
+				break;
+			case 29: //Spell-object
+				movable = false;
+				if(gotWand && spellGreen){
+					animateTile(tilePos);
+					document.getElementById("n" + tilePos).className = "tile " + backdrop + "29b"; // current tile will be empty
+					//setTimeout(emptyTile, 1000, tilePos);
+					makeSpell = "Green";
+					moveBaddie(0,0);
+					if(defeatedDueller){
+						movable = true; 
+						defeatedDueller = false;
+					}else{
+						defeatedDueller = true;
+						spellGreenSound.play();
+					}
+					
+				}
+				break;
+			case 30: //Castle
+				if(inCastle){
+					level = level - 1;
+				}else{
+					level = level + 1;
+					inCastle = true;
+				}
+				
+				movable = true;
+				updateTiles(level);
+				break;
+			case 31: //Castle wall
+				movable = false;
+				break;
+			case 32: //Castle floor
+				movable = true;
 				break;
 			default:
 				// Tile was impassible - collided, do not move baddie
@@ -927,6 +987,20 @@
 				break;
 			case 27:
 					addition = "<img id='magician' class='profilePic'>: <em>Let me teach you a spell to destroy those rocks.</em>";
+					break;
+			case 28:
+				if(gotWizardsBag){
+					addition = "<img id='magician2' class='profilePic'>: <em>Thank you for finding my bag. <br> Now, let me teach you a duelling spell.</em>";
+				}else{
+					addition = "<img id='magician2' class='profilePic'>: <em>I can't help you now. I need to find my lost bag. </em>";
+				}
+				break;
+			case 29:
+				if(spellGreen){
+					addition = "<img id='dueller' class='profilePic'>: <em> Fine. You beat me.  </em>";
+				}else{
+					addition = "<img id='dueller' class='profilePic'>: <em> Piss off. You have to beat me in a duel to get through here. </em>";
+				}
 				break;
 			default: 
 				console.log("No message");
@@ -1013,7 +1087,7 @@
         var tile = gameArea[current];
         tile = 14;
 		gameArea[current] = 10;
-		
+
 		document.getElementById("n" + current).className = "tile " + backdrop + 10; // current tile will be empty
 
 		newLevels[level][current] = 10;
@@ -1101,6 +1175,10 @@
 				currentLevel = level15;
 				backdrop = "agate";
 				break;
+			case 16:
+				currentLevel = level16;
+				backdrop = "agate";
+				break;
 			default:
 				break;
 		}
@@ -1115,9 +1193,14 @@
 
 			gameArea[i] = newLevels[level][i];
             // emptyTile(i);            
-			document.getElementById("n" + i).className = "tile " + backdrop + newLevels[level][i]; 
+			document.getElementById("n" + i).className = "tile " + backdrop + newLevels[level][i];
+
+			if(level == 14 && newLevels[level][i] == 30){
+				document.getElementById("n" + i).className = "tile " + backdrop + "30b";
+				console.log("Drawing castle door");
+			}
 		}
-		console.log("Level:");
+		console.log("Level:" + level);
 		console.log(currentLevel);
 		console.log("NewLevel:");
 		console.log(newLevels[level]);
