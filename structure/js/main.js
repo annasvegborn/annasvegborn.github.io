@@ -40,8 +40,10 @@
 	var makeSpell = "";
 	var spellYellow = false;
 	var spellGreen = false;
+	var spellBlue = false;
 	var defeatedDueller = false;
 	var inCastle = false;
+	var randomMagician = "";
 
 	 var coinSound = new sound("sound/coin-shortest.wav");
 	 var vortexSound = new sound("sound/vortex-shortest.wav");
@@ -49,6 +51,7 @@
 	 var phoneSound = new sound("sound/phone.wav");
 	 var spellYellowSound = new sound("sound/spell-yellow.wav");
 	 var spellGreenSound = new sound("sound/spell-green.wav");
+	 var spellBlueSound = new sound("sound/spell-blue.wav");
 	 var spellExplotionSound = new sound("sound/spell-explotion.wav");
 
 	// Size of each tile
@@ -287,12 +290,12 @@
 		10,10,10,10,10,10,10,10,10,10,
 		10,10,10,10,10,10,10,10,10,10,
 		31,31,31,31,31,30,31,31,31,31,
-		31,32,32,32,32,32,31,32,32,31,
+		31,34,32,32,32,32,31,34,32,31,
 		31,32,32,31,32,32,31,32,32,31,
-		31,32,32,31,32,32,32,32,32,31,
+		31,32,34,31,32,32,32,32,32,31,
 		31,31,31,31,32,32,31,32,32,31,
-		31,32,32,32,32,32,31,32,32,31,
-		31,32,32,31,32,32,31,32,32,31,
+		31,33,32,32,32,32,31,32,34,31,
+		31,32,32,31,32,32,31,34,32,31,
 		31,31,31,31,31,31,31,31,31,31,
 		];
 
@@ -675,7 +678,6 @@
 		
 		makeSpell = "";
 		// Switch case on the tile value - do different things depending on what tile baddie is moving to
-		updateMessage(tile);
 		switch(tile) {
 			case 10: // Empty tile
 				movable = true;
@@ -898,17 +900,16 @@
 						defeatedDueller = true;
 						spellGreenSound.play();
 					}
-					
 				}
 				break;
 			case 30: //Castle
 				if(inCastle){
 					level = level - 1;
+					inCastle = false;
 				}else{
 					level = level + 1;
 					inCastle = true;
 				}
-				
 				movable = true;
 				updateTiles(level);
 				break;
@@ -918,12 +919,30 @@
 			case 32: //Castle floor
 				movable = true;
 				break;
+			case 33: // Magician 3
+				movable = false;
+				if(gotWand){
+					spellBlueSound.play();
+					animateTile(tilePos);
+					makeSpell = "Blue";
+					moveBaddie(0,0);
+					spellBlue = true;
+				}
+				break;
+			case 34: // Random magician
+				movable = false;
+				console.log("Random magician is: " + document.getElementById("n" + tilePos).className);
+				var classesString = document.getElementById("n" + tilePos).className;
+				var classString = classesString.slice(-1);
+
+				randomMagician = "randomMagician" + classString;
+				console.log("randomMagician = " + randomMagician)
 			default:
 				// Tile was impassible - collided, do not move baddie
 				console.log("Oh no, baddie collided with the wall");
 				movable = false;
 		}
-
+		updateMessage(tile);
 		return movable;
 		
 	};
@@ -1001,6 +1020,12 @@
 				}else{
 					addition = "<img id='dueller' class='profilePic'>: <em> Piss off. You have to beat me in a duel to get through here. </em>";
 				}
+				break;
+			case 33:
+				addition = "<img id='magician3' class='profilePic'>: <em>I'll teach you a spell. </em>";
+				break;
+			case 34:
+				addition = "<img id='" + randomMagician + "' class='profilePic'>: <em>Sorry. I'm busy.</em>";
 				break;
 			default: 
 				console.log("No message");
@@ -1103,6 +1128,9 @@
 		}else if(gameArea[current] == 28){
 			console.log("Running spell practice");
 			document.getElementById("n" + current).className = "tile magicianGreen";
+		}else if(gameArea[current] == 33){
+			console.log("Running spell practice");
+			document.getElementById("n" + current).className = "tile magicianBlue";
 		}
 	};
 
@@ -1185,7 +1213,7 @@
 		
 		//console.log("Current level: " + level);
 		//Redrawing the gameArea with the new level
-
+		var randomMagicianCounter = 0;
         for(var i = 0; i < gameArea.length; i++){
 			/*gameArea[i] = currentLevel[i];
             // emptyTile(i);            
@@ -1196,8 +1224,14 @@
 			document.getElementById("n" + i).className = "tile " + backdrop + newLevels[level][i];
 
 			if(level == 14 && newLevels[level][i] == 30){
-				document.getElementById("n" + i).className = "tile " + backdrop + "30b";
+				document.getElementById("n" + i).className = "tile " + backdrop + "30-1";
 				console.log("Drawing castle door");
+			}else if(newLevels[level][i] == 34 ){
+				document.getElementById("n" + i).className = "tile " + backdrop + "34-" + randomMagicianCounter;
+				if(newLevels[level][i+1] == 31){
+					document.getElementById("n" + i).className = "tile flip "+ backdrop + "34-" + randomMagicianCounter;
+				}
+				randomMagicianCounter ++;
 			}
 		}
 		console.log("Level:" + level);

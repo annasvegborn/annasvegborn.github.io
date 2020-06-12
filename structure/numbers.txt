@@ -24,8 +24,8 @@
 	 * 31 - Castle wall
 	 * 32 - Castle floor
 	 * 33 - Magic teacher 3
-	 * 34 - Magic teacher 4
-	 * 35 - Random person
+	 * 34 - Random person
+	 * 35 - 
 	 */
 
 

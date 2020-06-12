@@ -23,6 +23,16 @@
     50%  {background-image: url(../img/anna-wand-green.png);}
     100% {background-image: url(../img/anna-wand-green.png);}
 }
+.AnnaSpellBlue {
+    background-image: url(../img/anna-wand.png);
+    animation-name: anna-spell-blue;
+    animation-duration: 1s;
+}
+@keyframes anna-spell-blue {
+    0%   {background-image: url(../img/anna-wand.png);}
+    50%  {background-image: url(../img/anna-wand-blue.png);}
+    100% {background-image: url(../img/anna-wand-blue.png);}
+}
 
 .explotionYellow{
     background-image: url(../img/tiles/explotion-yellow1.png);
@@ -53,6 +63,16 @@
     0%   {background-image: url(../img/tiles/magician2-green-agate.png);}
     50%  {background-image: url(../img/tiles/magician2-green-agate.png);}
     100% {background-image: url(../img/tiles/magician2-green-agate.png);}
+}
+.magicianBlue{
+    background-image: url(../img/tiles/magician3-castle.png);
+    animation-name: magician-blue;
+    animation-duration: 1s;
+}
+@keyframes magician-blue {
+    0%   {background-image: url(../img/tiles/magician3-blue-castle.png);}
+    50%  {background-image: url(../img/tiles/magician3-blue-castle.png);}
+    100% {background-image: url(../img/tiles/magician3-blue-castle.png);}
 }
 
 body{
@@ -410,7 +430,7 @@ padding: 5px 100px 2px 100px;
 .agate30 {
     background-image: url(../img/tiles/castle-agate.png);
 }
-.agate30b {
+.agate30-1 {
     background-image: url(../img/tiles/castle-door.png);
 }
 .agate31 {
@@ -419,7 +439,29 @@ padding: 5px 100px 2px 100px;
 .agate32 {
     background-image: url(../img/tiles/castle-floor.png);
 }
+.agate33{
+    background-image: url(../img/tiles/magician3-castle.png);
+}
+.agate34-0{
+    background-image: url(../img/tiles/person0-castle.png);
+}
+.agate34-1{
+    background-image: url(../img/tiles/person1-castle.png);
+}
+.agate34-2{
+    background-image: url(../img/tiles/person2-castle.png);
+}
+.agate34-3{
+    background-image: url(../img/tiles/person3-castle.png);
+}
+.agate34-4{
+    background-image: url(../img/tiles/person4-castle.png);
+}
 
+.flip{
+    transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+}
 
 #guard{
     content:url(../img/guard.png);
@@ -451,6 +493,34 @@ padding: 5px 100px 2px 100px;
 }
 #magician2{
     content:url(../img/magician2.png);
+    background-size: 100%;
+}
+#magician3{
+    content:url(../img/magician3.png);
+    background-size: 100%;
+}
+#randomMagician0{
+    content:url(../img/random-magician0.png);
+    background-size: 100%;
+}
+#randomMagician1{
+    content:url(../img/random-magician1.png);
+    background-size: 100%;
+}
+#randomMagician2{
+    content:url(../img/random-magician2.png);
+    background-size: 100%;
+}
+#randomMagician3{
+    content:url(../img/random-magician3.png);
+    background-size: 100%;
+}
+#randomMagician4{
+    content:url(../img/random-magician4.png);
+    background-size: 100%;
+}
+#randomMagician5{
+    content:url(../img/random-magician5.png);
     background-size: 100%;
 }
 #dueller{
